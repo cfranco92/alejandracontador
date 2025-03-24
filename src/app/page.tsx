@@ -76,7 +76,7 @@ export default function Home() {
                           flex items-center justify-center gap-2 w-full sm:w-auto"
                 onClick={() =>
                   (window.location.href =
-                    "mailto:alejandraberton@gmail.com?subject=Consulta profesional")
+                    "mailto:alejandraberton@gmail.com?subject=Consulta profesional&body=Hola Alejandra,%0A%0AMe gustaría una asesoría contable sobre...")
                 }
               >
                 <svg
