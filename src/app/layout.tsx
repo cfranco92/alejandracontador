@@ -30,10 +30,10 @@ const geistMono = Geist_Mono({
 
 const drawerWidth = 240;
 const navItems = [
-  { name: "Quién soy", path: "/" },
-  { name: "Resumen", path: "/about" },
-  { name: "Portafolio", path: "/portfolio" },
-  { name: "Contacto", path: "/contact" },
+  // { name: "Quién soy", path: "/" },
+  // { name: "Resumen", path: "/about" },
+  // { name: "Portafolio", path: "/portfolio" },
+  // { name: "Contacto", path: "/contact" },
 ];
 
 export default function RootLayout({
