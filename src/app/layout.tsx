@@ -59,7 +59,7 @@ export default function RootLayout({
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <Typography variant="h6" sx={{ my: 2 }}>
         <Link href="/" style={{ textDecoration: 'none', color: 'inherit' }}>
-          Cristian Franco
+          Alejandra Bertón
         </Link>
       </Typography>
       <Divider />
@@ -97,7 +97,7 @@ export default function RootLayout({
                 sx={{ flexGrow: 1, display: { xs: "block", sm: "block" } }}
               >
                 <Link href="/" style={{ textDecoration: 'none', color: 'inherit' }}>
-                  Cristian Franco
+                  Alejandra Bertón
                 </Link>
               </Typography>
               <Box sx={{ display: { xs: "none", sm: "block" } }}>
