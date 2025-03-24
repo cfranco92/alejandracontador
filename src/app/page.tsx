@@ -35,7 +35,7 @@ export default function Home() {
                           font-medium transition-all hover:bg-opacity-90
                           hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-500
                           flex items-center justify-center gap-2 w-full sm:w-auto"
-                onClick={() => window.open("https://wa.me/573053004399", "_blank")}
+                onClick={() => window.open("https://wa.me/573053004399?text=Hola%20Alejandra%20me%20gustar%C3%ADa%20una%20asesor%C3%ADa%20contigo%20sobre...", "_blank")}
               >
                 <svg 
                   xmlns="http://www.w3.org/2000/svg" 
