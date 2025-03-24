@@ -30,10 +30,10 @@ const geistMono = Geist_Mono({
 
 const drawerWidth = 240;
 const navItems = [
-  { name: "Home", path: "/" },
-  { name: "About", path: "/about" },
-  { name: "Portfolio", path: "/portfolio" },
-  { name: "Contact", path: "/contact" }
+  { name: "Quién soy", path: "/" },
+  { name: "Resumen", path: "/about" },
+  { name: "Portafolio", path: "/portfolio" },
+  { name: "Contacto", path: "/contact" },
 ];
 
 export default function RootLayout({
@@ -58,7 +58,7 @@ export default function RootLayout({
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <Typography variant="h6" sx={{ my: 2 }}>
-        <Link href="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+        <Link href="/" style={{ textDecoration: "none", color: "inherit" }}>
           Alejandra Bertón
         </Link>
       </Typography>
@@ -66,7 +66,11 @@ export default function RootLayout({
       <List>
         {navItems.map((item) => (
           <ListItem key={item.name} disablePadding>
-            <ListItemButton sx={{ textAlign: "center" }} component={Link} href={item.path}>
+            <ListItemButton
+              sx={{ textAlign: "center" }}
+              component={Link}
+              href={item.path}
+            >
               <ListItemText primary={item.name} />
             </ListItemButton>
           </ListItem>
@@ -96,14 +100,17 @@ export default function RootLayout({
                 component="div"
                 sx={{ flexGrow: 1, display: { xs: "block", sm: "block" } }}
               >
-                <Link href="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+                <Link
+                  href="/"
+                  style={{ textDecoration: "none", color: "inherit" }}
+                >
                   Alejandra Bertón
                 </Link>
               </Typography>
               <Box sx={{ display: { xs: "none", sm: "block" } }}>
                 {navItems.map((item) => (
-                  <Button 
-                    key={item.name} 
+                  <Button
+                    key={item.name}
                     sx={{ color: "#fff" }}
                     component={Link}
                     href={item.path}
