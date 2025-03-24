@@ -28,6 +28,7 @@ export default function Home() {
                         flex items-center gap-2"
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
+              onClick={() => window.location.href = 'mailto:alejandraberton@gmail.com?subject=Consulta profesional'}
             >
               <svg 
                 xmlns="http://www.w3.org/2000/svg" 
