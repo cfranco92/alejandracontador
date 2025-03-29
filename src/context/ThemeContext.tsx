@@ -29,11 +29,10 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
         document.documentElement.classList.remove('dark');
       }
     } else {
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      setIsDarkMode(prefersDark);
-      if (prefersDark) {
-        document.documentElement.classList.add('dark');
-      }
+      // Establecer Light Mode como predeterminado
+      setIsDarkMode(false);
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
     }
   }, []);
 
