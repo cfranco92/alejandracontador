@@ -33,10 +33,10 @@ const inter = Inter({ subsets: ['latin'] });
 
 const drawerWidth = 240;
 const navItems: { name: string; path: string }[] = [
-  // { name: "Quién soy", path: "/" },
-  // { name: "Resumen", path: "/about" },
-  // { name: "Portafolio", path: "/portfolio" },
-  // { name: "Contacto", path: "/contact" },
+  { name: "Inicio", path: "/" },
+  { name: "Acerca de", path: "/about" },
+  { name: "Portafolio", path: "/portfolio" },
+  { name: "Contacto", path: "/contact" },
 ];
 
 export default function ClientLayout({

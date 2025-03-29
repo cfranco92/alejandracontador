@@ -1,103 +1,452 @@
+"use client";
+
+import { 
+  Box, 
+  Typography, 
+  Grid, 
+  Card, 
+  CardContent, 
+  CardHeader, 
+  Avatar, 
+  Tabs, 
+  Tab, 
+  Divider,
+  Button,
+  Chip,
+  Rating
+} from "@mui/material";
+import { useState } from "react";
+import BusinessIcon from "@mui/icons-material/Business";
+import PersonIcon from "@mui/icons-material/Person";
+import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
+import ReceiptLongIcon from "@mui/icons-material/ReceiptLong";
+import BalanceIcon from "@mui/icons-material/Balance";
 import Image from "next/image";
 
-export default function Portfolio() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+interface TabPanelProps {
+  children?: React.ReactNode;
+  index: number;
+  value: number;
+}
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+function TabPanel(props: TabPanelProps) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`portfolio-tabpanel-${index}`}
+      aria-labelledby={`portfolio-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box sx={{ p: 3 }}>
+          {children}
+        </Box>
+      )}
     </div>
+  );
+}
+
+export default function Portfolio() {
+  const [tabValue, setTabValue] = useState(0);
+
+  const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
+    setTabValue(newValue);
+  };
+
+  return (
+    <Box className="max-w-6xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+      <Box className="mb-12 text-center">
+        <Typography variant="h3" component="h1" className="font-bold mb-4 text-gray-800 dark:text-white">
+          Mi Portafolio Profesional
+        </Typography>
+        <Typography variant="subtitle1" className="text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+          Conozca mi experiencia profesional y los servicios que ofrezco como Contadora Pública especializada en asesoría tributaria y financiera.
+        </Typography>
+      </Box>
+
+      <Box sx={{ borderBottom: 1, borderColor: 'divider' }} className="mb-6">
+        <Tabs 
+          value={tabValue} 
+          onChange={handleTabChange} 
+          aria-label="portfolio tabs"
+          variant="scrollable"
+          scrollButtons="auto"
+          allowScrollButtonsMobile
+          centered
+        >
+          <Tab label="Servicios" icon={<BusinessIcon />} iconPosition="start" />
+          <Tab label="Proyectos" icon={<ReceiptLongIcon />} iconPosition="start" />
+          <Tab label="Testimonios" icon={<PersonIcon />} iconPosition="start" />
+        </Tabs>
+      </Box>
+
+      <TabPanel value={tabValue} index={0}>
+        <Grid container spacing={4}>
+          <Grid item xs={12} md={6} lg={4}>
+            <Card className="h-full transition-all hover:shadow-lg">
+              <CardHeader 
+                avatar={
+                  <Avatar sx={{ bgcolor: 'primary.main' }}>
+                    <BusinessIcon />
+                  </Avatar>
+                }
+                title="Contabilidad para Empresas"
+                subheader="Servicios Corporativos"
+              />
+              <CardContent>
+                <Typography variant="body2" color="text.secondary" className="mb-4">
+                  Ofrezco servicios completos de contabilidad para empresas de todos los tamaños, desde startups hasta compañías establecidas.
+                </Typography>
+                <Divider className="my-4" />
+                <Typography variant="body2" component="div">
+                  <ul className="list-disc pl-5 space-y-2">
+                    <li>Contabilidad mensual y anual</li>
+                    <li>Elaboración de estados financieros</li>
+                    <li>Análisis financiero y reportes gerenciales</li>
+                    <li>Conciliaciones bancarias</li>
+                    <li>Preparación y presentación de declaraciones tributarias</li>
+                  </ul>
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+
+          <Grid item xs={12} md={6} lg={4}>
+            <Card className="h-full transition-all hover:shadow-lg">
+              <CardHeader 
+                avatar={
+                  <Avatar sx={{ bgcolor: 'secondary.main' }}>
+                    <PersonIcon />
+                  </Avatar>
+                }
+                title="Asesoría Tributaria Personal"
+                subheader="Personas Naturales"
+              />
+              <CardContent>
+                <Typography variant="body2" color="text.secondary" className="mb-4">
+                  Acompaño a personas naturales en el cumplimiento de sus obligaciones tributarias, optimizando su carga fiscal de manera legal.
+                </Typography>
+                <Divider className="my-4" />
+                <Typography variant="body2" component="div">
+                  <ul className="list-disc pl-5 space-y-2">
+                    <li>Declaración de renta personas naturales</li>
+                    <li>Planeación tributaria</li>
+                    <li>Asesoría en inversiones y tributación</li>
+                    <li>Régimen simple de tributación</li>
+                    <li>Respuesta a requerimientos de la DIAN</li>
+                  </ul>
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+
+          <Grid item xs={12} md={6} lg={4}>
+            <Card className="h-full transition-all hover:shadow-lg">
+              <CardHeader 
+                avatar={
+                  <Avatar sx={{ bgcolor: 'error.main' }}>
+                    <AccountBalanceIcon />
+                  </Avatar>
+                }
+                title="Consultorías Especializadas"
+                subheader="Servicios de Alto Valor"
+              />
+              <CardContent>
+                <Typography variant="body2" color="text.secondary" className="mb-4">
+                  Brindo asesorías especializadas en temas complejos de contabilidad, tributación y finanzas para necesidades específicas.
+                </Typography>
+                <Divider className="my-4" />
+                <Typography variant="body2" component="div">
+                  <ul className="list-disc pl-5 space-y-2">
+                    <li>Implementación de NIIF</li>
+                    <li>Due diligence contable y financiero</li>
+                    <li>Valoración de empresas</li>
+                    <li>Reestructuración financiera</li>
+                    <li>Peritajes contables</li>
+                  </ul>
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+
+          <Grid item xs={12} md={6} lg={6}>
+            <Card className="h-full transition-all hover:shadow-lg">
+              <CardHeader 
+                avatar={
+                  <Avatar sx={{ bgcolor: 'info.main' }}>
+                    <BalanceIcon />
+                  </Avatar>
+                }
+                title="Auditoría y Revisión"
+                subheader="Control y Verificación"
+              />
+              <CardContent>
+                <Typography variant="body2" color="text.secondary" className="mb-4">
+                  Realizo auditorías contables y financieras para asegurar la integridad de la información y el cumplimiento normativo.
+                </Typography>
+                <Divider className="my-4" />
+                <Typography variant="body2" component="div">
+                  <ul className="list-disc pl-5 space-y-2">
+                    <li>Auditoría interna y externa</li>
+                    <li>Revisión de procesos contables</li>
+                    <li>Verificación de cumplimiento normativo</li>
+                    <li>Informes de auditoría</li>
+                    <li>Recomendaciones para mejora de procesos</li>
+                  </ul>
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+
+          <Grid item xs={12} md={6} lg={6}>
+            <Card className="h-full transition-all hover:shadow-lg">
+              <CardHeader 
+                avatar={
+                  <Avatar sx={{ bgcolor: 'success.main' }}>
+                    <ReceiptLongIcon />
+                  </Avatar>
+                }
+                title="Nómina y RRHH"
+                subheader="Gestión de Personal"
+              />
+              <CardContent>
+                <Typography variant="body2" color="text.secondary" className="mb-4">
+                  Manejo integral de la nómina y aspectos relacionados con recursos humanos desde la perspectiva contable y fiscal.
+                </Typography>
+                <Divider className="my-4" />
+                <Typography variant="body2" component="div">
+                  <ul className="list-disc pl-5 space-y-2">
+                    <li>Liquidación de nómina</li>
+                    <li>Cálculo de prestaciones sociales</li>
+                    <li>Liquidación y pago de seguridad social</li>
+                    <li>Liquidación de contratos</li>
+                    <li>Informes de costos laborales</li>
+                  </ul>
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+        </Grid>
+      </TabPanel>
+
+      <TabPanel value={tabValue} index={1}>
+        <Grid container spacing={4}>
+          <Grid item xs={12} md={6}>
+            <Card className="h-full transition-all hover:shadow-lg">
+              <div className="relative h-48">
+                <Image
+                  src="/images/project-accounting.jpg"
+                  alt="Proyecto contable"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <CardContent>
+                <Box className="mb-2 flex gap-2 flex-wrap">
+                  <Chip size="small" label="Contabilidad" color="primary" />
+                  <Chip size="small" label="NIIF" />
+                  <Chip size="small" label="Auditoría" />
+                </Box>
+                <Typography variant="h5" component="h2" className="mb-2">
+                  Implementación NIIF para PYMES
+                </Typography>
+                <Typography variant="body2" color="text.secondary" className="mb-3">
+                  Lideré la implementación de Normas Internacionales de Información Financiera (NIIF) para una empresa mediana del sector manufacturero.
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  <strong>Resultado:</strong> Cumplimiento normativo completo y mejora en la calidad de la información financiera para la toma de decisiones.
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+
+          <Grid item xs={12} md={6}>
+            <Card className="h-full transition-all hover:shadow-lg">
+              <div className="relative h-48">
+                <Image
+                  src="/images/project-tax.jpg"
+                  alt="Proyecto tributario"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <CardContent>
+                <Box className="mb-2 flex gap-2 flex-wrap">
+                  <Chip size="small" label="Tributario" color="secondary" />
+                  <Chip size="small" label="Planeación" />
+                  <Chip size="small" label="Optimización" />
+                </Box>
+                <Typography variant="h5" component="h2" className="mb-2">
+                  Restructuración Tributaria Empresarial
+                </Typography>
+                <Typography variant="body2" color="text.secondary" className="mb-3">
+                  Diseñé e implementé una estrategia de planeación tributaria para un grupo empresarial, optimizando la carga impositiva legalmente.
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  <strong>Resultado:</strong> Reducción del 22% en la carga tributaria anual sin incurrir en riesgos fiscales.
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+
+          <Grid item xs={12} md={6}>
+            <Card className="h-full transition-all hover:shadow-lg">
+              <div className="relative h-48">
+                <Image
+                  src="/images/project-finance.jpg"
+                  alt="Proyecto financiero"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <CardContent>
+                <Box className="mb-2 flex gap-2 flex-wrap">
+                  <Chip size="small" label="Finanzas" color="error" />
+                  <Chip size="small" label="Reestructuración" />
+                  <Chip size="small" label="Eficiencia" />
+                </Box>
+                <Typography variant="h5" component="h2" className="mb-2">
+                  Reestructuración Financiera
+                </Typography>
+                <Typography variant="body2" color="text.secondary" className="mb-3">
+                  Desarrollé un plan de reestructuración financiera para una empresa en dificultades, incluyendo refinanciación de deuda y optimización de capital de trabajo.
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  <strong>Resultado:</strong> Recuperación de la liquidez y mejora en los indicadores financieros clave en menos de 12 meses.
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+
+          <Grid item xs={12} md={6}>
+            <Card className="h-full transition-all hover:shadow-lg">
+              <div className="relative h-48">
+                <Image
+                  src="/images/project-audit.jpg"
+                  alt="Proyecto de auditoría"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <CardContent>
+                <Box className="mb-2 flex gap-2 flex-wrap">
+                  <Chip size="small" label="Due Diligence" color="info" />
+                  <Chip size="small" label="Auditoría" />
+                  <Chip size="small" label="Valoración" />
+                </Box>
+                <Typography variant="h5" component="h2" className="mb-2">
+                  Due Diligence para Adquisición
+                </Typography>
+                <Typography variant="body2" color="text.secondary" className="mb-3">
+                  Realicé un proceso completo de due diligence contable y financiero para una empresa que planeaba adquirir un competidor del mercado.
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  <strong>Resultado:</strong> Identificación de riesgos clave y oportunidades de sinergia que permitieron una negociación favorable.
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+        </Grid>
+      </TabPanel>
+
+      <TabPanel value={tabValue} index={2}>
+        <Grid container spacing={4}>
+          <Grid item xs={12} md={6}>
+            <Card className="h-full transition-all hover:shadow-lg">
+              <CardContent>
+                <Box className="flex flex-col items-center mb-4">
+                  <Avatar sx={{ width: 80, height: 80, mb: 2 }}>JD</Avatar>
+                  <Typography variant="h6" component="h3" className="text-center">
+                    Juan Pérez
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary" className="text-center mb-2">
+                    Gerente General - Empresa ABC
+                  </Typography>
+                  <Rating value={5} readOnly />
+                </Box>
+                <Typography variant="body1" className="italic text-gray-600 dark:text-gray-300">
+                  &ldquo;La asesoría tributaria de Alejandra fue fundamental para optimizar nuestra estructura fiscal. Su conocimiento profundo y atención al detalle nos ayudó a ahorrar considerablemente en impuestos de manera legal. Altamente recomendada.&rdquo;
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+
+          <Grid item xs={12} md={6}>
+            <Card className="h-full transition-all hover:shadow-lg">
+              <CardContent>
+                <Box className="flex flex-col items-center mb-4">
+                  <Avatar sx={{ width: 80, height: 80, mb: 2 }}>MR</Avatar>
+                  <Typography variant="h6" component="h3" className="text-center">
+                    María Rodríguez
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary" className="text-center mb-2">
+                    Directora Financiera - XYZ S.A.S
+                  </Typography>
+                  <Rating value={5} readOnly />
+                </Box>
+                <Typography variant="body1" className="italic text-gray-600 dark:text-gray-300">
+                  &ldquo;Trabajar con Alejandra en la implementación de NIIF fue una experiencia excelente. Su metodología clara y enfoque práctico facilitó enormemente la transición. Ahora tenemos estados financieros confiables y comparables internacionalmente.&rdquo;
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+
+          <Grid item xs={12} md={6}>
+            <Card className="h-full transition-all hover:shadow-lg">
+              <CardContent>
+                <Box className="flex flex-col items-center mb-4">
+                  <Avatar sx={{ width: 80, height: 80, mb: 2 }}>CG</Avatar>
+                  <Typography variant="h6" component="h3" className="text-center">
+                    Carlos Gómez
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary" className="text-center mb-2">
+                    Emprendedor
+                  </Typography>
+                  <Rating value={4.5} precision={0.5} readOnly />
+                </Box>
+                <Typography variant="body1" className="italic text-gray-600 dark:text-gray-300">
+                  &ldquo;Como emprendedor, necesitaba alguien que me guiara en el mundo contable y tributario. Alejandra no solo me ayudó con la contabilidad de mi startup, sino que me educó para entender mejor las finanzas de mi negocio. Un valor incalculable para mi crecimiento empresarial.&rdquo;
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+
+          <Grid item xs={12} md={6}>
+            <Card className="h-full transition-all hover:shadow-lg">
+              <CardContent>
+                <Box className="flex flex-col items-center mb-4">
+                  <Avatar sx={{ width: 80, height: 80, mb: 2 }}>LM</Avatar>
+                  <Typography variant="h6" component="h3" className="text-center">
+                    Laura Martínez
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary" className="text-center mb-2">
+                    Gerente de Operaciones - Constructora 123
+                  </Typography>
+                  <Rating value={5} readOnly />
+                </Box>
+                <Typography variant="body1" className="italic text-gray-600 dark:text-gray-300">
+                  &ldquo;La auditoría realizada por Alejandra fue exhaustiva y profesional. Identificó áreas de mejora que no habíamos notado y nos proporcionó recomendaciones accionables que implementamos con excelentes resultados. Su ética profesional y compromiso son admirables.&rdquo;
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+        </Grid>
+      </TabPanel>
+
+      <Box className="mt-12 text-center">
+        <Button 
+          variant="contained" 
+          color="primary" 
+          size="large"
+          href="/contact"
+          className="px-8"
+        >
+          Solicitar una Consulta
+        </Button>
+      </Box>
+    </Box>
   );
 }

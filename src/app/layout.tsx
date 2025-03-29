@@ -2,8 +2,8 @@ import { Metadata } from 'next';
 import ClientLayout from './ClientLayout';
 
 export const metadata: Metadata = {
-  title: 'Alejandra Bertón | Contadora Pública',
-  description: 'Servicios contables y tributarios profesionales',
+  title: 'Alejandra Bertón - Contadora Pública',
+  description: 'Servicios profesionales de contabilidad, asesoría tributaria y consultorías financieras en Colombia.',
   openGraph: {
     title: 'Alejandra Bertón | Contadora Pública',
     description: 'Servicios contables y tributarios profesionales',

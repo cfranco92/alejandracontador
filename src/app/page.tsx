@@ -13,7 +13,8 @@ export default function Home() {
               alt="Alejandra Bertón"
               width={96}
               height={96}
-              className="w-full h-full object-cover object-[center_15%]"
+              className="w-full h-full object-cover"
+              style={{ objectPosition: '50% 30%' }}
               priority
             />
           </div>
