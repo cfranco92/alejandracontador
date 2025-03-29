@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup, ZoomControl } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
+import { Box, Typography, useTheme } from "@mui/material";
 
 // Corregir el problema con los iconos de Leaflet en Next.js
 const defaultIcon = L.icon({
@@ -24,8 +25,9 @@ type MapProps = {
   popupText?: string;
 };
 
-export default function Map({ center, zoom = 16, popupText = "Ubicación" }: MapProps) {
+export default function Map({ center, zoom = 12, popupText = "Ubicación" }: MapProps) {
   const [isMounted, setIsMounted] = useState(false);
+  const theme = useTheme();
 
   useEffect(() => {
     setIsMounted(true);
@@ -39,11 +41,27 @@ export default function Map({ center, zoom = 16, popupText = "Ubicación" }: Map
   // Solo renderizamos el mapa en el lado del cliente
   if (!isMounted) {
     return (
-      <div className="h-96 w-full bg-gray-200 dark:bg-gray-800 flex items-center justify-center">
-        <p className="text-gray-600 dark:text-gray-400 text-center px-4">
+      <Box 
+        sx={{ 
+          height: "24rem", 
+          width: "100%", 
+          bgcolor: theme.palette.mode === 'dark' ? 'rgba(17, 25, 40, 0.9)' : 'rgb(226, 232, 240)', 
+          display: 'flex', 
+          alignItems: 'center', 
+          justifyContent: 'center' 
+        }}
+      >
+        <Typography 
+          variant="body1" 
+          sx={{ 
+            color: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.8)' : 'rgba(0, 0, 0, 0.6)', 
+            textAlign: 'center', 
+            px: 2 
+          }}
+        >
           Cargando mapa...
-        </p>
-      </div>
+        </Typography>
+      </Box>
     );
   }
 
@@ -52,7 +70,9 @@ export default function Map({ center, zoom = 16, popupText = "Ubicación" }: Map
       center={center} 
       zoom={zoom} 
       style={{ height: "100%", width: "100%", minHeight: "400px" }} 
-      scrollWheelZoom={false}
+      scrollWheelZoom={true}
+      zoomControl={false} // Desactivamos el control de zoom predeterminado para colocarlo en otra posición
+      attributionControl={true}
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -63,6 +83,7 @@ export default function Map({ center, zoom = 16, popupText = "Ubicación" }: Map
           {popupText}
         </Popup>
       </Marker>
+      <ZoomControl position="bottomright" /> {/* Colocamos los controles de zoom en la esquina inferior derecha */}
     </MapContainer>
   );
 } 

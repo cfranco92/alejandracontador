@@ -15,11 +15,27 @@ import dynamic from "next/dynamic";
 const Map = dynamic(() => import("@/components/Map"), {
   ssr: false,
   loading: () => (
-    <div className="h-96 w-full bg-gray-200 dark:bg-gray-800 flex items-center justify-center">
-      <Typography variant="body1" className="text-gray-600 dark:text-gray-400 text-center px-4">
+    <Box 
+      sx={{ 
+        height: "24rem", 
+        width: "100%", 
+        bgcolor: theme => theme.palette.mode === 'dark' ? 'rgba(17, 25, 40, 0.9)' : 'rgb(226, 232, 240)', 
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'center' 
+      }}
+    >
+      <Typography 
+        variant="body1" 
+        sx={{ 
+          color: theme => theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.8)' : 'rgba(0, 0, 0, 0.6)', 
+          textAlign: 'center', 
+          px: 2 
+        }}
+      >
         Cargando mapa...
       </Typography>
-    </div>
+    </Box>
   ),
 });
 
@@ -68,65 +84,92 @@ export default function Contact() {
   };
 
   return (
-    <Box className="max-w-6xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-      <Paper elevation={0} className="overflow-hidden rounded-lg bg-white dark:bg-gray-900">
+    <Box sx={{ maxWidth: '6xl', mx: 'auto', py: 12, px: { xs: 2, sm: 3, lg: 4 } }}>
+      <Paper 
+        elevation={0} 
+        sx={{ 
+          overflow: 'hidden', 
+          borderRadius: 2,
+          bgcolor: theme => theme.palette.mode === 'dark' ? 'rgba(17, 25, 40, 0.9)' : '#ffffff',
+          border: '1px solid',
+          borderColor: theme => theme.palette.mode === 'dark' ? 'rgba(59, 130, 246, 0.1)' : 'rgba(226, 232, 240, 0.8)'
+        }}
+      >
         <Grid container>
-          <Grid item xs={12} md={5} className="bg-blue-600 text-white">
-            <Box className="p-6 sm:p-10 h-full flex flex-col justify-between">
+          <Grid item xs={12} md={5} sx={{ bgcolor: 'primary.main', color: 'white' }}>
+            <Box sx={{ p: { xs: 3, sm: 5 }, height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
               <Box>
-                <Typography variant="h4" component="h1" className="font-bold mb-6">
+                <Typography variant="h4" component="h1" sx={{ fontWeight: 'bold', mb: 3 }}>
                   Información de Contacto
                 </Typography>
-                <Typography variant="body1" className="mb-8 opacity-90">
+                <Typography variant="body1" sx={{ mb: 4, opacity: 0.9 }}>
                   Ponte en contacto conmigo para resolver todas tus dudas sobre servicios contables y tributarios.
                 </Typography>
 
-                <Box className="space-y-4">
-                  <Box className="flex items-center gap-4">
+                <Box sx={{ '& > *:not(:last-child)': { mb: 2 } }}>
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
                     <PhoneIcon />
                     <Box>
-                      <Typography variant="body2" className="opacity-90">Teléfono</Typography>
-                      <Typography variant="body1" className="font-medium">+57 305 300 4399</Typography>
+                      <Typography variant="body2" sx={{ opacity: 0.9 }}>Teléfono</Typography>
+                      <Typography variant="body1" sx={{ fontWeight: 500 }}>+57 305 300 4399</Typography>
                     </Box>
                   </Box>
                   
-                  <Box className="flex items-center gap-4">
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
                     <EmailIcon />
                     <Box>
-                      <Typography variant="body2" className="opacity-90">Email</Typography>
-                      <Typography variant="body1" className="font-medium">alejandraberton@gmail.com</Typography>
+                      <Typography variant="body2" sx={{ opacity: 0.9 }}>Email</Typography>
+                      <Typography variant="body1" sx={{ fontWeight: 500 }}>alejandraberton@gmail.com</Typography>
                     </Box>
                   </Box>
                   
-                  <Box className="flex items-center gap-4">
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
                     <LocationOnIcon />
                     <Box>
-                      <Typography variant="body2" className="opacity-90">Dirección</Typography>
-                      <Typography variant="body1" className="font-medium">Bogotá, Colombia</Typography>
+                      <Typography variant="body2" sx={{ opacity: 0.9 }}>Dirección</Typography>
+                      <Typography variant="body1" sx={{ fontWeight: 500 }}>Medellín, Colombia</Typography>
                     </Box>
                   </Box>
                 </Box>
               </Box>
 
-              <Box className="mt-8 flex gap-4">
+              <Box sx={{ mt: 4, display: 'flex', gap: 2 }}>
                 <IconButton 
                   color="inherit" 
                   onClick={() => window.open("https://wa.me/573053004399?text=Hola%20Alejandra%20me%20gustar%C3%ADa%20una%20asesor%C3%ADa%20contigo%20sobre...", "_blank")}
-                  className="bg-white/20 hover:bg-white/30"
+                  sx={{ 
+                    bgcolor: 'rgba(255, 255, 255, 0.2)', 
+                    '&:hover': { 
+                      bgcolor: 'rgba(255, 255, 255, 0.3)',
+                      transform: 'scale(1.05)'
+                    } 
+                  }}
                 >
                   <WhatsAppIcon />
                 </IconButton>
                 <IconButton 
                   color="inherit"
                   onClick={() => window.open("https://www.linkedin.com/in/alejandra-berton/", "_blank")}
-                  className="bg-white/20 hover:bg-white/30"
+                  sx={{ 
+                    bgcolor: 'rgba(255, 255, 255, 0.2)', 
+                    '&:hover': { 
+                      bgcolor: 'rgba(255, 255, 255, 0.3)',
+                      transform: 'scale(1.05)'
+                    } 
+                  }}
                 >
                   <LinkedInIcon />
                 </IconButton>
                 <IconButton 
                   color="inherit"
                   onClick={() => window.location.href = "mailto:alejandraberton@gmail.com"}
-                  className="bg-white/20 hover:bg-white/30"
+                  sx={{ 
+                    bgcolor: 'rgba(255, 255, 255, 0.2)', 
+                    '&:hover': { 
+                      bgcolor: 'rgba(255, 255, 255, 0.3)',
+                      transform: 'scale(1.05)'
+                    } 
+                  }}
                 >
                   <EmailIcon />
                 </IconButton>
@@ -135,18 +178,32 @@ export default function Contact() {
           </Grid>
 
           <Grid item xs={12} md={7}>
-            <Box className="p-6 sm:p-10">
-              <Typography variant="h4" component="h2" className="font-bold mb-2 text-gray-800 dark:text-white">
+            <Box sx={{ p: { xs: 3, sm: 5 } }}>
+              <Typography 
+                variant="h4" 
+                component="h2" 
+                sx={{ 
+                  fontWeight: 'bold', 
+                  mb: 1,
+                  color: theme => theme.palette.mode === 'dark' ? '#f8fafc' : 'text.primary'
+                }}
+              >
                 Envíame un mensaje
               </Typography>
-              <Typography variant="body1" className="mb-6 text-gray-600 dark:text-gray-300">
+              <Typography 
+                variant="body1" 
+                sx={{ 
+                  mb: 3,
+                  color: theme => theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.8)' : 'text.secondary'
+                }}
+              >
                 Completa el formulario y me pondré en contacto contigo a la brevedad.
               </Typography>
 
               {submitted && (
                 <Alert 
                   severity="success" 
-                  className="mb-4"
+                  sx={{ mb: 2 }}
                   action={
                     <IconButton
                       aria-label="close"
@@ -165,7 +222,7 @@ export default function Contact() {
               {error && (
                 <Alert 
                   severity="error" 
-                  className="mb-4"
+                  sx={{ mb: 2 }}
                   action={
                     <IconButton
                       aria-label="close"
@@ -236,7 +293,7 @@ export default function Contact() {
                       color="primary" 
                       size="large"
                       endIcon={<SendIcon />}
-                      className="w-full sm:w-auto"
+                      sx={{ width: { xs: '100%', sm: 'auto' } }}
                     >
                       Enviar Mensaje
                     </Button>
@@ -248,18 +305,34 @@ export default function Contact() {
         </Grid>
       </Paper>
       
-      <Box className="mt-16">
-        <Typography variant="h5" component="h3" className="font-bold mb-6 text-center text-gray-800 dark:text-white">
+      <Box sx={{ mt: 8 }}>
+        <Typography 
+          variant="h5" 
+          component="h3" 
+          sx={{ 
+            fontWeight: 'bold', 
+            mb: 3, 
+            textAlign: 'center',
+            color: theme => theme.palette.mode === 'dark' ? '#f8fafc' : 'text.primary'
+          }}
+        >
           Ubicación
         </Typography>
-        <Paper elevation={3} className="rounded-lg overflow-hidden">
-          <div className="relative h-96 w-full">
+        <Paper 
+          elevation={3} 
+          sx={{ 
+            borderRadius: 2, 
+            overflow: 'hidden',
+            border: theme => theme.palette.mode === 'dark' ? '1px solid rgba(59, 130, 246, 0.1)' : 'none'
+          }}
+        >
+          <Box sx={{ position: 'relative', height: 450, width: '100%' }}>
             <Map 
-              center={[4.6486, -74.0589]} // Coordenadas de Bogotá, Colombia
-              popupText="Oficina de Alejandra Bertón - Bogotá, Colombia"
-              zoom={14}
+              center={[6.2086, -75.5695]} // Coordenadas de El Poblado, Medellín, Colombia
+              popupText="Oficina de Alejandra Bertón - El Poblado, Medellín, Colombia"
+              zoom={11} // Zoom reducido para mostrar más área del Valle de Aburrá
             />
-          </div>
+          </Box>
         </Paper>
       </Box>
     </Box>

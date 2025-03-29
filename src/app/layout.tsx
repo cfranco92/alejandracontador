@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+import { Metadata, Viewport } from 'next';
 import ClientLayout from './ClientLayout';
 
 export const metadata: Metadata = {
@@ -24,6 +24,13 @@ export const metadata: Metadata = {
     description: 'Servicios contables y tributarios profesionales',
     images: ['/alejandrafoto.jpeg'], // URL relativa a tu dominio
   },
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
 }
 
 export default function RootLayout({

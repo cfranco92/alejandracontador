@@ -4,6 +4,12 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --card-background: #f7f7f7;
+  --border-color: #e2e8f0;
+  --muted-foreground: #64748b;
+  --primary-color: #171717;
+  --secondary-color: #6366f1;
+  --accent-color: #818cf8;
 }
 
 @theme inline {
@@ -13,15 +19,96 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.dark {
+  --background: #0f172a;
+  --foreground: #f8fafc;
+  --card-background: #1e293b;
+  --border-color: #334155;
+  --muted-foreground: #e2e8f0;
+  --primary-color: #f8fafc;
+  --secondary-color: #818cf8;
+  --accent-color: #a5b4fc;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Estilos específicos para tarjetas en modo oscuro */
+.dark .MuiPaper-root {
+  background-color: var(--card-background);
+  border: 1px solid var(--border-color);
+}
+
+/* Mejoras para textos en modo oscuro */
+.dark .text-gray-800 {
+  color: var(--foreground) !important;
+}
+
+.dark .text-gray-700 {
+  color: var(--foreground) !important;
+}
+
+.dark .text-gray-600 {
+  color: var(--muted-foreground) !important;
+}
+
+.dark .text-gray-500 {
+  color: var(--muted-foreground) !important;
+}
+
+.dark .text-gray-400 {
+  color: var(--muted-foreground) !important;
+}
+
+/* Asegurar que los iconos tengan buen contraste en modo oscuro */
+.dark .MuiSvgIcon-root {
+  color: var(--foreground);
+}
+
+/* Mejorar visibilidad de los chips en modo oscuro */
+.dark .MuiChip-root:not(.MuiChip-colorPrimary):not(.MuiChip-colorSecondary):not(.MuiChip-colorError):not(.MuiChip-colorInfo):not(.MuiChip-colorSuccess):not(.MuiChip-colorWarning) {
+  background-color: rgba(255, 255, 255, 0.08);
+  color: var(--foreground);
+}
+
+/* Mejorar apariencia de inputs en modo oscuro */
+.dark .MuiInputBase-root {
+  color: var(--foreground);
+}
+
+.dark .MuiInputLabel-root {
+  color: var(--muted-foreground);
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 5s infinite;
+  }
+  
+  .animate-float-delayed {
+    animation: float 5s infinite;
+    animation-delay: 1s;
+  }
+  
+  .animate-float-slow {
+    animation: float 7s infinite;
+    animation-delay: 2s;
+  }
+  
+  .animate-float-very-slow {
+    animation: float 8s infinite;
+    animation-delay: 0.5s;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
 }

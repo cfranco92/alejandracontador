@@ -1,175 +1,599 @@
 "use client";
 
+import { motion } from "framer-motion";
 import Image from "next/image";
+import { Typography, Container, Grid, Box, Button, Paper, Divider, useMediaQuery, useTheme } from "@mui/material";
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import EmailIcon from '@mui/icons-material/Email';
+import CalculateIcon from '@mui/icons-material/Calculate';
+import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import MonitorHeartIcon from '@mui/icons-material/MonitorHeart';
+
+import ServiceCard from "@/components/ServiceCard";
+import StatsCounter from "@/components/StatsCounter";
+import CallToAction from "@/components/CallToAction";
 
 export default function Home() {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  
+  const services = [
+    {
+      title: "Contabilidad Empresarial",
+      description: "Gestión contable completa para empresas y pymes, manteniendo tus finanzas organizadas y cumpliendo con los requisitos legales.",
+      icon: "/images/accounting-icon-1.png",
+      delay: 1,
+    },
+    {
+      title: "Asesoría Tributaria",
+      description: "Optimiza tu carga fiscal y mantente al día con tus obligaciones tributarias mediante estrategias legales y efectivas.",
+      icon: "/images/tax-icon.png",
+      delay: 2,
+    },
+    {
+      title: "Planeación Financiera",
+      description: "Desarrolla estrategias financieras para el crecimiento y la estabilidad de tu negocio con proyecciones y análisis profesionales.",
+      icon: "/images/accounting-icon-2.png",
+      delay: 3,
+    },
+    {
+      title: "Auditorías y Control",
+      description: "Revisión y verificación de tus procesos contables para asegurar la precisión y el cumplimiento de normas contables.",
+      icon: "/images/accounting-icon-3.png",
+      delay: 4,
+    },
+  ];
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)] bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-black">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start max-w-4xl w-full">
-        <div className="flex flex-col md:flex-row gap-8 items-center md:items-start w-full">
-          <div className="w-24 h-24 rounded-full overflow-hidden shadow-lg mb-4 md:mb-0">
-            <Image
-              src="/alejandrafoto.jpeg"
-              alt="Alejandra Bertón"
-              width={96}
-              height={96}
-              className="w-full h-full object-cover"
-              style={{ objectPosition: '50% 30%' }}
-              priority
-            />
-          </div>
-
-          <div className="text-center md:text-left flex-1">
-            <h1 className="text-4xl font-bold tracking-tight mb-4 text-gray-900 dark:text-white">
-              Alejandra Bertón
-            </h1>
-            <h2 className="text-2xl text-gray-600 dark:text-gray-300 mb-6">
-              Contadora Pública
-            </h2>
-            <p className="text-lg text-gray-500 dark:text-gray-400 max-w-lg mb-8">
-              Servicios contables y tributarios
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-              <button
-                className="px-6 py-3 bg-[#25D366] text-white rounded-lg 
-                          font-medium transition-all hover:bg-opacity-90
-                          hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-500
-                          flex items-center justify-center gap-2 w-full sm:w-auto"
-                onClick={() => window.open("https://wa.me/573053004399?text=Hola%20Alejandra%20me%20gustar%C3%ADa%20una%20asesor%C3%ADa%20contigo%20sobre...", "_blank")}
+    <Container maxWidth="lg" className="py-8">
+      {/* Hero Section con nueva organización para mobile */}
+      <Box className="min-h-[80vh] flex flex-col justify-center">
+        {isMobile && (
+          <Box className="mb-4">
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <Typography 
+                variant="h4" 
+                component="h1" 
+                className="font-bold text-gray-800 dark:text-white mb-2 text-center"
               >
-                <svg 
-                  xmlns="http://www.w3.org/2000/svg" 
-                  width="16" 
-                  height="16" 
-                  viewBox="0 0 24 24" 
-                  fill="currentColor"
-                >
-                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-                  <path d="M11.894 21.408c-1.582 0-3.133-.382-4.535-1.107l-.53-.328-3.263 1.045 1.035-3.223-.385-.588c-.833-1.459-1.272-3.118-1.272-4.821 0-5.438 4.579-9.862 10.204-9.862 2.722 0 5.292 1.027 7.226 2.896 1.932 1.868 3 4.372 2.998 7.023-.002 5.437-4.584 9.865-10.202 9.865zm.01-18.297c-4.784 0-8.679 3.764-8.68 8.392 0 1.563.415 3.092 1.204 4.425l.186.335-.756 2.324 2.437-.773.329.19c1.248.725 2.677 1.107 4.137 1.108h.004c4.778 0 8.672-3.766 8.675-8.394 0-2.239-.901-4.35-2.538-5.938-1.638-1.589-3.81-2.464-6.118-2.467l-.01-.002z"/>
-                </svg>
-                WhatsApp
-              </button>
-
-              <button
-                className="px-6 py-3 bg-[#0A66C2] text-white rounded-lg 
-                          font-medium transition-all hover:bg-opacity-90
-                          hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500
-                          flex items-center justify-center gap-2 w-full sm:w-auto"
-                onClick={() => window.open("https://www.linkedin.com/in/alejandra-berton/", "_blank")}
+                Servicios Contables y Tributarios
+              </Typography>
+            </motion.div>
+          </Box>
+        )}
+        
+        <Grid container spacing={4} alignItems="center" direction={isMobile ? "column" : "row"}>
+          {!isMobile && (
+            <Grid item xs={12} md={6}>
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
               >
-                <svg 
-                  xmlns="http://www.w3.org/2000/svg" 
-                  width="16" 
-                  height="16" 
-                  viewBox="0 0 24 24" 
-                  fill="currentColor"
+                <Typography 
+                  variant="h2" 
+                  component="h1" 
+                  className="font-bold text-gray-800 dark:text-white mb-4"
                 >
-                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                </svg>
-                LinkedIn
-              </button>
+                  Servicios Contables y Tributarios Profesionales
+                </Typography>
+                
+                <Typography 
+                  variant="h5" 
+                  className="text-gray-600 dark:text-gray-300 mb-4"
+                >
+                  Alejandra Bertón - Contadora Pública
+                </Typography>
 
-              <button
-                className="px-6 py-3 bg-black dark:bg-white text-white dark:text-black rounded-lg 
-                          font-medium transition-all hover:bg-gray-800 dark:hover:bg-gray-200 
-                          hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500
-                          flex items-center justify-center gap-2 w-full sm:w-auto"
-                onClick={() =>
-                  (window.location.href =
-                    "mailto:alejandraberton@gmail.com?subject=Consulta profesional&body=Hola Alejandra,%0A%0AMe gustaría una asesoría contable sobre...")
-                }
+                <Typography 
+                  variant="body1" 
+                  className="text-gray-500 dark:text-gray-400 mb-8 max-w-lg"
+                >
+                  Soluciones contables y tributarias personalizadas para empresas y personas naturales. 
+                  Optimiza tus finanzas y cumple con tus obligaciones fiscales de manera eficiente.
+                </Typography>
+
+                <Box className="flex flex-wrap gap-4 mb-8">
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Button
+                      variant="contained"
+                      size="large"
+                      startIcon={<WhatsAppIcon />}
+                      sx={{
+                        backgroundColor: '#25D366',
+                        color: 'white',
+                        px: 3,
+                        py: 1.25,
+                        '&:hover': {
+                          backgroundColor: '#22c55e',
+                        },
+                        fontWeight: 600,
+                        textTransform: 'none',
+                        boxShadow: theme.palette.mode === 'dark' 
+                          ? '0 4px 12px rgba(0, 0, 0, 0.3)' 
+                          : '0 4px 12px rgba(34, 197, 94, 0.25)'
+                      }}
+                      onClick={() =>
+                        window.open(
+                          "https://wa.me/573053004399?text=Hola%20Alejandra%20me%20gustar%C3%ADa%20una%20asesor%C3%ADa%20contigo%20sobre...",
+                          "_blank"
+                        )
+                      }
+                    >
+                      WhatsApp
+                    </Button>
+                  </motion.div>
+
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Button
+                      variant="contained"
+                      size="large"
+                      startIcon={<LinkedInIcon />}
+                      sx={{
+                        backgroundColor: '#0A66C2',
+                        color: 'white',
+                        px: 3,
+                        py: 1.25,
+                        '&:hover': {
+                          backgroundColor: '#0a5cb8',
+                        },
+                        fontWeight: 600,
+                        textTransform: 'none',
+                        boxShadow: theme.palette.mode === 'dark' 
+                          ? '0 4px 12px rgba(0, 0, 0, 0.3)' 
+                          : '0 4px 12px rgba(10, 102, 194, 0.25)'
+                      }}
+                      onClick={() =>
+                        window.open(
+                          "https://www.linkedin.com/in/alejandra-berton/",
+                          "_blank"
+                        )
+                      }
+                    >
+                      LinkedIn
+                    </Button>
+                  </motion.div>
+
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Button
+                      variant="contained"
+                      size="large"
+                      startIcon={<EmailIcon />}
+                      sx={{
+                        backgroundColor: theme.palette.mode === 'dark' ? '#1e293b' : '#0f172a',
+                        color: 'white',
+                        px: 3,
+                        py: 1.25,
+                        '&:hover': {
+                          backgroundColor: theme.palette.mode === 'dark' ? '#334155' : '#1e293b',
+                        },
+                        fontWeight: 600,
+                        textTransform: 'none',
+                        boxShadow: theme.palette.mode === 'dark' 
+                          ? '0 4px 12px rgba(0, 0, 0, 0.3)' 
+                          : '0 4px 12px rgba(15, 23, 42, 0.25)'
+                      }}
+                      onClick={() =>
+                        (window.location.href =
+                          "mailto:alejandraberton@gmail.com?subject=Consulta profesional&body=Hola Alejandra,%0A%0AMe gustaría una asesoría contable sobre...")
+                      }
+                    >
+                      Email
+                    </Button>
+                  </motion.div>
+                </Box>
+              </motion.div>
+            </Grid>
+          )}
+          
+          <Grid item xs={12} md={6} className={isMobile ? "mb-4" : ""}>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="flex justify-center"
+            >
+              <Box className="relative w-full max-w-md h-[350px] md:h-[450px]">
+                <div className="absolute w-80 h-80 bg-blue-100 dark:bg-blue-900/30 rounded-full -z-10 blur-3xl top-20 left-1/2 transform -translate-x-1/2 animate-pulse"></div>
+                <Box className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-28 h-28 md:w-36 md:h-36 rounded-full overflow-hidden border-4 border-white dark:border-gray-800 shadow-xl z-20">
+                  <Image
+                    src="/alejandrafoto.jpeg"
+                    alt="Alejandra Bertón"
+                    fill
+                    className="object-cover"
+                    style={{ objectPosition: "50% 30%" }}
+                    priority
+                  />
+                </Box>
+                <Box className="absolute top-0 right-0 w-28 h-28 md:w-40 md:h-40 animate-float">
+                  <motion.div
+                    animate={{ 
+                      y: [0, -10, 0],
+                      rotate: [0, 5, 0]
+                    }}
+                    transition={{ 
+                      repeat: Infinity,
+                      duration: 5,
+                      ease: "easeInOut" 
+                    }}
+                  >
+                    <Paper 
+                      elevation={theme.palette.mode === 'dark' ? 3 : 2}
+                      sx={{
+                        p: { xs: 1.5, md: 2 },
+                        backgroundColor: theme.palette.mode === 'dark' ? 'rgba(15, 23, 42, 0.95)' : 'rgba(255, 255, 255, 0.9)',
+                        borderRadius: 2,
+                        boxShadow: theme.palette.mode === 'dark' 
+                          ? '0 4px 20px rgba(0, 0, 0, 0.5)' 
+                          : '0 4px 20px rgba(0, 0, 0, 0.1)',
+                        border: '1px solid',
+                        borderColor: theme.palette.mode === 'dark' ? 'rgba(59, 130, 246, 0.2)' : 'rgba(226, 232, 240, 0.8)',
+                        backdropFilter: 'blur(8px)',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center'
+                      }}
+                    >
+                      <CalculateIcon 
+                        sx={{ 
+                          color: theme.palette.mode === 'dark' ? '#60a5fa' : '#3b82f6', 
+                          mb: { xs: 0.5, md: 1 },
+                          fontSize: { xs: '1.8rem', md: '2.2rem' }
+                        }} 
+                      />
+                      <Typography 
+                        variant="subtitle2" 
+                        sx={{
+                          fontWeight: 700,
+                          color: theme.palette.mode === 'dark' ? '#f8fafc' : theme.palette.text.primary,
+                          fontSize: { xs: '0.7rem', md: '0.9rem' },
+                          textAlign: 'center'
+                        }}
+                      >
+                        Contabilidad
+                      </Typography>
+                    </Paper>
+                  </motion.div>
+                </Box>
+                <Box className="absolute bottom-10 left-0 w-28 h-28 md:w-36 md:h-36 animate-float-delayed">
+                  <motion.div
+                    animate={{ 
+                      y: [0, -15, 0],
+                      rotate: [0, -3, 0]
+                    }}
+                    transition={{ 
+                      repeat: Infinity,
+                      duration: 6,
+                      ease: "easeInOut",
+                      delay: 1
+                    }}
+                  >
+                    <Paper 
+                      elevation={theme.palette.mode === 'dark' ? 3 : 2}
+                      sx={{
+                        p: { xs: 1.5, md: 2 },
+                        backgroundColor: theme.palette.mode === 'dark' ? 'rgba(15, 23, 42, 0.95)' : 'rgba(255, 255, 255, 0.9)',
+                        borderRadius: 2,
+                        boxShadow: theme.palette.mode === 'dark' 
+                          ? '0 4px 20px rgba(0, 0, 0, 0.5)' 
+                          : '0 4px 20px rgba(0, 0, 0, 0.1)',
+                        border: '1px solid',
+                        borderColor: theme.palette.mode === 'dark' ? 'rgba(59, 130, 246, 0.2)' : 'rgba(226, 232, 240, 0.8)',
+                        backdropFilter: 'blur(8px)',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center'
+                      }}
+                    >
+                      <ReceiptLongIcon 
+                        sx={{ 
+                          color: theme.palette.mode === 'dark' ? '#34d399' : '#10b981', 
+                          mb: { xs: 0.5, md: 1 },
+                          fontSize: { xs: '1.8rem', md: '2.2rem' }
+                        }} 
+                      />
+                      <Typography 
+                        variant="subtitle2" 
+                        sx={{
+                          fontWeight: 700,
+                          color: theme.palette.mode === 'dark' ? '#f8fafc' : theme.palette.text.primary,
+                          fontSize: { xs: '0.7rem', md: '0.9rem' },
+                          textAlign: 'center'
+                        }}
+                      >
+                        Impuestos
+                      </Typography>
+                    </Paper>
+                  </motion.div>
+                </Box>
+                <Box className="absolute bottom-0 right-16 w-28 h-28 md:w-36 md:h-36 animate-float-slow">
+                  <motion.div
+                    animate={{ 
+                      y: [0, -8, 0],
+                      rotate: [0, 2, 0]
+                    }}
+                    transition={{ 
+                      repeat: Infinity,
+                      duration: 7,
+                      ease: "easeInOut",
+                      delay: 2
+                    }}
+                  >
+                    <Paper 
+                      elevation={theme.palette.mode === 'dark' ? 3 : 2}
+                      sx={{
+                        p: { xs: 1.5, md: 2 },
+                        backgroundColor: theme.palette.mode === 'dark' ? 'rgba(15, 23, 42, 0.95)' : 'rgba(255, 255, 255, 0.9)',
+                        borderRadius: 2,
+                        boxShadow: theme.palette.mode === 'dark' 
+                          ? '0 4px 20px rgba(0, 0, 0, 0.5)' 
+                          : '0 4px 20px rgba(0, 0, 0, 0.1)',
+                        border: '1px solid',
+                        borderColor: theme.palette.mode === 'dark' ? 'rgba(59, 130, 246, 0.2)' : 'rgba(226, 232, 240, 0.8)',
+                        backdropFilter: 'blur(8px)',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center'
+                      }}
+                    >
+                      <AttachMoneyIcon 
+                        sx={{ 
+                          color: theme.palette.mode === 'dark' ? '#fbbf24' : '#f59e0b',
+                          mb: { xs: 0.5, md: 1 },
+                          fontSize: { xs: '1.8rem', md: '2.2rem' }
+                        }} 
+                      />
+                      <Typography 
+                        variant="subtitle2" 
+                        sx={{
+                          fontWeight: 700,
+                          color: theme.palette.mode === 'dark' ? '#f8fafc' : theme.palette.text.primary,
+                          fontSize: { xs: '0.7rem', md: '0.9rem' },
+                          textAlign: 'center'
+                        }}
+                      >
+                        Finanzas
+                      </Typography>
+                    </Paper>
+                  </motion.div>
+                </Box>
+                <Box className="absolute top-20 left-0 w-24 h-24 md:w-32 md:h-32 animate-float-very-slow">
+                  <motion.div
+                    animate={{ 
+                      y: [0, -5, 0],
+                      rotate: [0, -2, 0]
+                    }}
+                    transition={{ 
+                      repeat: Infinity,
+                      duration: 8,
+                      ease: "easeInOut",
+                      delay: 0.5
+                    }}
+                  >
+                    <Paper 
+                      elevation={theme.palette.mode === 'dark' ? 3 : 2}
+                      sx={{
+                        p: { xs: 1.5, md: 2 },
+                        backgroundColor: theme.palette.mode === 'dark' ? 'rgba(15, 23, 42, 0.95)' : 'rgba(255, 255, 255, 0.9)',
+                        borderRadius: 2,
+                        boxShadow: theme.palette.mode === 'dark' 
+                          ? '0 4px 20px rgba(0, 0, 0, 0.5)' 
+                          : '0 4px 20px rgba(0, 0, 0, 0.1)',
+                        border: '1px solid',
+                        borderColor: theme.palette.mode === 'dark' ? 'rgba(59, 130, 246, 0.2)' : 'rgba(226, 232, 240, 0.8)',
+                        backdropFilter: 'blur(8px)',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center'
+                      }}
+                    >
+                      <MonitorHeartIcon 
+                        sx={{ 
+                          color: theme.palette.mode === 'dark' ? '#c084fc' : '#a855f7',
+                          mb: { xs: 0.5, md: 1 },
+                          fontSize: { xs: '1.8rem', md: '2.2rem' }
+                        }} 
+                      />
+                      <Typography 
+                        variant="subtitle2" 
+                        sx={{
+                          fontWeight: 700,
+                          color: theme.palette.mode === 'dark' ? '#f8fafc' : theme.palette.text.primary,
+                          fontSize: { xs: '0.7rem', md: '0.9rem' },
+                          textAlign: 'center'
+                        }}
+                      >
+                        Asesoría
+                      </Typography>
+                    </Paper>
+                  </motion.div>
+                </Box>
+              </Box>
+            </motion.div>
+          </Grid>
+          
+          {isMobile && (
+            <Grid item xs={12}>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
+                <Typography 
+                  variant="subtitle1" 
+                  className="font-medium text-gray-700 dark:text-gray-200 mb-2 text-center"
                 >
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                  <polyline points="22,6 12,13 2,6"></polyline>
-                </svg>
-                Email
-              </button>
-            </div>
-          </div>
-        </div>
+                  Alejandra Bertón - Contadora Pública
+                </Typography>
 
-        <div
-          className="mt-12 p-8 border border-gray-200 dark:border-gray-800 rounded-lg shadow-sm 
-                      bg-white dark:bg-gray-900 w-full backdrop-blur-sm bg-opacity-70 dark:bg-opacity-70
-                      transition-all duration-300 hover:shadow-md"
+                <Typography 
+                  variant="body2" 
+                  className="text-gray-700 dark:text-gray-300 mb-4 text-center"
+                >
+                  Soluciones contables y tributarias personalizadas para empresas y personas naturales. 
+                  Optimiza tus finanzas y cumple con tus obligaciones fiscales.
+                </Typography>
+
+                <Box className="flex flex-wrap gap-2 justify-center mb-6">
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Button
+                      variant="contained"
+                      size="small"
+                      startIcon={<WhatsAppIcon />}
+                      sx={{
+                        backgroundColor: '#25D366',
+                        color: 'white',
+                        px: 3,
+                        py: 1.25,
+                        '&:hover': {
+                          backgroundColor: '#22c55e',
+                        },
+                        fontWeight: 600,
+                        textTransform: 'none',
+                        boxShadow: theme.palette.mode === 'dark' 
+                          ? '0 4px 12px rgba(0, 0, 0, 0.3)' 
+                          : '0 4px 12px rgba(34, 197, 94, 0.25)'
+                      }}
+                      onClick={() =>
+                        window.open(
+                          "https://wa.me/573053004399?text=Hola%20Alejandra%20me%20gustar%C3%ADa%20una%20asesor%C3%ADa%20contigo%20sobre...",
+                          "_blank"
+                        )
+                      }
+                    >
+                      WhatsApp
+                    </Button>
+                  </motion.div>
+
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Button
+                      variant="contained"
+                      size="small"
+                      startIcon={<LinkedInIcon />}
+                      sx={{
+                        backgroundColor: '#0A66C2',
+                        color: 'white',
+                        px: 3,
+                        py: 1.25,
+                        '&:hover': {
+                          backgroundColor: '#0a5cb8',
+                        },
+                        fontWeight: 600,
+                        textTransform: 'none',
+                        boxShadow: theme.palette.mode === 'dark' 
+                          ? '0 4px 12px rgba(0, 0, 0, 0.3)' 
+                          : '0 4px 12px rgba(10, 102, 194, 0.25)'
+                      }}
+                      onClick={() =>
+                        window.open(
+                          "https://www.linkedin.com/in/alejandra-berton/",
+                          "_blank"
+                        )
+                      }
+                    >
+                      LinkedIn
+                    </Button>
+                  </motion.div>
+
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Button
+                      variant="contained"
+                      size="small"
+                      startIcon={<EmailIcon />}
+                      sx={{
+                        backgroundColor: theme.palette.mode === 'dark' ? '#1e293b' : '#0f172a',
+                        color: 'white',
+                        px: 3,
+                        py: 1.25,
+                        '&:hover': {
+                          backgroundColor: theme.palette.mode === 'dark' ? '#334155' : '#1e293b',
+                        },
+                        fontWeight: 600,
+                        textTransform: 'none',
+                        boxShadow: theme.palette.mode === 'dark' 
+                          ? '0 4px 12px rgba(0, 0, 0, 0.3)' 
+                          : '0 4px 12px rgba(15, 23, 42, 0.25)'
+                      }}
+                      onClick={() =>
+                        (window.location.href =
+                          "mailto:alejandraberton@gmail.com?subject=Consulta profesional&body=Hola Alejandra,%0A%0AMe gustaría una asesoría contable sobre...")
+                      }
+                    >
+                      Email
+                    </Button>
+                  </motion.div>
+                </Box>
+              </motion.div>
+            </Grid>
+          )}
+        </Grid>
+      </Box>
+
+      {/* Estadísticas animadas */}
+      <StatsCounter />
+
+      {/* Servicios Section */}
+      <Box className="py-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-12"
         >
-          <p className="text-center text-lg mb-6 text-gray-700 dark:text-gray-300">
-            Página en desarrollo
-          </p>
-          <div className="flex justify-center items-center flex-col">
-            <p className="text-center text-md text-gray-500 dark:text-gray-400 mb-6">
-              Desarrollado con
-            </p>
-            <Image
-              className="opacity-90 dark:invert transition-all hover:opacity-100"
-              src="/next.svg"
-              alt="Next.js logo"
-              width={120}
-              height={30}
-              priority
-            />
-          </div>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        {/* <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a> */}
-      </footer>
-    </div>
+          <Typography 
+            variant={isMobile ? "h4" : "h3"} 
+            component="h2" 
+            className="font-bold text-gray-800 dark:text-white mb-3"
+          >
+            Mis Servicios
+          </Typography>
+          <Typography 
+            variant="body1" 
+            className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto"
+          >
+            Ofrezco soluciones adaptadas a las necesidades de tu negocio o actividad personal.
+          </Typography>
+          <Divider className="mt-6 max-w-xs mx-auto bg-blue-100 dark:bg-blue-800" />
+        </motion.div>
+
+        <Grid container spacing={4}>
+          {services.map((service, index) => (
+            <Grid item xs={12} sm={6} md={3} key={index}>
+              <ServiceCard {...service} />
+            </Grid>
+          ))}
+        </Grid>
+      </Box>
+
+      {/* Llamada a la acción */}
+      <CallToAction />
+      
+      {/* Espacio para el footer */}
+      <Box className="h-16"></Box>
+    </Container>
   );
 }
