@@ -43,7 +43,7 @@ export default function StatsCounter() {
       icon: <EqualizerIcon 
         sx={{ 
           fontSize: isMobile ? 'medium' : 'large',
-          color: isDarkMode ? '#60a5fa' : '#3b82f6'
+          color: theme.palette.secondary.main
         }} 
       />
     },
@@ -54,7 +54,7 @@ export default function StatsCounter() {
       icon: <GroupsIcon 
         sx={{ 
           fontSize: isMobile ? 'medium' : 'large',
-          color: isDarkMode ? '#34d399' : '#10b981'
+          color: theme.palette.secondary.main
         }} 
       /> 
     },
@@ -65,7 +65,7 @@ export default function StatsCounter() {
       icon: <AccessTimeIcon 
         sx={{ 
           fontSize: isMobile ? 'medium' : 'large',
-          color: isDarkMode ? '#fbbf24' : '#f59e0b'
+          color: theme.palette.secondary.main
         }} 
       /> 
     },
@@ -76,7 +76,7 @@ export default function StatsCounter() {
       icon: <WorkIcon 
         sx={{ 
           fontSize: isMobile ? 'medium' : 'large',
-          color: isDarkMode ? '#c084fc' : '#a855f7'
+          color: theme.palette.secondary.main
         }} 
       /> 
     }
@@ -88,14 +88,16 @@ export default function StatsCounter() {
       sx={{
         py: { xs: 4, md: 5 },
         px: 2,
-        bgcolor: isDarkMode ? 'rgba(15, 23, 42, 0.95)' : 'rgba(249, 250, 251, 0.95)',
+        bgcolor: isDarkMode ? theme.palette.background.paper : theme.palette.background.default,
         borderRadius: 4,
         my: { xs: 3, md: 4 },
         boxShadow: isDarkMode 
           ? '0 4px 20px rgba(0, 0, 0, 0.25)' 
           : '0 4px 20px rgba(0, 0, 0, 0.05)',
         border: '1px solid',
-        borderColor: isDarkMode ? 'rgba(59, 130, 246, 0.1)' : 'rgba(226, 232, 240, 0.8)'
+        borderColor: isDarkMode 
+          ? 'rgba(217, 176, 156, 0.2)' 
+          : theme.palette.secondary.light
       }}
     >
       <Grid container spacing={3} justifyContent="center">
@@ -117,7 +119,7 @@ export default function StatsCounter() {
                 component="div" 
                 sx={{
                   fontWeight: 700,
-                  color: isDarkMode ? '#f8fafc' : theme.palette.text.primary,
+                  color: theme.palette.primary.main,
                 }}
               >
                 {startCounting ? (
@@ -135,7 +137,7 @@ export default function StatsCounter() {
                 variant="body2" 
                 sx={{
                   textAlign: 'center',
-                  color: isDarkMode ? 'rgba(255, 255, 255, 0.8)' : theme.palette.text.secondary,
+                  color: theme.palette.text.secondary,
                   fontSize: { xs: '0.75rem', sm: '0.875rem' }
                 }}
               >

@@ -51,7 +51,7 @@ export default function Home() {
       {/* Hero Section con nueva organización para mobile */}
       <Box className="min-h-[80vh] flex flex-col justify-center">
         {isMobile && (
-          <Box className="mb-4">
+          <Box className="mb-8">
             <motion.div
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -60,7 +60,13 @@ export default function Home() {
               <Typography 
                 variant="h4" 
                 component="h1" 
-                className="font-bold text-gray-800 dark:text-white mb-2 text-center"
+                sx={{
+                  fontWeight: 700,
+                  color: theme.palette.primary.main,
+                  textAlign: 'center',
+                  mb: 1,
+                  fontSize: { xs: '1.75rem', sm: '2.125rem' }
+                }}
               >
                 Servicios Contables y Tributarios
               </Typography>
@@ -79,21 +85,32 @@ export default function Home() {
                 <Typography 
                   variant="h2" 
                   component="h1" 
-                  className="font-bold text-gray-800 dark:text-white mb-4"
+                  sx={{
+                    fontWeight: 700,
+                    color: theme.palette.primary.main,
+                    mb: 4
+                  }}
                 >
-                  Servicios Contables y Tributarios Profesionales
+                  Servicios Contables y Tributarios
                 </Typography>
                 
                 <Typography 
                   variant="h5" 
-                  className="text-gray-600 dark:text-gray-300 mb-4"
+                  sx={{
+                    color: theme.palette.text.secondary,
+                    mb: 4
+                  }}
                 >
                   Alejandra Bertón - Contadora Pública
                 </Typography>
 
                 <Typography 
                   variant="body1" 
-                  className="text-gray-500 dark:text-gray-400 mb-8 max-w-lg"
+                  sx={{
+                    color: theme.palette.mode === 'dark' ? 'rgba(249, 246, 243, 0.8)' : 'rgba(60, 60, 60, 0.7)',
+                    mb: 8,
+                    maxWidth: '90%'
+                  }}
                 >
                   Soluciones contables y tributarias personalizadas para empresas y personas naturales. 
                   Optimiza tus finanzas y cumple con tus obligaciones fiscales de manera eficiente.
@@ -175,12 +192,12 @@ export default function Home() {
                       size="large"
                       startIcon={<EmailIcon />}
                       sx={{
-                        backgroundColor: theme.palette.mode === 'dark' ? '#1e293b' : '#0f172a',
-                        color: 'white',
+                        backgroundColor: theme.palette.mode === 'dark' ? theme.palette.background.paper : theme.palette.primary.main,
+                        color: theme.palette.mode === 'dark' ? theme.palette.primary.main : theme.palette.background.default,
                         px: 3,
                         py: 1.25,
                         '&:hover': {
-                          backgroundColor: theme.palette.mode === 'dark' ? '#334155' : '#1e293b',
+                          backgroundColor: theme.palette.mode === 'dark' ? '#f9f6f3' : '#2a2a2a',
                         },
                         fontWeight: 600,
                         textTransform: 'none',
@@ -201,16 +218,28 @@ export default function Home() {
             </Grid>
           )}
           
-          <Grid item xs={12} md={6} className={isMobile ? "mb-4" : ""}>
+          <Grid item xs={12} md={6} className={isMobile ? "mb-8" : ""}>
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
               className="flex justify-center"
             >
-              <Box className="relative w-full max-w-md h-[350px] md:h-[450px]">
-                <div className="absolute w-80 h-80 bg-blue-100 dark:bg-blue-900/30 rounded-full -z-10 blur-3xl top-20 left-1/2 transform -translate-x-1/2 animate-pulse"></div>
-                <Box className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-28 h-28 md:w-36 md:h-36 rounded-full overflow-hidden border-4 border-white dark:border-gray-800 shadow-xl z-20">
+              <Box className="relative w-full max-w-md h-[360px]">
+                {/* Fondo circular difuminado con colores de marca */}
+                <div className="absolute w-64 h-64 rounded-full -z-10 blur-3xl top-20 left-1/2 transform -translate-x-1/2 opacity-50"
+                  style={{ 
+                    background: `radial-gradient(circle, ${theme.palette.secondary.light} 0%, ${theme.palette.secondary.main} 100%)` 
+                  }}
+                ></div>
+                
+                {/* Foto central - versión móvil ligeramente más pequeña */}
+                <Box className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-28 h-28 rounded-full overflow-hidden border-4 shadow-xl z-20"
+                  sx={{ 
+                    borderColor: theme.palette.secondary.main,
+                    boxShadow: `0 0 20px 5px ${theme.palette.mode === 'dark' ? 'rgba(217, 176, 156, 0.3)' : 'rgba(217, 176, 156, 0.2)'}`
+                  }}
+                >
                   <Image
                     src="/alejandrafoto.jpeg"
                     alt="Alejandra Bertón"
@@ -220,11 +249,13 @@ export default function Home() {
                     priority
                   />
                 </Box>
-                <Box className="absolute top-0 right-0 w-28 h-28 md:w-40 md:h-40 animate-float">
+
+                {/* Card de Contabilidad - Posición superior */}
+                <Box className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-24 animate-float">
                   <motion.div
                     animate={{ 
-                      y: [0, -10, 0],
-                      rotate: [0, 5, 0]
+                      y: [0, -8, 0],
+                      rotate: [0, 2, 0]
                     }}
                     transition={{ 
                       repeat: Infinity,
@@ -235,33 +266,46 @@ export default function Home() {
                     <Paper 
                       elevation={theme.palette.mode === 'dark' ? 3 : 2}
                       sx={{
-                        p: { xs: 1.5, md: 2 },
-                        backgroundColor: theme.palette.mode === 'dark' ? 'rgba(15, 23, 42, 0.95)' : 'rgba(255, 255, 255, 0.9)',
-                        borderRadius: 2,
+                        p: 1.5,
+                        backgroundColor: theme.palette.mode === 'dark' ? theme.palette.background.paper : '#ffffff',
+                        borderRadius: 3,
                         boxShadow: theme.palette.mode === 'dark' 
                           ? '0 4px 20px rgba(0, 0, 0, 0.5)' 
                           : '0 4px 20px rgba(0, 0, 0, 0.1)',
                         border: '1px solid',
-                        borderColor: theme.palette.mode === 'dark' ? 'rgba(59, 130, 246, 0.2)' : 'rgba(226, 232, 240, 0.8)',
+                        borderColor: theme.palette.mode === 'dark' ? theme.palette.secondary.dark : theme.palette.secondary.light,
                         backdropFilter: 'blur(8px)',
                         display: 'flex',
                         flexDirection: 'column',
-                        alignItems: 'center'
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        height: '100%'
                       }}
                     >
-                      <CalculateIcon 
+                      <Box 
                         sx={{ 
-                          color: theme.palette.mode === 'dark' ? '#60a5fa' : '#3b82f6', 
-                          mb: { xs: 0.5, md: 1 },
-                          fontSize: { xs: '1.8rem', md: '2.2rem' }
-                        }} 
-                      />
+                          backgroundColor: theme.palette.mode === 'dark' ? 'rgba(233, 201, 187, 0.1)' : 'rgba(233, 201, 187, 0.2)',
+                          borderRadius: '50%',
+                          padding: 0.75,
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          mb: 0.5
+                        }}
+                      >
+                        <CalculateIcon 
+                          sx={{ 
+                            color: theme.palette.mode === 'dark' ? theme.palette.secondary.main : theme.palette.secondary.dark, 
+                            fontSize: '1.5rem'
+                          }} 
+                        />
+                      </Box>
                       <Typography 
                         variant="subtitle2" 
                         sx={{
                           fontWeight: 700,
-                          color: theme.palette.mode === 'dark' ? '#f8fafc' : theme.palette.text.primary,
-                          fontSize: { xs: '0.7rem', md: '0.9rem' },
+                          color: theme.palette.primary.main,
+                          fontSize: '0.75rem',
                           textAlign: 'center'
                         }}
                       >
@@ -270,58 +314,75 @@ export default function Home() {
                     </Paper>
                   </motion.div>
                 </Box>
-                <Box className="absolute bottom-10 left-0 w-28 h-28 md:w-36 md:h-36 animate-float-delayed">
+
+                {/* Card de Asesoría - Posición izquierda */}
+                <Box className="absolute top-1/2 left-16 -translate-y-1/2 w-24 h-24 animate-float-delayed">
                   <motion.div
                     animate={{ 
-                      y: [0, -15, 0],
-                      rotate: [0, -3, 0]
+                      y: [0, -6, 0],
+                      rotate: [0, -1, 0]
                     }}
                     transition={{ 
                       repeat: Infinity,
                       duration: 6,
                       ease: "easeInOut",
-                      delay: 1
+                      delay: 0.7
                     }}
                   >
                     <Paper 
                       elevation={theme.palette.mode === 'dark' ? 3 : 2}
                       sx={{
-                        p: { xs: 1.5, md: 2 },
-                        backgroundColor: theme.palette.mode === 'dark' ? 'rgba(15, 23, 42, 0.95)' : 'rgba(255, 255, 255, 0.9)',
-                        borderRadius: 2,
+                        p: 1.5,
+                        backgroundColor: theme.palette.mode === 'dark' ? theme.palette.background.paper : '#ffffff',
+                        borderRadius: 3,
                         boxShadow: theme.palette.mode === 'dark' 
                           ? '0 4px 20px rgba(0, 0, 0, 0.5)' 
                           : '0 4px 20px rgba(0, 0, 0, 0.1)',
                         border: '1px solid',
-                        borderColor: theme.palette.mode === 'dark' ? 'rgba(59, 130, 246, 0.2)' : 'rgba(226, 232, 240, 0.8)',
+                        borderColor: theme.palette.mode === 'dark' ? theme.palette.secondary.dark : theme.palette.secondary.light,
                         backdropFilter: 'blur(8px)',
                         display: 'flex',
                         flexDirection: 'column',
-                        alignItems: 'center'
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        height: '100%'
                       }}
                     >
-                      <ReceiptLongIcon 
+                      <Box 
                         sx={{ 
-                          color: theme.palette.mode === 'dark' ? '#34d399' : '#10b981', 
-                          mb: { xs: 0.5, md: 1 },
-                          fontSize: { xs: '1.8rem', md: '2.2rem' }
-                        }} 
-                      />
+                          backgroundColor: theme.palette.mode === 'dark' ? 'rgba(233, 201, 187, 0.1)' : 'rgba(233, 201, 187, 0.2)',
+                          borderRadius: '50%',
+                          padding: 0.75,
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          mb: 0.5
+                        }}
+                      >
+                        <MonitorHeartIcon 
+                          sx={{ 
+                            color: theme.palette.mode === 'dark' ? theme.palette.secondary.main : theme.palette.secondary.dark, 
+                            fontSize: '1.5rem'
+                          }} 
+                        />
+                      </Box>
                       <Typography 
                         variant="subtitle2" 
                         sx={{
                           fontWeight: 700,
-                          color: theme.palette.mode === 'dark' ? '#f8fafc' : theme.palette.text.primary,
-                          fontSize: { xs: '0.7rem', md: '0.9rem' },
+                          color: theme.palette.primary.main,
+                          fontSize: '0.75rem',
                           textAlign: 'center'
                         }}
                       >
-                        Impuestos
+                        Asesoría
                       </Typography>
                     </Paper>
                   </motion.div>
                 </Box>
-                <Box className="absolute bottom-0 right-16 w-28 h-28 md:w-36 md:h-36 animate-float-slow">
+
+                {/* Card de Impuestos - Posición derecha */}
+                <Box className="absolute top-1/2 right-16 -translate-y-1/2 w-24 h-24 animate-float-slow">
                   <motion.div
                     animate={{ 
                       y: [0, -8, 0],
@@ -331,94 +392,122 @@ export default function Home() {
                       repeat: Infinity,
                       duration: 7,
                       ease: "easeInOut",
-                      delay: 2
+                      delay: 1.5
                     }}
                   >
                     <Paper 
                       elevation={theme.palette.mode === 'dark' ? 3 : 2}
                       sx={{
-                        p: { xs: 1.5, md: 2 },
-                        backgroundColor: theme.palette.mode === 'dark' ? 'rgba(15, 23, 42, 0.95)' : 'rgba(255, 255, 255, 0.9)',
-                        borderRadius: 2,
+                        p: 1.5,
+                        backgroundColor: theme.palette.mode === 'dark' ? theme.palette.background.paper : '#ffffff',
+                        borderRadius: 3,
                         boxShadow: theme.palette.mode === 'dark' 
                           ? '0 4px 20px rgba(0, 0, 0, 0.5)' 
                           : '0 4px 20px rgba(0, 0, 0, 0.1)',
                         border: '1px solid',
-                        borderColor: theme.palette.mode === 'dark' ? 'rgba(59, 130, 246, 0.2)' : 'rgba(226, 232, 240, 0.8)',
+                        borderColor: theme.palette.mode === 'dark' ? theme.palette.secondary.dark : theme.palette.secondary.light,
                         backdropFilter: 'blur(8px)',
                         display: 'flex',
                         flexDirection: 'column',
-                        alignItems: 'center'
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        height: '100%'
                       }}
                     >
-                      <AttachMoneyIcon 
+                      <Box 
                         sx={{ 
-                          color: theme.palette.mode === 'dark' ? '#fbbf24' : '#f59e0b',
-                          mb: { xs: 0.5, md: 1 },
-                          fontSize: { xs: '1.8rem', md: '2.2rem' }
-                        }} 
-                      />
+                          backgroundColor: theme.palette.mode === 'dark' ? 'rgba(233, 201, 187, 0.1)' : 'rgba(233, 201, 187, 0.2)',
+                          borderRadius: '50%',
+                          padding: 0.75,
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          mb: 0.5
+                        }}
+                      >
+                        <ReceiptLongIcon 
+                          sx={{ 
+                            color: theme.palette.mode === 'dark' ? theme.palette.secondary.main : theme.palette.secondary.dark, 
+                            fontSize: '1.5rem'
+                          }} 
+                        />
+                      </Box>
                       <Typography 
                         variant="subtitle2" 
                         sx={{
                           fontWeight: 700,
-                          color: theme.palette.mode === 'dark' ? '#f8fafc' : theme.palette.text.primary,
-                          fontSize: { xs: '0.7rem', md: '0.9rem' },
+                          color: theme.palette.primary.main,
+                          fontSize: '0.75rem',
                           textAlign: 'center'
                         }}
                       >
-                        Finanzas
+                        Impuestos
                       </Typography>
                     </Paper>
                   </motion.div>
                 </Box>
-                <Box className="absolute top-20 left-0 w-24 h-24 md:w-32 md:h-32 animate-float-very-slow">
+
+                {/* Card de Finanzas - Posición inferior */}
+                <Box className="absolute bottom-0 left-1/2 -translate-x-1/2 w-24 h-24 animate-float-very-slow">
                   <motion.div
                     animate={{ 
-                      y: [0, -5, 0],
-                      rotate: [0, -2, 0]
+                      y: [0, -6, 0],
+                      rotate: [0, -1, 0]
                     }}
                     transition={{ 
                       repeat: Infinity,
-                      duration: 8,
+                      duration: 5.5,
                       ease: "easeInOut",
-                      delay: 0.5
+                      delay: 1
                     }}
                   >
                     <Paper 
                       elevation={theme.palette.mode === 'dark' ? 3 : 2}
                       sx={{
-                        p: { xs: 1.5, md: 2 },
-                        backgroundColor: theme.palette.mode === 'dark' ? 'rgba(15, 23, 42, 0.95)' : 'rgba(255, 255, 255, 0.9)',
-                        borderRadius: 2,
+                        p: 1.5,
+                        backgroundColor: theme.palette.mode === 'dark' ? theme.palette.background.paper : '#ffffff',
+                        borderRadius: 3,
                         boxShadow: theme.palette.mode === 'dark' 
                           ? '0 4px 20px rgba(0, 0, 0, 0.5)' 
                           : '0 4px 20px rgba(0, 0, 0, 0.1)',
                         border: '1px solid',
-                        borderColor: theme.palette.mode === 'dark' ? 'rgba(59, 130, 246, 0.2)' : 'rgba(226, 232, 240, 0.8)',
+                        borderColor: theme.palette.mode === 'dark' ? theme.palette.secondary.dark : theme.palette.secondary.light,
                         backdropFilter: 'blur(8px)',
                         display: 'flex',
                         flexDirection: 'column',
-                        alignItems: 'center'
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        height: '100%'
                       }}
                     >
-                      <MonitorHeartIcon 
+                      <Box 
                         sx={{ 
-                          color: theme.palette.mode === 'dark' ? '#c084fc' : '#a855f7',
-                          mb: { xs: 0.5, md: 1 },
-                          fontSize: { xs: '1.8rem', md: '2.2rem' }
-                        }} 
-                      />
+                          backgroundColor: theme.palette.mode === 'dark' ? 'rgba(233, 201, 187, 0.1)' : 'rgba(233, 201, 187, 0.2)',
+                          borderRadius: '50%',
+                          padding: 0.75,
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          mb: 0.5
+                        }}
+                      >
+                        <AttachMoneyIcon 
+                          sx={{ 
+                            color: theme.palette.mode === 'dark' ? theme.palette.secondary.main : theme.palette.secondary.dark, 
+                            fontSize: '1.5rem'
+                          }} 
+                        />
+                      </Box>
                       <Typography 
                         variant="subtitle2" 
                         sx={{
                           fontWeight: 700,
-                          color: theme.palette.mode === 'dark' ? '#f8fafc' : theme.palette.text.primary,
-                          fontSize: { xs: '0.7rem', md: '0.9rem' },
+                          color: theme.palette.primary.main,
+                          fontSize: '0.75rem',
                           textAlign: 'center'
                         }}
                       >
-                        Asesoría
+                        Finanzas
                       </Typography>
                     </Paper>
                   </motion.div>
@@ -436,14 +525,25 @@ export default function Home() {
               >
                 <Typography 
                   variant="subtitle1" 
-                  className="font-medium text-gray-700 dark:text-gray-200 mb-2 text-center"
+                  sx={{
+                    fontWeight: 600,
+                    color: theme.palette.primary.main,
+                    textAlign: 'center',
+                    mb: 1
+                  }}
                 >
                   Alejandra Bertón - Contadora Pública
                 </Typography>
 
                 <Typography 
                   variant="body2" 
-                  className="text-gray-700 dark:text-gray-300 mb-4 text-center"
+                  sx={{
+                    color: theme.palette.text.secondary,
+                    textAlign: 'center',
+                    mb: 3,
+                    mx: 'auto',
+                    maxWidth: '90%'
+                  }}
                 >
                   Soluciones contables y tributarias personalizadas para empresas y personas naturales. 
                   Optimiza tus finanzas y cumple con tus obligaciones fiscales.
@@ -456,13 +556,13 @@ export default function Home() {
                   >
                     <Button
                       variant="contained"
-                      size="small"
+                      size="medium"
                       startIcon={<WhatsAppIcon />}
                       sx={{
                         backgroundColor: '#25D366',
                         color: 'white',
-                        px: 3,
-                        py: 1.25,
+                        px: 2.5,
+                        py: 1,
                         '&:hover': {
                           backgroundColor: '#22c55e',
                         },
@@ -489,13 +589,13 @@ export default function Home() {
                   >
                     <Button
                       variant="contained"
-                      size="small"
+                      size="medium"
                       startIcon={<LinkedInIcon />}
                       sx={{
                         backgroundColor: '#0A66C2',
                         color: 'white',
-                        px: 3,
-                        py: 1.25,
+                        px: 2.5,
+                        py: 1,
                         '&:hover': {
                           backgroundColor: '#0a5cb8',
                         },
@@ -522,15 +622,15 @@ export default function Home() {
                   >
                     <Button
                       variant="contained"
-                      size="small"
+                      size="medium"
                       startIcon={<EmailIcon />}
                       sx={{
-                        backgroundColor: theme.palette.mode === 'dark' ? '#1e293b' : '#0f172a',
-                        color: 'white',
-                        px: 3,
-                        py: 1.25,
+                        backgroundColor: theme.palette.mode === 'dark' ? theme.palette.background.paper : theme.palette.primary.main,
+                        color: theme.palette.mode === 'dark' ? theme.palette.primary.main : theme.palette.background.default,
+                        px: 2.5,
+                        py: 1,
                         '&:hover': {
-                          backgroundColor: theme.palette.mode === 'dark' ? '#334155' : '#1e293b',
+                          backgroundColor: theme.palette.mode === 'dark' ? '#f9f6f3' : '#2a2a2a',
                         },
                         fontWeight: 600,
                         textTransform: 'none',
@@ -567,17 +667,32 @@ export default function Home() {
           <Typography 
             variant={isMobile ? "h4" : "h3"} 
             component="h2" 
-            className="font-bold text-gray-800 dark:text-white mb-3"
+            sx={{
+              fontWeight: 700,
+              color: theme.palette.primary.main,
+              mb: 3
+            }}
           >
             Mis Servicios
           </Typography>
           <Typography 
             variant="body1" 
-            className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto"
+            sx={{
+              color: theme.palette.text.secondary,
+              maxWidth: '2xl',
+              mx: 'auto'
+            }}
           >
             Ofrezco soluciones adaptadas a las necesidades de tu negocio o actividad personal.
           </Typography>
-          <Divider className="mt-6 max-w-xs mx-auto bg-blue-100 dark:bg-blue-800" />
+          <Divider sx={{
+            mt: 6,
+            maxWidth: '16rem',
+            mx: 'auto',
+            backgroundColor: theme.palette.mode === 'dark' 
+              ? 'rgba(233, 201, 187, 0.2)' 
+              : 'rgba(233, 201, 187, 0.5)'
+          }} />
         </motion.div>
 
         <Grid container spacing={4}>

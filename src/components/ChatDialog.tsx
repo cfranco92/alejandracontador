@@ -34,11 +34,12 @@ export default function ChatDialog({ open, onClose, fullScreen = false }: ChatDi
         sx={{ 
           px: 3, 
           py: 2, 
-          bgcolor: theme.palette.primary.main,
-          color: theme.palette.primary.contrastText,
+          bgcolor: theme.palette.secondary.main,
+          color: theme.palette.primary.main,
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'space-between'
+          justifyContent: 'space-between',
+          fontWeight: 600
         }}
       >
         Asistente Contable Virtual
@@ -46,7 +47,7 @@ export default function ChatDialog({ open, onClose, fullScreen = false }: ChatDi
           aria-label="close"
           onClick={onClose}
           edge="end"
-          sx={{ color: 'inherit' }}
+          sx={{ color: theme.palette.primary.main }}
         >
           <CloseIcon />
         </IconButton>

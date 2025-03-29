@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: 'Servicios profesionales de contabilidad, asesoría tributaria y consultorías financieras en Colombia.',
   openGraph: {
     title: 'Alejandra Bertón | Contadora Pública',
-    description: 'Servicios contables y tributarios profesionales',
+    description: 'Servicios contables y tributarios',
     images: [
       {
         url: '/alejandrafoto.jpeg', // URL relativa a tu dominio
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Alejandra Bertón | Contadora Pública',
-    description: 'Servicios contables y tributarios profesionales',
+    description: 'Servicios contables y tributarios',
     images: ['/alejandrafoto.jpeg'], // URL relativa a tu dominio
   },
 }

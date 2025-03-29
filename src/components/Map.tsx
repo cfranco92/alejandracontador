@@ -45,16 +45,21 @@ export default function Map({ center, zoom = 12, popupText = "Ubicación" }: Map
         sx={{ 
           height: "24rem", 
           width: "100%", 
-          bgcolor: theme.palette.mode === 'dark' ? 'rgba(17, 25, 40, 0.9)' : 'rgb(226, 232, 240)', 
+          bgcolor: theme.palette.mode === 'dark' ? theme.palette.background.paper : theme.palette.background.default, 
           display: 'flex', 
           alignItems: 'center', 
-          justifyContent: 'center' 
+          justifyContent: 'center',
+          border: '1px solid',
+          borderColor: theme.palette.mode === 'dark' 
+            ? 'rgba(217, 176, 156, 0.2)' 
+            : theme.palette.secondary.light,
+          borderRadius: 2
         }}
       >
         <Typography 
           variant="body1" 
           sx={{ 
-            color: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.8)' : 'rgba(0, 0, 0, 0.6)', 
+            color: theme.palette.text.secondary, 
             textAlign: 'center', 
             px: 2 
           }}
@@ -69,7 +74,7 @@ export default function Map({ center, zoom = 12, popupText = "Ubicación" }: Map
     <MapContainer 
       center={center} 
       zoom={zoom} 
-      style={{ height: "100%", width: "100%", minHeight: "400px" }} 
+      style={{ height: "100%", width: "100%", minHeight: "400px", borderRadius: "8px" }} 
       scrollWheelZoom={true}
       zoomControl={false} // Desactivamos el control de zoom predeterminado para colocarlo en otra posición
       attributionControl={true}
