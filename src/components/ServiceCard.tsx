@@ -35,12 +35,12 @@ export default function ServiceCard({ title, description, icon, delay = 0 }: Ser
           p: 3,
           transition: 'all 0.3s ease',
           backgroundImage: 'none',
-          backgroundColor: isDark ? 'rgba(17, 25, 40, 0.75)' : theme.palette.background.paper,
+          backgroundColor: isDark ? theme.palette.background.paper : theme.palette.background.paper,
           borderRadius: 2,
           border: '1px solid',
-          borderColor: isDark ? 'rgba(255, 255, 255, 0.08)' : 'rgba(226, 232, 240, 0.8)',
+          borderColor: isDark ? 'rgba(255, 255, 255, 0.08)' : theme.palette.secondary.light,
           '&:hover': {
-            borderColor: isDark ? 'rgba(59, 130, 246, 0.3)' : 'rgba(59, 130, 246, 0.4)',
+            borderColor: isDark ? theme.palette.secondary.main : theme.palette.secondary.main,
             boxShadow: isDark 
               ? '0 8px 25px -5px rgba(0, 0, 0, 0.3)' 
               : '0 8px 25px -5px rgba(0, 0, 0, 0.1)',
@@ -64,13 +64,13 @@ export default function ServiceCard({ title, description, icon, delay = 0 }: Ser
                 mr: 2,
                 borderRadius: '12px',
                 overflow: 'hidden',
-                background: isDark ? 'rgba(255, 255, 255, 0.05)' : 'rgba(59, 130, 246, 0.1)',
+                background: isDark ? 'rgba(233, 201, 187, 0.1)' : 'rgba(233, 201, 187, 0.2)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 p: 1,
                 border: '1px solid',
-                borderColor: isDark ? 'rgba(255, 255, 255, 0.08)' : 'rgba(59, 130, 246, 0.2)',
+                borderColor: isDark ? 'rgba(233, 201, 187, 0.2)' : 'rgba(233, 201, 187, 0.3)',
               }}
             >
               <Image
@@ -89,7 +89,7 @@ export default function ServiceCard({ title, description, icon, delay = 0 }: Ser
               sx={{ 
                 fontWeight: 700,
                 fontSize: '1.1rem',
-                color: isDark ? theme.palette.primary.light : theme.palette.primary.dark
+                color: isDark ? theme.palette.primary.main : theme.palette.primary.main
               }}
             >
               {title}
@@ -98,7 +98,7 @@ export default function ServiceCard({ title, description, icon, delay = 0 }: Ser
           <Typography 
             variant="body2" 
             sx={{ 
-              color: isDark ? 'rgba(255, 255, 255, 0.8)' : 'rgba(0, 0, 0, 0.7)',
+              color: isDark ? theme.palette.text.secondary : theme.palette.text.secondary,
               flexGrow: 1,
               lineHeight: 1.6,
             }}

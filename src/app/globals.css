@@ -2,14 +2,14 @@
 @import "../mui-tailwind-compat.css";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --card-background: #f7f7f7;
-  --border-color: #e2e8f0;
-  --muted-foreground: #64748b;
-  --primary-color: #171717;
-  --secondary-color: #6366f1;
-  --accent-color: #818cf8;
+  --background: #f9f6f3;
+  --foreground: #3c3c3c;
+  --card-background: #ffffff;
+  --border-color: #e2d4c9;
+  --muted-foreground: #8e7c6d;
+  --primary-color: #3c3c3c;
+  --secondary-color: #e8c9bb;
+  --accent-color: #d9b09c;
 }
 
 @theme inline {
@@ -20,14 +20,14 @@
 }
 
 .dark {
-  --background: #0f172a;
-  --foreground: #f8fafc;
-  --card-background: #1e293b;
-  --border-color: #334155;
-  --muted-foreground: #e2e8f0;
-  --primary-color: #f8fafc;
-  --secondary-color: #818cf8;
-  --accent-color: #a5b4fc;
+  --background: #2a2a2a;
+  --foreground: #f9f6f3;
+  --card-background: #3c3c3c;
+  --border-color: #5c5c5c;
+  --muted-foreground: #d9b09c;
+  --primary-color: #f9f6f3;
+  --secondary-color: #e8c9bb;
+  --accent-color: #d9b09c;
 }
 
 body {

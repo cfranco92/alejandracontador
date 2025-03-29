@@ -34,12 +34,12 @@ export default function CallToAction() {
       className="p-6 sm:p-8 md:p-12 rounded-xl my-10 overflow-hidden relative"
       sx={{
         background: isDarkMode 
-          ? 'linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%)' 
-          : 'linear-gradient(135deg, #2563eb 0%, #3b82f6 100%)',
-        border: isDarkMode ? '1px solid rgba(255,255,255,0.1)' : 'none',
+          ? `linear-gradient(135deg, ${theme.palette.secondary.dark} 0%, ${theme.palette.secondary.main} 100%)` 
+          : `linear-gradient(135deg, ${theme.palette.secondary.main} 0%, ${theme.palette.secondary.light} 100%)`,
+        border: isDarkMode ? '1px solid rgba(217, 176, 156, 0.2)' : 'none',
         boxShadow: isDarkMode 
           ? '0 10px 30px -15px rgba(0, 0, 0, 0.5)' 
-          : '0 10px 30px -15px rgba(37, 99, 235, 0.5)'
+          : '0 10px 30px -15px rgba(217, 176, 156, 0.5)'
       }}
     >
       {/* Animación de elementos flotantes */}
@@ -66,9 +66,9 @@ export default function CallToAction() {
             style={{
               top: particle.top,
               left: particle.left,
-              backgroundColor: isDarkMode ? 'rgba(255, 255, 255, 0.08)' : 'rgba(255, 255, 255, 0.15)',
+              backgroundColor: isDarkMode ? 'rgba(249, 246, 243, 0.08)' : 'rgba(249, 246, 243, 0.15)',
               backdropFilter: 'blur(4px)',
-              border: isDarkMode ? '1px solid rgba(255, 255, 255, 0.08)' : '1px solid rgba(255, 255, 255, 0.2)',
+              border: isDarkMode ? '1px solid rgba(249, 246, 243, 0.08)' : '1px solid rgba(249, 246, 243, 0.2)',
             }}
           />
         ))}
@@ -84,14 +84,14 @@ export default function CallToAction() {
             variant={isMobile ? "h5" : "h4"} 
             component="h2" 
             className="font-bold mb-4 text-center sm:text-left"
-            sx={{ color: 'white', textShadow: '0 1px 2px rgba(0,0,0,0.1)' }}
+            sx={{ color: isDarkMode ? '#f9f6f3' : '#3c3c3c', textShadow: '0 1px 2px rgba(0,0,0,0.1)' }}
           >
             ¿Necesitas asesoría contable o tributaria?
           </Typography>
           <Typography 
             variant="body1" 
             className="mb-6 max-w-xl text-center sm:text-left text-sm md:text-base"
-            sx={{ color: isDarkMode ? 'rgba(255, 255, 255, 0.9)' : 'rgba(255, 255, 255, 0.95)' }}
+            sx={{ color: isDarkMode ? 'rgba(249, 246, 243, 0.9)' : 'rgba(60, 60, 60, 0.95)' }}
           >
             Resuelve tus dudas y optimiza tus finanzas con un servicio personalizado. Contáctame hoy mismo para una consulta.
           </Typography>
@@ -103,16 +103,15 @@ export default function CallToAction() {
             >
               <Button 
                 variant="contained" 
-                color="info"
                 size={isMobile ? "medium" : "large"}
                 endIcon={<ArrowForwardIcon />}
                 onClick={() => router.push('/contact')}
                 sx={{
                   fontWeight: 600,
-                  backgroundColor: 'white',
-                  color: isDarkMode ? '#1e40af' : '#2563eb',
+                  backgroundColor: isDarkMode ? '#f9f6f3' : '#3c3c3c',
+                  color: isDarkMode ? '#3c3c3c' : '#f9f6f3',
                   '&:hover': {
-                    backgroundColor: isDarkMode ? '#f8fafc' : '#f0f9ff'
+                    backgroundColor: isDarkMode ? '#ffffff' : '#2a2a2a'
                   },
                   boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
                 }}
@@ -127,16 +126,15 @@ export default function CallToAction() {
             >
               <Button 
                 variant="outlined" 
-                color="info"
                 size={isMobile ? "medium" : "large"}
                 onClick={() => router.push('/portfolio')}
                 sx={{
                   fontWeight: 600,
-                  borderColor: 'rgba(255, 255, 255, 0.8)',
-                  color: 'white',
+                  borderColor: isDarkMode ? 'rgba(249, 246, 243, 0.8)' : 'rgba(60, 60, 60, 0.8)',
+                  color: isDarkMode ? '#f9f6f3' : '#3c3c3c',
                   '&:hover': {
-                    borderColor: 'white',
-                    backgroundColor: 'rgba(255, 255, 255, 0.1)'
+                    borderColor: isDarkMode ? '#f9f6f3' : '#3c3c3c',
+                    backgroundColor: isDarkMode ? 'rgba(249, 246, 243, 0.1)' : 'rgba(60, 60, 60, 0.1)'
                   }
                 }}
               >

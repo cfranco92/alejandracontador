@@ -11,6 +11,12 @@ module.exports = {
       colors: {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
+        brand: {
+          cream: '#f9f6f3',
+          darkgray: '#3c3c3c',
+          pink: '#e8c9bb',
+          tan: '#d9b09c',
+        },
       },
     },
   },

@@ -17,12 +17,12 @@ export default function Footer() {
       sx={{
         marginTop: { xs: 4, md: 8 },
         py: 3,
-        backgroundColor: isDarkMode ? 'rgba(15, 23, 42, 0.95)' : '#ffffff',
+        backgroundColor: isDarkMode ? theme.palette.background.paper : theme.palette.background.paper,
         boxShadow: isDarkMode 
           ? '0 -1px 6px rgba(0, 0, 0, 0.3)' 
           : '0 -1px 6px rgba(0, 0, 0, 0.1)',
         borderTop: '1px solid',
-        borderColor: isDarkMode ? 'rgba(59, 130, 246, 0.1)' : 'rgba(226, 232, 240, 0.8)'
+        borderColor: isDarkMode ? 'rgba(217, 176, 156, 0.2)' : theme.palette.secondary.light
       }}
     >
       <Container maxWidth="lg">
@@ -37,7 +37,7 @@ export default function Footer() {
               variant={isMobile ? "subtitle1" : "h6"} 
               sx={{ 
                 fontWeight: 700,
-                color: isDarkMode ? '#f8fafc' : theme.palette.text.primary,
+                color: isDarkMode ? theme.palette.primary.main : theme.palette.primary.main,
                 mr: { xs: 0, sm: 1 },
                 textAlign: { xs: 'center', sm: 'left' }
               }}
@@ -47,7 +47,7 @@ export default function Footer() {
             <Typography 
               variant="body2" 
               sx={{ 
-                color: isDarkMode ? 'rgba(255, 255, 255, 0.8)' : theme.palette.text.secondary,
+                color: isDarkMode ? theme.palette.text.secondary : theme.palette.text.secondary,
                 textAlign: { xs: 'center', sm: 'left' }
               }}
             >
@@ -93,10 +93,10 @@ export default function Footer() {
             <IconButton
               size={isMobile ? "medium" : "large"}
               sx={{
-                backgroundColor: isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.8)',
-                color: isDarkMode ? '#f8fafc' : 'white',
+                backgroundColor: isDarkMode ? theme.palette.secondary.main : theme.palette.secondary.main,
+                color: isDarkMode ? theme.palette.primary.contrastText : theme.palette.primary.contrastText,
                 '&:hover': {
-                  backgroundColor: isDarkMode ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.7)',
+                  backgroundColor: isDarkMode ? theme.palette.secondary.dark : theme.palette.secondary.dark,
                   transform: 'scale(1.1)'
                 },
                 transition: 'all 0.3s'
@@ -112,7 +112,7 @@ export default function Footer() {
             sx={{ 
               width: '100%', 
               mb: 2,
-              backgroundColor: isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'
+              backgroundColor: isDarkMode ? 'rgba(217, 176, 156, 0.2)' : 'rgba(217, 176, 156, 0.3)'
             }} 
           />
           
@@ -121,7 +121,7 @@ export default function Footer() {
             flexDirection: { xs: 'column', sm: 'row' }, 
             alignItems: 'center', 
             gap: 1,
-            color: isDarkMode ? 'rgba(255, 255, 255, 0.6)' : 'rgba(0, 0, 0, 0.5)',
+            color: isDarkMode ? theme.palette.text.secondary : theme.palette.text.secondary,
             textAlign: 'center'
           }}>
             <Typography 
