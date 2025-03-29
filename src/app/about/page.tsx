@@ -258,19 +258,6 @@ export default function About() {
                     </Typography>
                   </Box>
                 </motion.li>
-                <motion.li variants={slideUp}>
-                  <Avatar sx={{ bgcolor: 'secondary.main', mr: 2, width: 35, height: 35 }}>
-                    <CalculateIcon sx={{ fontSize: 18 }} />
-                  </Avatar>
-                  <Box>
-                    <Typography variant="subtitle1" sx={{ fontWeight: 600, mb: 0.5 }}>
-                      Especialización en Contabilidad y Finanzas
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      Corporación Universitaria Americana
-                    </Typography>
-                  </Box>
-                </motion.li>
               </MotionBox>
             </Grid>
           </Grid>
