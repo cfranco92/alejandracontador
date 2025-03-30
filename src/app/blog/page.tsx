@@ -288,11 +288,10 @@ function PostCard({ post }: { post: BlogPost }) {
       transition={{ duration: 0.5 }}
       sx={{ 
         display: 'flex',
-        flexDirection: { xs: 'column', sm: 'row' },
+        flexDirection: 'column',
         overflow: 'hidden',
         borderRadius: '12px',
-        mb: 4,
-        height: { xs: 'auto', sm: '220px' },
+        height: '100%',
         border: '1px solid',
         borderColor: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.06)'
       }}
@@ -305,8 +304,8 @@ function PostCard({ post }: { post: BlogPost }) {
         <Box 
           sx={{ 
             position: 'relative',
-            width: { xs: '100%', sm: '280px' }, 
-            height: { xs: '200px', sm: '100%' },
+            width: '100%', 
+            height: '180px',
             overflow: 'hidden'
           }}
         >
@@ -387,7 +386,7 @@ function PostCard({ post }: { post: BlogPost }) {
             sx={{ 
               mb: 2, 
               fontWeight: 700,
-              fontSize: { xs: '1.25rem', md: '1.35rem' },
+              fontSize: { xs: '1.15rem', md: '1.25rem' },
               lineHeight: 1.3,
               color: theme.palette.text.primary,
               transition: 'color 0.2s ease',
@@ -406,12 +405,13 @@ function PostCard({ post }: { post: BlogPost }) {
           color="text.secondary" 
           sx={{ 
             mb: 2,
-            fontSize: '0.95rem',
+            fontSize: '0.9rem',
             lineHeight: 1.6,
             overflow: 'hidden',
             display: '-webkit-box',
-            WebkitLineClamp: 2,
-            WebkitBoxOrient: 'vertical'
+            WebkitLineClamp: 3,
+            WebkitBoxOrient: 'vertical',
+            flexGrow: 1
           }}
         >
           {post.excerpt}
@@ -456,8 +456,7 @@ function PostCard({ post }: { post: BlogPost }) {
               borderRadius: '6px',
               textTransform: 'none',
               py: 1,
-              px: 3,
-              width: { xs: '100%', sm: 'auto' },
+              width: '100%',
               boxShadow: theme.palette.mode === 'dark' ? '0px 3px 8px rgba(0, 0, 0, 0.3)' : '0px 3px 8px rgba(0, 0, 0, 0.1)'
             }}
           >
@@ -595,7 +594,7 @@ function BlogContent() {
       {featuredPosts.length > 0 && (
         <>
           <Box
-            component={motion.h2}
+            component={motion.div}
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
@@ -621,7 +620,7 @@ function BlogContent() {
       
       {/* Lista de todos los artículos */}
       <Box
-        component={motion.h2}
+        component={motion.div}
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5, delay: 0.3 }}
@@ -635,7 +634,7 @@ function BlogContent() {
         </Typography>
       </Box>
       
-      <Grid container spacing={3}>
+      <Grid container spacing={4}>
         {filteredPosts.map((post) => (
           <Grid item key={post.id} xs={12} sm={6} md={4}>
             <PostCard post={post} />
