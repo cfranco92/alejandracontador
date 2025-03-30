@@ -22,25 +22,25 @@ export default function Home() {
     {
       title: "Contabilidad Empresarial",
       description: "Gestión contable completa para empresas y pymes, manteniendo tus finanzas organizadas y cumpliendo con los requisitos legales.",
-      icon: "/images/accounting-icon-1.png",
+      icon: <CalculateIcon style={{ fontSize: 40, color: theme.palette.secondary.main }} />,
       delay: 1,
     },
     {
       title: "Asesoría Tributaria",
       description: "Optimiza tu carga fiscal y mantente al día con tus obligaciones tributarias mediante estrategias legales y efectivas.",
-      icon: "/images/tax-icon.png",
+      icon: <ReceiptLongIcon style={{ fontSize: 40, color: theme.palette.secondary.main }} />,
       delay: 2,
     },
     {
       title: "Planeación Financiera",
       description: "Desarrolla estrategias financieras para el crecimiento y la estabilidad de tu negocio con proyecciones y análisis profesionales.",
-      icon: "/images/accounting-icon-2.png",
+      icon: <AttachMoneyIcon style={{ fontSize: 40, color: theme.palette.secondary.main }} />,
       delay: 3,
     },
     {
       title: "Auditorías y Control",
       description: "Revisión y verificación de tus procesos contables para asegurar la precisión y el cumplimiento de normas contables.",
-      icon: "/images/accounting-icon-3.png",
+      icon: <MonitorHeartIcon style={{ fontSize: 40, color: theme.palette.secondary.main }} />,
       delay: 4,
     },
   ];
@@ -655,175 +655,193 @@ export default function Home() {
       {/* Estadísticas animadas */}
       
 
-      {/* Servicios Section */}
-      <Box className="py-16">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-12"
-        >
-          <motion.div
-            initial={{ scale: 0.9, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
-            transition={{ type: "spring", stiffness: 300, damping: 15 }}
-          >
-            <Typography 
-              variant={isMobile ? "h4" : "h3"} 
-              component="h2" 
-              sx={{
-                fontWeight: 700,
-                color: theme.palette.primary.main,
-                mb: 3,
-                position: 'relative',
-                display: 'inline-block'
-              }}
-            >
-              Mis Servicios
-              <Box 
-                sx={{
-                  position: 'absolute',
-                  bottom: -8,
-                  left: '50%',
-                  transform: 'translateX(-50%)',
-                  width: '60px',
-                  height: '3px',
-                  backgroundColor: theme.palette.secondary.main,
-                  borderRadius: '3px'
-                }}
-              />
-            </Typography>
-          </motion.div>
-
+      {/* Servicios Section - Cambio a fondo blanco con ajustes para que llegue a los bordes */}
+      <Box 
+        className="py-12"
+        sx={{
+          backgroundColor: theme.palette.mode === 'dark' ? theme.palette.background.default : '#ffffff',
+          width: '100vw',
+          position: 'relative',
+          left: '50%',
+          right: '50%',
+          marginLeft: '-50vw',
+          marginRight: '-50vw',
+          mt: -4,
+          mb: 4,
+          pt: 8
+        }}
+      >
+        <Container maxWidth="lg">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-10"
           >
-            <Typography 
-              variant="body1" 
-              sx={{
-                color: theme.palette.text.secondary,
-                maxWidth: '650px',
-                mx: 'auto',
-                mb: 3
-              }}
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              transition={{ type: "spring", stiffness: 300, damping: 15 }}
             >
-              Ofrezco soluciones adaptadas a las necesidades de tu negocio o actividad personal.
-            </Typography>
-          </motion.div>
+              <Typography 
+                variant={isMobile ? "h4" : "h3"} 
+                component="h2" 
+                sx={{
+                  fontWeight: 700,
+                  color: theme.palette.primary.main,
+                  mb: 3,
+                  position: 'relative',
+                  display: 'inline-block'
+                }}
+              >
+                Mis Servicios
+                <Box 
+                  sx={{
+                    position: 'absolute',
+                    bottom: -8,
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    width: '60px',
+                    height: '3px',
+                    backgroundColor: theme.palette.secondary.main,
+                    borderRadius: '3px'
+                  }}
+                />
+              </Typography>
+            </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-          >
-            <Box 
-              sx={{ 
-                display: 'flex', 
-                justifyContent: 'center', 
-                gap: 1.5, 
-                mb: 4 
-              }}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
             >
-              {[0, 1, 2].map((i) => (
-                <motion.div
-                  key={i}
-                  animate={{ 
-                    scale: [1, 1.1, 1],
-                    opacity: [0.5, 1, 0.5]
-                  }}
-                  transition={{ 
-                    duration: 2, 
-                    repeat: Infinity, 
-                    repeatType: 'reverse',
-                    delay: i * 0.3
-                  }}
-                >
-                  <Box 
-                    sx={{
-                      width: i === 1 ? 40 : 25,
-                      height: 5,
-                      borderRadius: '10px',
-                      backgroundColor: theme.palette.secondary.main,
-                      opacity: i === 1 ? 1 : 0.6
+              <Typography 
+                variant="body1" 
+                sx={{
+                  color: theme.palette.text.secondary,
+                  maxWidth: '650px',
+                  mx: 'auto',
+                  mb: 3
+                }}
+              >
+                Ofrezco soluciones adaptadas a las necesidades de tu negocio o actividad personal.
+              </Typography>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
+              <Box 
+                sx={{ 
+                  display: 'flex', 
+                  justifyContent: 'center', 
+                  gap: 1.5, 
+                  mb: 4 
+                }}
+              >
+                {[0, 1, 2].map((i) => (
+                  <motion.div
+                    key={i}
+                    animate={{ 
+                      scale: [1, 1.1, 1],
+                      opacity: [0.5, 1, 0.5]
                     }}
-                  />
-                </motion.div>
-              ))}
+                    transition={{ 
+                      duration: 2, 
+                      repeat: Infinity, 
+                      repeatType: 'reverse',
+                      delay: i * 0.3
+                    }}
+                  >
+                    <Box 
+                      sx={{
+                        width: i === 1 ? 40 : 25,
+                        height: 5,
+                        borderRadius: '10px',
+                        backgroundColor: theme.palette.secondary.main,
+                        opacity: i === 1 ? 1 : 0.6
+                      }}
+                    />
+                  </motion.div>
+                ))}
+              </Box>
+            </motion.div>
+          </motion.div>
+        </Container>
+
+        <Container maxWidth="lg">
+          <Box sx={{ position: 'relative', overflow: 'hidden' }}>
+            {/* Elementos decorativos animados */}
+            <Box sx={{ position: 'absolute', top: -10, left: -100, zIndex: 0, opacity: 0.5, pointerEvents: 'none' }}>
+              <motion.div
+                animate={{ 
+                  y: [0, 15, 0],
+                  rotate: [0, 5, 0]
+                }}
+                transition={{ 
+                  duration: 6, 
+                  repeat: Infinity,
+                  repeatType: 'reverse'
+                }}
+              >
+                <Box 
+                  sx={{ 
+                    width: 150,
+                    height: 150,
+                    borderRadius: '50%',
+                    background: `radial-gradient(circle, ${theme.palette.secondary.light} 0%, transparent 70%)`,
+                    filter: 'blur(20px)'
+                  }}
+                />
+              </motion.div>
             </Box>
-          </motion.div>
-        </motion.div>
-
-        <Box sx={{ position: 'relative', overflow: 'hidden' }}>
-          {/* Elementos decorativos animados */}
-          <Box sx={{ position: 'absolute', top: -10, left: -100, zIndex: 0, opacity: 0.5, pointerEvents: 'none' }}>
-            <motion.div
-              animate={{ 
-                y: [0, 15, 0],
-                rotate: [0, 5, 0]
-              }}
-              transition={{ 
-                duration: 6, 
-                repeat: Infinity,
-                repeatType: 'reverse'
-              }}
-            >
-              <Box 
-                sx={{ 
-                  width: 150,
-                  height: 150,
-                  borderRadius: '50%',
-                  background: `radial-gradient(circle, ${theme.palette.secondary.light} 0%, transparent 70%)`,
-                  filter: 'blur(20px)'
+            
+            <Box sx={{ position: 'absolute', bottom: -50, right: -80, zIndex: 0, opacity: 0.4, pointerEvents: 'none' }}>
+              <motion.div
+                animate={{ 
+                  y: [0, -20, 0],
+                  rotate: [0, -5, 0]
                 }}
-              />
+                transition={{ 
+                  duration: 7, 
+                  repeat: Infinity,
+                  repeatType: 'reverse',
+                  delay: 1
+                }}
+              >
+                <Box 
+                  sx={{ 
+                    width: 180,
+                    height: 180,
+                    borderRadius: '50%',
+                    background: `radial-gradient(circle, ${theme.palette.secondary.light} 0%, transparent 70%)`,
+                    filter: 'blur(25px)'
+                  }}
+                />
+              </motion.div>
+            </Box>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.6 }}
+            >
+              <Grid 
+                container 
+                spacing={4}
+                sx={{ position: 'relative', zIndex: 1 }}
+              >
+                {services.map((service, index) => (
+                  <Grid item xs={12} sm={6} md={3} key={index}>
+                    <ServiceCard {...service} />
+                  </Grid>
+                ))}
+              </Grid>
             </motion.div>
           </Box>
-          
-          <Box sx={{ position: 'absolute', bottom: -50, right: -80, zIndex: 0, opacity: 0.4, pointerEvents: 'none' }}>
-            <motion.div
-              animate={{ 
-                y: [0, -20, 0],
-                rotate: [0, -5, 0]
-              }}
-              transition={{ 
-                duration: 7, 
-                repeat: Infinity,
-                repeatType: 'reverse',
-                delay: 1
-              }}
-            >
-              <Box 
-                sx={{ 
-                  width: 180,
-                  height: 180,
-                  borderRadius: '50%',
-                  background: `radial-gradient(circle, ${theme.palette.secondary.light} 0%, transparent 70%)`,
-                  filter: 'blur(25px)'
-                }}
-              />
-            </motion.div>
-          </Box>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-          >
-            <Grid 
-              container 
-              spacing={4}
-              sx={{ position: 'relative', zIndex: 1 }}
-            >
-              {services.map((service, index) => (
-                <Grid item xs={12} sm={6} md={3} key={index}>
-                  <ServiceCard {...service} />
-                </Grid>
-              ))}
-            </Grid>
-          </motion.div>
-        </Box>
+        </Container>
       </Box>
 
       {/* Llamada a la acción */}

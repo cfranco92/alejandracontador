@@ -3,11 +3,12 @@
 import { Paper, Box, Typography, useTheme } from "@mui/material";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { ReactNode } from "react";
 
 interface ServiceCardProps {
   title: string;
   description: string;
-  icon: string;
+  icon: string | ReactNode;
   delay?: number;
 }
 
@@ -38,9 +39,8 @@ export default function ServiceCard({ title, description, icon, delay = 0 }: Ser
   // Variantes para la animación del icono
   const iconVariants = {
     hover: { 
-      scale: 1.2, 
-      rotate: [0, -5, 5, -5, 5, 0],
-      transition: { duration: 0.5 } 
+      scale: 1.1,
+      transition: { duration: 0.3 } 
     }
   };
 
@@ -54,6 +54,26 @@ export default function ServiceCard({ title, description, icon, delay = 0 }: Ser
     }
   };
 
+  // Renderizar icono de acuerdo al tipo recibido
+  const renderIcon = () => {
+    if (typeof icon === 'string') {
+      return (
+        <Image
+          src={icon}
+          alt={title}
+          width={40}
+          height={40}
+          style={{
+            filter: isDark ? 'brightness(0.95) contrast(1.1)' : 'none',
+            objectFit: 'contain'
+          }}
+        />
+      );
+    } else {
+      return icon;
+    }
+  };
+
   return (
     <motion.div
       initial="hidden"
@@ -63,14 +83,15 @@ export default function ServiceCard({ title, description, icon, delay = 0 }: Ser
       whileHover="hover"
       style={{ 
         transformStyle: "preserve-3d",
-        perspective: "1000px" 
+        perspective: "1000px",
+        height: "100%"
       }}
     >
       <Paper 
         elevation={isDark ? 2 : 1}
         sx={{
           height: '100%',
-          p: 3,
+          p: { xs: 2.5, md: 3 },
           transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
           backgroundImage: 'none',
           backgroundColor: isDark ? theme.palette.background.paper : theme.palette.background.paper,
@@ -79,6 +100,8 @@ export default function ServiceCard({ title, description, icon, delay = 0 }: Ser
           borderColor: isDark ? 'rgba(255, 255, 255, 0.08)' : theme.palette.secondary.light,
           overflow: 'hidden',
           position: 'relative',
+          display: 'flex',
+          flexDirection: 'column',
           '&::before': {
             content: '""',
             position: 'absolute',
@@ -91,60 +114,46 @@ export default function ServiceCard({ title, description, icon, delay = 0 }: Ser
           }
         }}
       >
-        <motion.div variants={glowVariants} style={{ height: '100%', position: 'relative', zIndex: 1 }}>
-          <Box sx={{ display: "flex", flexDirection: "column", height: "100%" }}>
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                mb: 3,
-              }}
-            >
-              <motion.div variants={iconVariants}>
-                <Box
-                  sx={{
-                    position: "relative",
-                    width: 56,
-                    height: 56,
-                    flexShrink: 0,
-                    mr: 2,
-                    borderRadius: '16px',
-                    overflow: 'hidden',
-                    background: isDark ? 'rgba(233, 201, 187, 0.1)' : 'rgba(233, 201, 187, 0.2)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    p: 1.5,
-                    border: '1px solid',
-                    borderColor: isDark ? 'rgba(233, 201, 187, 0.2)' : 'rgba(233, 201, 187, 0.3)',
-                    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.08)'
-                  }}
-                >
-                  <Image
-                    src={icon}
-                    alt={title}
-                    width={38}
-                    height={38}
-                    style={{
-                      filter: isDark ? 'brightness(0.95) contrast(1.1)' : 'none',
-                    }}
-                  />
-                </Box>
-              </motion.div>
-              <Typography 
-                variant="h6" 
-                component="h3" 
-                sx={{ 
-                  fontWeight: 700,
-                  fontSize: '1.15rem',
-                  color: isDark ? theme.palette.primary.main : theme.palette.primary.main,
-                  position: 'relative',
-                  zIndex: 1
+        <motion.div variants={glowVariants} style={{ height: '100%', position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column' }}>
+          <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
+            <motion.div variants={iconVariants}>
+              <Box
+                sx={{
+                  position: "relative",
+                  width: 60,
+                  height: 60,
+                  flexShrink: 0,
+                  mr: 2,
+                  borderRadius: '16px',
+                  overflow: 'hidden',
+                  background: isDark ? 'rgba(233, 201, 187, 0.1)' : 'rgba(233, 201, 187, 0.2)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  p: 1.5,
+                  border: '1px solid',
+                  borderColor: isDark ? 'rgba(233, 201, 187, 0.2)' : 'rgba(233, 201, 187, 0.3)',
+                  boxShadow: '0 4px 8px rgba(0, 0, 0, 0.08)'
                 }}
               >
-                {title}
-              </Typography>
-            </Box>
+                {renderIcon()}
+              </Box>
+            </motion.div>
+            <Typography 
+              variant="h6" 
+              component="h3" 
+              sx={{ 
+                fontWeight: 700,
+                fontSize: { xs: '1.05rem', md: '1.15rem' },
+                color: isDark ? theme.palette.primary.main : theme.palette.primary.main,
+                position: 'relative',
+                zIndex: 1
+              }}
+            >
+              {title}
+            </Typography>
+          </Box>
+          <Box sx={{ flexGrow: 1 }}>
             <motion.div
               variants={{
                 hover: { y: 0, opacity: 1, transition: { delay: 0.1, duration: 0.2 } }
@@ -155,7 +164,6 @@ export default function ServiceCard({ title, description, icon, delay = 0 }: Ser
                 variant="body2" 
                 sx={{ 
                   color: isDark ? theme.palette.text.secondary : theme.palette.text.secondary,
-                  flexGrow: 1,
                   lineHeight: 1.7,
                   position: 'relative',
                   zIndex: 1
@@ -164,26 +172,26 @@ export default function ServiceCard({ title, description, icon, delay = 0 }: Ser
                 {description}
               </Typography>
             </motion.div>
-            
-            {/* Indicador de hover */}
-            <motion.div
-              variants={{
-                initial: { width: 0, opacity: 0 },
-                hover: { 
-                  width: '30%', 
-                  opacity: 1,
-                  transition: { duration: 0.3 } 
-                }
-              }}
-              initial="initial"
-              style={{
-                height: '2px',
-                background: isDark ? theme.palette.secondary.main : theme.palette.secondary.main,
-                marginTop: '16px',
-                borderRadius: '2px'
-              }}
-            />
           </Box>
+          
+          {/* Indicador de hover */}
+          <motion.div
+            variants={{
+              initial: { width: 0, opacity: 0 },
+              hover: { 
+                width: '30%', 
+                opacity: 1,
+                transition: { duration: 0.3 } 
+              }
+            }}
+            initial="initial"
+            style={{
+              height: '2px',
+              background: isDark ? theme.palette.secondary.main : theme.palette.secondary.main,
+              marginTop: '16px',
+              borderRadius: '2px'
+            }}
+          />
         </motion.div>
       </Paper>
     </motion.div>
