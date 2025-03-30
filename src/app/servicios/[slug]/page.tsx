@@ -287,7 +287,7 @@ export default function ServiceDetail() {
               {service.subtitle}
             </MotionTypography>
             
-            <Box component="h1" sx={{ m: 0, p: 0 }}>
+            <Box sx={{ m: 0, p: 0 }}>
               <MotionTypography
                 variant="h3"
                 sx={{ 
