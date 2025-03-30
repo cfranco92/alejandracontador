@@ -664,7 +664,7 @@ export default function Home() {
       <Box 
         className="py-12"
         sx={{
-          backgroundColor: theme.palette.mode === 'dark' ? theme.palette.background.default : '#ffffff',
+          backgroundColor: theme.palette.mode === 'dark' ? theme.palette.background.paper : '#ffffff',
           width: '100vw',
           position: 'relative',
           left: '50%',
