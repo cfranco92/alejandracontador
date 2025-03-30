@@ -20,7 +20,7 @@ export default function ChatButton() {
       <Zoom in={true}>
         <Fab
           color="secondary"
-          aria-label="chat"
+          aria-label="Abrir Chat"
           onClick={handleToggleChat}
           sx={{
             position: 'fixed',
