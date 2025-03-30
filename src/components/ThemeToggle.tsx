@@ -9,7 +9,10 @@ export default function ThemeToggle() {
   const { isDarkMode, toggleTheme } = useTheme();
 
   return (
-    <Tooltip title={isDarkMode ? "Modo claro" : "Modo oscuro"}>
+    <Tooltip title={isDarkMode 
+      ? "Cambiar a modo claro (su preferencia quedará guardada)" 
+      : "Cambiar a modo oscuro (su preferencia quedará guardada)"
+    }>
       <IconButton 
         onClick={toggleTheme} 
         color="inherit"

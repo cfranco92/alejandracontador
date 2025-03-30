@@ -5,6 +5,7 @@ import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import EmailIcon from "@mui/icons-material/Email";
 import Image from "next/image";
+import DarkModeIcon from '@mui/icons-material/DarkMode';
 
 export default function Footer() {
   const theme = useTheme();
@@ -165,6 +166,33 @@ export default function Footer() {
                 />
               </Box>
             </Box>
+          </Box>
+          
+          {/* Mensaje sobre modo oscuro automático */}
+          <Box 
+            sx={{ 
+              display: 'flex', 
+              alignItems: 'center', 
+              justifyContent: 'center',
+              gap: 0.5,
+              mt: 1.5,
+              backgroundColor: isDarkMode ? 'rgba(217, 176, 156, 0.1)' : 'rgba(217, 176, 156, 0.08)',
+              borderRadius: '8px',
+              py: 0.5,
+              px: 1.5
+            }}
+          >
+            <DarkModeIcon sx={{ fontSize: '0.875rem', opacity: 0.7 }} />
+            <Typography 
+              variant="caption" 
+              sx={{ 
+                fontSize: '0.7rem',
+                color: isDarkMode ? theme.palette.text.secondary : theme.palette.text.secondary,
+                fontStyle: 'italic'
+              }}
+            >
+              Modo oscuro automático se activa a las 7pm
+            </Typography>
           </Box>
         </Box>
       </Container>
