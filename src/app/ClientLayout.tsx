@@ -253,7 +253,8 @@ function AppContent({ children }: { children: React.ReactNode }) {
           minHeight: "100vh",
           pt: { xs: 8, sm: 9 },
           display: "flex",
-          flexDirection: "column"
+          flexDirection: "column",
+          overflow: "hidden"
         }}
       >
         {children}

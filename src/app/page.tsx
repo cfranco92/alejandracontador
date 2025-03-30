@@ -188,13 +188,13 @@ export default function Home() {
                   >
                     <Button
                       variant="contained"
-                      size="large"
+                      size="medium"
                       startIcon={<EmailIcon />}
                       sx={{
                         backgroundColor: theme.palette.mode === 'dark' ? theme.palette.background.paper : theme.palette.primary.main,
                         color: theme.palette.mode === 'dark' ? theme.palette.primary.main : theme.palette.background.default,
-                        px: 3,
-                        py: 1.25,
+                        px: 2.5,
+                        py: 1,
                         '&:hover': {
                           backgroundColor: theme.palette.mode === 'dark' ? '#f9f6f3' : '#2a2a2a',
                         },
@@ -202,7 +202,8 @@ export default function Home() {
                         textTransform: 'none',
                         boxShadow: theme.palette.mode === 'dark' 
                           ? '0 4px 12px rgba(0, 0, 0, 0.3)' 
-                          : '0 4px 12px rgba(15, 23, 42, 0.25)'
+                          : '0 4px 12px rgba(15, 23, 42, 0.25)',
+                        mb: { xs: 3, sm: 0 }
                       }}
                       onClick={() =>
                         (window.location.href =
@@ -635,7 +636,8 @@ export default function Home() {
                         textTransform: 'none',
                         boxShadow: theme.palette.mode === 'dark' 
                           ? '0 4px 12px rgba(0, 0, 0, 0.3)' 
-                          : '0 4px 12px rgba(15, 23, 42, 0.25)'
+                          : '0 4px 12px rgba(15, 23, 42, 0.25)',
+                        mb: { xs: 3, sm: 0 }
                       }}
                       onClick={() =>
                         (window.location.href =

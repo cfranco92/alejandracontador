@@ -23,7 +23,13 @@ export default function Footer() {
           ? '0 -1px 6px rgba(0, 0, 0, 0.3)' 
           : '0 -1px 6px rgba(0, 0, 0, 0.1)',
         borderTop: '1px solid',
-        borderColor: isDarkMode ? 'rgba(217, 176, 156, 0.2)' : theme.palette.secondary.light
+        borderColor: isDarkMode ? 'rgba(217, 176, 156, 0.2)' : theme.palette.secondary.light,
+        width: '100vw',
+        position: 'relative',
+        left: '50%',
+        right: '50%',
+        marginLeft: '-50vw',
+        marginRight: '-50vw'
       }}
     >
       <Container maxWidth="lg">
