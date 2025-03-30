@@ -43,7 +43,7 @@ export default function StatsCounter() {
       icon: <EqualizerIcon 
         sx={{ 
           fontSize: isMobile ? 'medium' : 'large',
-          color: theme.palette.secondary.main
+          color: theme.palette.primary.main
         }} 
       />
     },
@@ -54,7 +54,7 @@ export default function StatsCounter() {
       icon: <GroupsIcon 
         sx={{ 
           fontSize: isMobile ? 'medium' : 'large',
-          color: theme.palette.secondary.main
+          color: theme.palette.primary.main
         }} 
       /> 
     },
@@ -65,7 +65,7 @@ export default function StatsCounter() {
       icon: <AccessTimeIcon 
         sx={{ 
           fontSize: isMobile ? 'medium' : 'large',
-          color: theme.palette.secondary.main
+          color: theme.palette.primary.main
         }} 
       /> 
     },
@@ -76,7 +76,7 @@ export default function StatsCounter() {
       icon: <WorkIcon 
         sx={{ 
           fontSize: isMobile ? 'medium' : 'large',
-          color: theme.palette.secondary.main
+          color: theme.palette.primary.main
         }} 
       /> 
     }
@@ -88,16 +88,16 @@ export default function StatsCounter() {
       sx={{
         py: { xs: 4, md: 5 },
         px: 2,
-        bgcolor: isDarkMode ? theme.palette.background.paper : '#ffffff',
-        borderRadius: 4,
+        bgcolor: isDarkMode ? "rgba(15, 23, 42, 0.95)" : "#ffffff",
+        borderRadius: 3,
         my: { xs: 3, md: 4 },
         boxShadow: isDarkMode 
-          ? '0 4px 20px rgba(0, 0, 0, 0.25)' 
-          : '0 4px 20px rgba(0, 0, 0, 0.05)',
+          ? '0 4px 20px rgba(0, 0, 0, 0.3)' 
+          : '0 4px 20px rgba(0, 0, 0, 0.08)',
         border: '1px solid',
         borderColor: isDarkMode 
-          ? 'rgba(217, 176, 156, 0.2)' 
-          : theme.palette.secondary.light
+          ? 'rgba(59, 130, 246, 0.1)' 
+          : 'rgba(226, 232, 240, 0.8)'
       }}
     >
       <Grid container spacing={3} justifyContent="center">

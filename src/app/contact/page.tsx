@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { TextField, Button, Paper, Typography, Box, Grid, Alert, IconButton, Container, useTheme } from "@mui/material";
+import { useState, useRef, useEffect } from "react";
+import { TextField, Button, Paper, Typography, Box, Grid, Alert, IconButton, Container, useTheme, CircularProgress } from "@mui/material";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import EmailIcon from "@mui/icons-material/Email";
 import PhoneIcon from "@mui/icons-material/Phone";
@@ -11,6 +11,8 @@ import SendIcon from "@mui/icons-material/Send";
 import CloseIcon from "@mui/icons-material/Close";
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
+import emailjs from '@emailjs/browser';
+import { EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, EMAILJS_PUBLIC_KEY } from '@/lib/emailjs';
 
 // Componentes de animación con Framer Motion
 const MotionBox = motion(Box);
@@ -49,14 +51,23 @@ const Map = dynamic(() => import("@/components/Map"), {
 export default function Contact() {
   const theme = useTheme();
   const isDarkMode = theme.palette.mode === 'dark';
+  const formRef = useRef<HTMLFormElement>(null);
+  
+  // Inicializar EmailJS
+  useEffect(() => {
+    emailjs.init(EMAILJS_PUBLIC_KEY);
+  }, []);
   
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
     message: "",
+    to_email: "alejandraberton@gmail.com", // Correo destinatario que recibirá el formulario
+    subject: "Nuevo mensaje desde sitio web", // Asunto del correo
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
 
@@ -97,29 +108,49 @@ export default function Contact() {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Aquí iría la lógica para enviar el formulario a un servicio como Formspree o similar
-    // En este ejemplo solo simulamos el envío
     
+    // Validación
     if (!formData.name || !formData.email || !formData.message) {
       setError("Por favor complete todos los campos requeridos");
       return;
     }
     
-    // Simulación de envío exitoso
-    setSubmitted(true);
-    setError("");
-    
-    // Resetear el formulario después de un tiempo
-    setTimeout(() => {
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        message: "",
-      });
-    }, 300);
+    try {
+      setIsSubmitting(true);
+      setError("");
+      
+      // Envío del correo utilizando EmailJS
+      const result = await emailjs.sendForm(
+        EMAILJS_SERVICE_ID, 
+        EMAILJS_TEMPLATE_ID, 
+        formRef.current!, 
+        EMAILJS_PUBLIC_KEY
+      );
+      
+      console.log('EmailJS result:', result);
+      
+      if (result.text === 'OK') {
+        setSubmitted(true);
+        // Resetear el formulario
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          message: "",
+          to_email: "alejandraberton@gmail.com",
+          subject: "Nuevo mensaje desde sitio web",
+        });
+      } else {
+        throw new Error('No se pudo enviar el mensaje');
+      }
+    } catch (error) {
+      console.error('Error al enviar el mensaje:', error);
+      setError("Hubo un problema al enviar tu mensaje. Por favor intenta de nuevo más tarde.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -388,16 +419,20 @@ export default function Contact() {
                 </Alert>
               )}
 
-              <form onSubmit={handleSubmit}>
+              <form ref={formRef} onSubmit={handleSubmit}>
                 <Grid container spacing={3}>
+                  {/* Campos ocultos para EmailJS */}
+                  <input type="hidden" name="to_email" value={formData.to_email} />
+                  <input type="hidden" name="subject" value={formData.subject} />
+                  
                   <Grid item xs={12}>
                     <TextField
                       required
                       fullWidth
                       label="Nombre"
-                      name="name"
+                      name="from_name" // Nombre compatible con EmailJS
                       value={formData.name}
-                      onChange={handleChange}
+                      onChange={(e) => handleChange({ ...e, target: { ...e.target, name: 'name' } })}
                       variant="outlined"
                       sx={{ 
                         '& .MuiOutlinedInput-root': {
@@ -411,10 +446,10 @@ export default function Contact() {
                       required
                       fullWidth
                       label="Email"
-                      name="email"
+                      name="reply_to" // Email compatible con EmailJS
                       type="email"
                       value={formData.email}
-                      onChange={handleChange}
+                      onChange={(e) => handleChange({ ...e, target: { ...e.target, name: 'email' } })}
                       variant="outlined"
                       sx={{ 
                         '& .MuiOutlinedInput-root': {
@@ -462,7 +497,8 @@ export default function Contact() {
                       variant="contained" 
                       color="primary" 
                       size="large"
-                      endIcon={<SendIcon />}
+                      endIcon={isSubmitting ? null : <SendIcon />}
+                      disabled={isSubmitting}
                       sx={{ 
                         width: { xs: '100%', sm: 'auto' },
                         py: 1.2,
@@ -476,7 +512,11 @@ export default function Contact() {
                         }
                       }}
                     >
-                      Enviar Mensaje
+                      {isSubmitting ? (
+                        <CircularProgress size={24} color="inherit" />
+                      ) : (
+                        'Enviar Mensaje'
+                      )}
                     </Button>
                   </Grid>
                 </Grid>

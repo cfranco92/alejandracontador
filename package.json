@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
     "@mui/icons-material": "^6.4.9",
@@ -17,10 +18,13 @@
     "framer-motion": "^12.6.2",
     "leaflet": "^1.9.4",
     "next": "15.2.3",
+    "openai": "^4.90.0",
     "react": "^19.0.0",
     "react-countup": "^6.5.3",
     "react-dom": "^19.0.0",
-    "react-leaflet": "^5.0.0"
+    "react-leaflet": "^5.0.0",
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
