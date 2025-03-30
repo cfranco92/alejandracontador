@@ -323,9 +323,20 @@ export default function Home() {
       </Box>
 
       <Container maxWidth="lg" sx={{ py: 0, position: 'relative' }}>
-        <Box className="min-h-[90vh] flex flex-col justify-center relative" sx={{ pt: 4 }}>
+        <Box 
+          className="min-h-[calc(100vh-64px)] flex flex-col justify-center relative" 
+          sx={{ 
+            pt: { xs: 4, md: 4 },
+            pb: { xs: 4, md: 4 },
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            minHeight: { xs: 'calc(100vh - 64px)', md: 'calc(100vh - 70px)' },
+            boxSizing: 'border-box',
+          }}
+        >
           {isMobile && (
-            <Box className="mb-8">
+            <Box className="mb-2">
               <motion.div
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -348,7 +359,7 @@ export default function Home() {
             </Box>
           )}
           
-          <Grid container spacing={4} alignItems="center" direction={isMobile ? "column" : "row"}>
+          <Grid container spacing={isMobile ? 2 : 4} alignItems="center" direction={isMobile ? "column" : "row"}>
             {!isMobile && (
               <Grid item xs={12} md={6}>
                 <motion.div
@@ -526,7 +537,7 @@ export default function Home() {
               </Grid>
             )}
             
-            <Grid item xs={12} md={6} className={isMobile ? "mb-8" : ""}>
+            <Grid item xs={12} md={6} className={isMobile ? "mb-6" : ""}>
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -534,10 +545,11 @@ export default function Home() {
                 className="flex justify-center"
               >
                 <Box 
-                  className="relative w-full max-w-md h-[360px]"
+                  className="relative w-full max-w-md"
                   sx={{
                     zIndex: 2,
                     backdropFilter: 'blur(8px)',
+                    height: { xs: '320px', md: '360px' }
                   }}
                 >
                   {/* Fondo circular difuminado con colores de marca */}
@@ -634,7 +646,7 @@ export default function Home() {
                   </Box>
 
                   {/* Card de Asesoría - Posición izquierda */}
-                  <Box className="absolute top-1/2 left-16 -translate-y-1/2 w-24 h-24 animate-float-delayed">
+                  <Box className="absolute top-1/2 left-12 -translate-y-1/2 w-24 h-24 animate-float-delayed">
                     <motion.div
                       animate={{ 
                         y: [0, -6, 0],
@@ -702,7 +714,7 @@ export default function Home() {
                   </Box>
 
                   {/* Card de Finanzas - Posición derecha */}
-                  <Box className="absolute top-1/2 right-16 -translate-y-1/2 w-24 h-24 animate-float-delayed-more">
+                  <Box className="absolute top-1/2 right-12 -translate-y-1/2 w-24 h-24 animate-float-delayed-more">
                     <motion.div
                       animate={{ 
                         y: [0, -7, 0],
@@ -864,7 +876,7 @@ export default function Home() {
                     sx={{
                       color: theme.palette.text.secondary,
                       textAlign: 'center',
-                      mb: 3,
+                      mb: 2,
                       mx: 'auto',
                       maxWidth: '90%'
                     }}
@@ -873,7 +885,7 @@ export default function Home() {
                     Consulta con nuestro asistente virtual 24/7 o agenda una asesoría personalizada para optimizar tus finanzas.
                   </Typography>
 
-                  <Box className="flex flex-wrap gap-2 justify-center mb-6">
+                  <Box className="flex flex-wrap gap-2 justify-center mb-4">
                     <motion.div
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
@@ -992,7 +1004,7 @@ export default function Home() {
             right: '50%',
             marginLeft: '-50vw',
             marginRight: '-50vw',
-            mt: -4,
+            mt: 0,
             mb: 4,
             pt: 8
           }}
