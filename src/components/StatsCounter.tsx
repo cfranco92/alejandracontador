@@ -88,7 +88,7 @@ export default function StatsCounter() {
       sx={{
         py: { xs: 4, md: 5 },
         px: 2,
-        bgcolor: isDarkMode ? theme.palette.background.paper : theme.palette.background.default,
+        bgcolor: isDarkMode ? theme.palette.background.paper : '#ffffff',
         borderRadius: 4,
         my: { xs: 3, md: 4 },
         boxShadow: isDarkMode 

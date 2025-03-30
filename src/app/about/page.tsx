@@ -325,331 +325,6 @@ export default function About() {
               mb: 3,
             }}
           >
-            Experiencia Profesional
-          </MotionTypography>
-
-          <MotionBox
-            variants={staggerChildren}
-            sx={{ display: "flex", flexDirection: "column", gap: 3 }}
-          >
-            <MotionPaper
-              variants={slideUp}
-              elevation={0}
-              sx={{
-                p: 3,
-                backgroundColor: isDarkMode
-                  ? "rgba(30, 41, 59, 0.6)"
-                  : "rgba(249, 250, 251, 0.8)",
-                borderRadius: 3,
-                borderLeft: "4px solid",
-                borderColor: "primary.main",
-                transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                "&:hover": {
-                  transform: "translateY(-2px)",
-                  boxShadow: isDarkMode
-                    ? "0 6px 16px rgba(0, 0, 0, 0.4)"
-                    : "0 6px 16px rgba(0, 0, 0, 0.1)",
-                },
-              }}
-            >
-              <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "flex-start",
-                  mb: 1,
-                }}
-              >
-                <Typography
-                  variant="h6"
-                  sx={{
-                    fontWeight: 600,
-                    color: isDarkMode ? "#f8fafc" : theme.palette.text.primary,
-                  }}
-                >
-                  Asistente Contable
-                </Typography>
-                <Chip
-                  label="Ene 2023 - Actualidad"
-                  size="small"
-                  color="primary"
-                  variant="outlined"
-                  sx={{
-                    fontWeight: 500,
-                    ml: 2,
-                  }}
-                />
-              </Box>
-              <Typography
-                variant="subtitle2"
-                sx={{
-                  color: isDarkMode
-                    ? "rgba(255, 255, 255, 0.7)"
-                    : "text.secondary",
-                  mb: 1,
-                }}
-              >
-                ACIDENT • Jornada completa
-              </Typography>
-              <Typography
-                variant="body1"
-                sx={{
-                  color: isDarkMode
-                    ? "rgba(255, 255, 255, 0.85)"
-                    : theme.palette.text.secondary,
-                  mt: 1.5,
-                  lineHeight: 1.6,
-                }}
-              >
-                Gestión contable, preparación de estados financieros y apoyo en
-                el cumplimiento de obligaciones tributarias. Control y
-                seguimiento de operaciones financieras.
-              </Typography>
-            </MotionPaper>
-
-            <MotionPaper
-              variants={slideUp}
-              elevation={0}
-              sx={{
-                p: 3,
-                backgroundColor: isDarkMode
-                  ? "rgba(30, 41, 59, 0.6)"
-                  : "rgba(249, 250, 251, 0.8)",
-                borderRadius: 3,
-                borderLeft: "4px solid",
-                borderColor: "secondary.main",
-                transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                "&:hover": {
-                  transform: "translateY(-2px)",
-                  boxShadow: isDarkMode
-                    ? "0 6px 16px rgba(0, 0, 0, 0.4)"
-                    : "0 6px 16px rgba(0, 0, 0, 0.1)",
-                },
-              }}
-            >
-              <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "flex-start",
-                  mb: 1,
-                }}
-              >
-                <Typography
-                  variant="h6"
-                  sx={{
-                    fontWeight: 600,
-                    color: isDarkMode ? "#f8fafc" : theme.palette.text.primary,
-                  }}
-                >
-                  Auxiliar Contable
-                </Typography>
-                <Chip
-                  label="Jun 2023 - Nov 2023"
-                  size="small"
-                  color="secondary"
-                  variant="outlined"
-                  sx={{
-                    fontWeight: 500,
-                    ml: 2,
-                  }}
-                />
-              </Box>
-              <Typography
-                variant="subtitle2"
-                sx={{
-                  color: isDarkMode
-                    ? "rgba(255, 255, 255, 0.7)"
-                    : "text.secondary",
-                  mb: 1,
-                }}
-              >
-                TuPymeContable • Temporal
-              </Typography>
-              <Typography
-                variant="body1"
-                sx={{
-                  color: isDarkMode
-                    ? "rgba(255, 255, 255, 0.85)"
-                    : theme.palette.text.secondary,
-                  mt: 1.5,
-                  lineHeight: 1.6,
-                }}
-              >
-                Registro de transacciones contables, conciliaciones bancarias,
-                preparación de informes financieros y apoyo en declaraciones
-                tributarias para diversos clientes.
-              </Typography>
-            </MotionPaper>
-
-            <MotionPaper
-              variants={slideUp}
-              elevation={0}
-              sx={{
-                p: 3,
-                backgroundColor: isDarkMode
-                  ? "rgba(30, 41, 59, 0.6)"
-                  : "rgba(249, 250, 251, 0.8)",
-                borderRadius: 3,
-                borderLeft: "4px solid",
-                borderColor: "info.main",
-                transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                "&:hover": {
-                  transform: "translateY(-2px)",
-                  boxShadow: isDarkMode
-                    ? "0 6px 16px rgba(0, 0, 0, 0.4)"
-                    : "0 6px 16px rgba(0, 0, 0, 0.1)",
-                },
-              }}
-            >
-              <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "flex-start",
-                  mb: 1,
-                }}
-              >
-                <Typography
-                  variant="h6"
-                  sx={{
-                    fontWeight: 600,
-                    color: isDarkMode ? "#f8fafc" : theme.palette.text.primary,
-                  }}
-                >
-                  Asistente Contable
-                </Typography>
-                <Chip
-                  label="Oct 2020 - Mar 2021"
-                  size="small"
-                  color="info"
-                  variant="outlined"
-                  sx={{
-                    fontWeight: 500,
-                    ml: 2,
-                  }}
-                />
-              </Box>
-              <Typography
-                variant="subtitle2"
-                sx={{
-                  color: isDarkMode
-                    ? "rgba(255, 255, 255, 0.7)"
-                    : "text.secondary",
-                  mb: 1,
-                }}
-              >
-                Enecon S.A.S. • Jornada completa
-              </Typography>
-              <Typography
-                variant="body1"
-                sx={{
-                  color: isDarkMode
-                    ? "rgba(255, 255, 255, 0.85)"
-                    : theme.palette.text.secondary,
-                  mt: 1.5,
-                  lineHeight: 1.6,
-                }}
-              >
-                Elaboración y revisión de estados financieros, análisis de
-                cuentas, conciliaciones bancarias y colaboración en procesos de
-                auditoría interna.
-              </Typography>
-            </MotionPaper>
-
-            <MotionPaper
-              variants={slideUp}
-              elevation={0}
-              sx={{
-                p: 3,
-                backgroundColor: isDarkMode
-                  ? "rgba(30, 41, 59, 0.6)"
-                  : "rgba(249, 250, 251, 0.8)",
-                borderRadius: 3,
-                borderLeft: "4px solid",
-                borderColor: "success.main",
-                transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                "&:hover": {
-                  transform: "translateY(-2px)",
-                  boxShadow: isDarkMode
-                    ? "0 6px 16px rgba(0, 0, 0, 0.4)"
-                    : "0 6px 16px rgba(0, 0, 0, 0.1)",
-                },
-              }}
-            >
-              <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "flex-start",
-                  mb: 1,
-                }}
-              >
-                <Typography
-                  variant="h6"
-                  sx={{
-                    fontWeight: 600,
-                    color: isDarkMode ? "#f8fafc" : theme.palette.text.primary,
-                  }}
-                >
-                  Auxiliar Contable
-                </Typography>
-                <Chip
-                  label="Feb 2017 - Nov 2017"
-                  size="small"
-                  color="success"
-                  variant="outlined"
-                  sx={{
-                    fontWeight: 500,
-                    ml: 2,
-                  }}
-                />
-              </Box>
-              <Typography
-                variant="subtitle2"
-                sx={{
-                  color: isDarkMode
-                    ? "rgba(255, 255, 255, 0.7)"
-                    : "text.secondary",
-                  mb: 1,
-                }}
-              >
-                CENSA Medellín • Contrato de prácticas
-              </Typography>
-              <Typography
-                variant="body1"
-                sx={{
-                  color: isDarkMode
-                    ? "rgba(255, 255, 255, 0.85)"
-                    : theme.palette.text.secondary,
-                  mt: 1.5,
-                  lineHeight: 1.6,
-                }}
-              >
-                Apoyo en procesos contables básicos, registro de transacciones,
-                archivo de documentación y asistencia en la preparación de
-                informes financieros mensuales.
-              </Typography>
-            </MotionPaper>
-          </MotionBox>
-
-          <Divider
-            sx={{
-              my: 4,
-              borderColor: isDarkMode
-                ? "rgba(255, 255, 255, 0.15)"
-                : "rgba(0, 0, 0, 0.12)",
-            }}
-          />
-          <MotionTypography
-            variant="h5"
-            variants={slideUp}
-            sx={{
-              fontWeight: 600,
-              color: isDarkMode ? "#f8fafc" : theme.palette.text.primary,
-              mb: 3,
-            }}
-          >
             Habilidades Profesionales
           </MotionTypography>
 
@@ -858,6 +533,106 @@ export default function About() {
                   Manejo de sistemas contables como Siigo, World Office, SAP y
                   Microsoft Excel avanzado para análisis financiero y reportes
                   contables.
+                </Typography>
+              </MotionPaper>
+            </Grid>
+
+            <Grid item xs={12} md={6}>
+              <MotionPaper
+                variants={slideUp}
+                elevation={0}
+                sx={{
+                  p: 3,
+                  backgroundColor: isDarkMode
+                    ? "rgba(30, 41, 59, 0.6)"
+                    : "rgba(249, 250, 251, 0.8)",
+                  borderRadius: 3,
+                  height: "100%",
+                  transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                  "&:hover": {
+                    transform: "translateY(-3px)",
+                    boxShadow: isDarkMode
+                      ? "0 8px 24px rgba(0, 0, 0, 0.3)"
+                      : "0 8px 24px rgba(0, 0, 0, 0.08)",
+                  },
+                }}
+              >
+                <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
+                  <Avatar sx={{ bgcolor: "warning.main", mr: 2 }}>
+                    <AccountBalanceIcon />
+                  </Avatar>
+                  <Typography
+                    variant="h6"
+                    sx={{
+                      fontWeight: 600,
+                      color: isDarkMode
+                        ? "#f8fafc"
+                        : theme.palette.text.primary,
+                    }}
+                  >
+                    Implementación NIIF
+                  </Typography>
+                </Box>
+                <Typography
+                  variant="body1"
+                  sx={{
+                    color: isDarkMode
+                      ? "rgba(255, 255, 255, 0.85)"
+                      : theme.palette.text.secondary,
+                    lineHeight: 1.6,
+                  }}
+                >
+                  Adaptación de sistemas contables a Normas Internacionales de Información Financiera, convergencia NIIF para PYMES y preparación de estados financieros bajo estándares internacionales.
+                </Typography>
+              </MotionPaper>
+            </Grid>
+
+            <Grid item xs={12} md={6}>
+              <MotionPaper
+                variants={slideUp}
+                elevation={0}
+                sx={{
+                  p: 3,
+                  backgroundColor: isDarkMode
+                    ? "rgba(30, 41, 59, 0.6)"
+                    : "rgba(249, 250, 251, 0.8)",
+                  borderRadius: 3,
+                  height: "100%",
+                  transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                  "&:hover": {
+                    transform: "translateY(-3px)",
+                    boxShadow: isDarkMode
+                      ? "0 8px 24px rgba(0, 0, 0, 0.3)"
+                      : "0 8px 24px rgba(0, 0, 0, 0.08)",
+                  },
+                }}
+              >
+                <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
+                  <Avatar sx={{ bgcolor: "error.main", mr: 2 }}>
+                    <CalculateIcon />
+                  </Avatar>
+                  <Typography
+                    variant="h6"
+                    sx={{
+                      fontWeight: 600,
+                      color: isDarkMode
+                        ? "#f8fafc"
+                        : theme.palette.text.primary,
+                    }}
+                  >
+                    Análisis Financiero
+                  </Typography>
+                </Box>
+                <Typography
+                  variant="body1"
+                  sx={{
+                    color: isDarkMode
+                      ? "rgba(255, 255, 255, 0.85)"
+                      : theme.palette.text.secondary,
+                    lineHeight: 1.6,
+                  }}
+                >
+                  Interpretación de indicadores financieros, evaluación de rentabilidad, liquidez y solvencia, análisis de costos y elaboración de proyecciones financieras para la toma de decisiones.
                 </Typography>
               </MotionPaper>
             </Grid>
