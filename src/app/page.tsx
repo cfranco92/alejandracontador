@@ -1477,7 +1477,7 @@ export default function Home() {
               </motion.div>
             </motion.div>
 
-            <Grid container spacing={3}>
+            <Grid container spacing={4}>
               {recentPosts.map((post, index) => (
                 <Grid 
                   item 
@@ -1490,118 +1490,155 @@ export default function Home() {
                   transition={{ delay: index * 0.1, duration: 0.5 }}
                 >
                   <Paper 
-                    elevation={1} 
+                    elevation={2} 
                     component={motion.div}
                     whileHover={{ 
                       y: -5,
                       boxShadow: theme.palette.mode === 'dark' 
-                        ? '0 8px 20px -8px rgba(0, 0, 0, 0.4)' 
-                        : '0 8px 20px -10px rgba(0, 0, 0, 0.25)' 
+                        ? '0 10px 25px -8px rgba(0, 0, 0, 0.5)' 
+                        : '0 10px 25px -10px rgba(0, 0, 0, 0.3)' 
                     }}
                     sx={{ 
-                      display: 'flex',
-                      flexDirection: { xs: 'column', sm: 'row' },
-                      height: { xs: 'auto', sm: '200px' },
-                      borderRadius: '10px',
+                      borderRadius: '12px',
                       overflow: 'hidden',
+                      height: '100%',
+                      display: 'flex',
+                      flexDirection: 'column',
                       border: '1px solid',
-                      borderColor: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.08)'
+                      borderColor: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.06)'
                     }}
                   >
-                    <Box 
-                      component={Link}
+                    {/* Imagen del artículo */}
+                    <Link 
                       href={`/blog/${post.id}`}
-                      sx={{ 
-                        position: 'relative',
-                        width: { xs: '100%', sm: '35%' }, 
-                        height: { xs: '200px', sm: '100%' },
-                        backgroundImage: `url(${post.imageUrl})`,
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center',
-                        textDecoration: 'none',
-                        transition: 'all 0.3s ease',
-                        '&:hover': {
-                          opacity: 0.9
-                        }
-                      }}
-                    />
+                      style={{ textDecoration: 'none', display: 'block', position: 'relative' }}
+                    >
+                      <Box 
+                        sx={{ 
+                          position: 'relative',
+                          width: '100%', 
+                          height: '220px',
+                          overflow: 'hidden'
+                        }}
+                      >
+                        <Box
+                          sx={{
+                            position: 'absolute',
+                            top: 0,
+                            left: 0,
+                            width: '100%',
+                            height: '100%',
+                            backgroundImage: `url(${post.imageUrl})`,
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center',
+                            transition: 'all 0.5s ease',
+                            '&:hover': {
+                              transform: 'scale(1.05)'
+                            }
+                          }}
+                        />
+                        <Box 
+                          sx={{
+                            position: 'absolute',
+                            bottom: 0,
+                            left: 0,
+                            width: '100%',
+                            background: 'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%)',
+                            height: '50%',
+                            pointerEvents: 'none'
+                          }}
+                        />
+                      </Box>
+                    </Link>
                     
+                    {/* Contenido del artículo */}
                     <Box sx={{ 
                       p: 3, 
                       flexGrow: 1, 
                       display: 'flex', 
                       flexDirection: 'column',
-                      justifyContent: 'space-between',
+                      justifyContent: 'space-between'
                     }}>
-                      <Box>
-                        <Box sx={{ mb: 1, display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
-                          {post.categories.map((category: string) => (
-                            <Chip 
-                              key={category} 
-                              label={category} 
-                              size="small" 
-                              variant="outlined"
-                              color="primary" 
-                              sx={{ mr: 1, mb: 1, borderRadius: '4px' }} 
-                              component={Link}
-                              href={`/blog?category=${encodeURIComponent(category)}`}
-                              clickable
-                            />
-                          ))}
-                        </Box>
-                        
+                      {/* Categorías */}
+                      <Box sx={{ mb: 2, display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+                        {post.categories.map((category: string) => (
+                          <Chip 
+                            key={category} 
+                            label={category} 
+                            size="small" 
+                            variant="outlined"
+                            color="primary" 
+                            sx={{ 
+                              mr: 1, 
+                              mb: 1, 
+                              borderRadius: '4px',
+                              fontWeight: 500,
+                              border: '1px solid',
+                              borderColor: theme.palette.primary.main
+                            }} 
+                            component={Link}
+                            href={`/blog?category=${encodeURIComponent(category)}`}
+                            clickable
+                          />
+                        ))}
+                      </Box>
+                      
+                      {/* Título */}
+                      <Link 
+                        href={`/blog/${post.id}`}
+                        style={{ 
+                          textDecoration: 'none', 
+                          color: 'inherit',
+                          display: 'block'
+                        }}
+                      >
                         <Typography 
-                          variant="h6" 
-                          component={Link}
-                          href={`/blog/${post.id}`}
+                          variant="h5" 
+                          component="h3"
                           sx={{ 
-                            mb: 1, 
-                            fontWeight: 600,
-                            display: '-webkit-box',
-                            WebkitLineClamp: 2,
-                            WebkitBoxOrient: 'vertical',
-                            overflow: 'hidden',
-                            color: 'text.primary',
-                            textDecoration: 'none',
+                            mb: 2, 
+                            fontWeight: 700,
+                            fontSize: { xs: '1.25rem', md: '1.35rem' },
+                            lineHeight: 1.3,
+                            color: theme.palette.text.primary,
+                            transition: 'color 0.2s ease',
                             '&:hover': {
-                              color: 'primary.main',
-                              textDecoration: 'none'
+                              color: theme.palette.primary.main
                             }
                           }}
                         >
                           {post.title}
                         </Typography>
-                        
-                        <Typography 
-                          variant="body2" 
-                          color="text.secondary" 
-                          sx={{ 
-                            mb: 2,
-                            display: '-webkit-box',
-                            WebkitLineClamp: 2,
-                            WebkitBoxOrient: 'vertical',
-                            overflow: 'hidden'
-                          }}
-                        >
-                          {post.excerpt}
-                        </Typography>
-                      </Box>
+                      </Link>
                       
-                      <Box>
+                      {/* Extracto */}
+                      <Typography 
+                        variant="body1" 
+                        color="text.secondary" 
+                        sx={{ 
+                          mb: 3,
+                          fontSize: '0.95rem',
+                          lineHeight: 1.6
+                        }}
+                      >
+                        {post.excerpt}
+                      </Typography>
+                      
+                      <Box sx={{ mt: 'auto', pt: 2, borderTop: '1px solid', borderColor: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.06)' }}>
+                        {/* Metadatos: autor y fecha */}
                         <Box sx={{ 
                           display: 'flex', 
                           justifyContent: 'space-between',
                           alignItems: 'center',
                           flexWrap: 'wrap',
-                          mb: 2
+                          mb: 3
                         }}>
                           <Box sx={{ 
                             display: 'flex', 
-                            alignItems: 'center', 
-                            mb: { xs: 1, sm: 0 } 
+                            alignItems: 'center'
                           }}>
                             <PersonIcon fontSize="small" sx={{ mr: 0.5, color: 'text.secondary' }} />
-                            <Typography variant="body2" color="text.secondary">
+                            <Typography variant="body2" color="text.secondary" fontWeight={500}>
                               {post.author}
                             </Typography>
                           </Box>
@@ -1614,21 +1651,20 @@ export default function Home() {
                           </Box>
                         </Box>
                         
+                        {/* Botón Leer más */}
                         <Button 
                           component={Link}
                           href={`/blog/${post.id}`}
                           variant="contained" 
                           color="primary"
-                          size="small"
                           endIcon={<ArrowForwardIcon />}
+                          fullWidth
                           sx={{ 
-                            fontWeight: 'normal',
-                            borderRadius: '4px',
+                            fontWeight: 500,
+                            borderRadius: '6px',
                             textTransform: 'none',
-                            px: 2,
-                            mt: 2,
-                            mb: 1,
-                            width: { xs: '100%', sm: 'auto' }
+                            py: 1,
+                            boxShadow: theme.palette.mode === 'dark' ? '0px 3px 8px rgba(0, 0, 0, 0.3)' : '0px 3px 8px rgba(0, 0, 0, 0.1)'
                           }}
                         >
                           Leer más
@@ -1640,7 +1676,7 @@ export default function Home() {
               ))}
             </Grid>
             
-            <Box sx={{ textAlign: 'center', mt: 5 }}>
+            <Box sx={{ textAlign: 'center', mt: 6 }}>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -1655,10 +1691,11 @@ export default function Home() {
                   endIcon={<ArrowForwardIcon />}
                   sx={{ 
                     px: 4,
-                    py: 1,
+                    py: 1.2,
                     borderRadius: '8px',
                     textTransform: 'none',
-                    fontWeight: 'normal'
+                    fontWeight: 500,
+                    borderWidth: '2px'
                   }}
                 >
                   Ver todos los artículos
