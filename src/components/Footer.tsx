@@ -4,8 +4,6 @@ import { Box, IconButton, Container, Typography, Divider, useTheme, useMediaQuer
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import EmailIcon from "@mui/icons-material/Email";
-import Image from "next/image";
-import DarkModeIcon from '@mui/icons-material/DarkMode';
 
 export default function Footer() {
   const theme = useTheme();
@@ -127,7 +125,7 @@ export default function Footer() {
             display: 'flex', 
             flexDirection: { xs: 'column', sm: 'row' }, 
             alignItems: 'center', 
-            gap: 1,
+            justifyContent: 'center',
             color: isDarkMode ? theme.palette.text.secondary : theme.palette.text.secondary,
             textAlign: 'center'
           }}>
@@ -139,65 +137,6 @@ export default function Footer() {
               }}
             >
               © {new Date().getFullYear()} Alejandra Bertón. Todos los derechos reservados.
-            </Typography>
-            <Box sx={{ 
-              display: 'flex', 
-              alignItems: 'center', 
-              gap: 0.5,
-              mt: { xs: 1, sm: 0 },
-              ml: { xs: 0, sm: 1 }
-            }}>
-              <Typography 
-                variant="body2" 
-                sx={{ 
-                  fontSize: '0.75rem',
-                  color: 'inherit'
-                }}
-              >
-                Desarrollado con
-              </Typography>
-              <Box sx={{
-                filter: isDarkMode ? 'invert(1)' : 'none',
-                opacity: 0.9,
-                transition: 'opacity 0.2s',
-                '&:hover': {
-                  opacity: 1
-                }
-              }}>
-                <Image
-                  src="/next.svg"
-                  alt="Next.js logo"
-                  width={40}
-                  height={20}
-                />
-              </Box>
-            </Box>
-          </Box>
-          
-          {/* Mensaje sobre modo oscuro automático */}
-          <Box 
-            sx={{ 
-              display: 'flex', 
-              alignItems: 'center', 
-              justifyContent: 'center',
-              gap: 0.5,
-              mt: 1.5,
-              backgroundColor: isDarkMode ? 'rgba(217, 176, 156, 0.1)' : 'rgba(217, 176, 156, 0.08)',
-              borderRadius: '8px',
-              py: 0.5,
-              px: 1.5
-            }}
-          >
-            <DarkModeIcon sx={{ fontSize: '0.875rem', opacity: 0.7 }} />
-            <Typography 
-              variant="caption" 
-              sx={{ 
-                fontSize: '0.7rem',
-                color: isDarkMode ? theme.palette.text.secondary : theme.palette.text.secondary,
-                fontStyle: 'italic'
-              }}
-            >
-              Modo oscuro automático se activa a las 7pm
             </Typography>
           </Box>
         </Box>
