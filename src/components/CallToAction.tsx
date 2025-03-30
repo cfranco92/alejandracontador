@@ -1,8 +1,12 @@
 "use client";
 
 import { motion } from 'framer-motion';
-import { Box, Typography, Button, Paper, useMediaQuery, useTheme } from '@mui/material';
+import { Box, Typography, Button, Paper, useMediaQuery, useTheme, Divider, Chip, Avatar } from '@mui/material';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import SupportAgentIcon from '@mui/icons-material/SupportAgent';
+import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
 import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
 
@@ -23,6 +27,25 @@ export default function CallToAction() {
     { top: "10%", left: "60%", scaleInitial: 0.85, x1: -15, y1: 25, x2: 15, y2: -25, duration: 14 },
   ];
 
+  const beneficios = [
+    { icon: <AccessTimeIcon fontSize="small" />, text: "Respuesta en menos de 24h" },
+    { icon: <CheckCircleIcon fontSize="small" />, text: "Primera consulta sin costo" },
+    { icon: <SupportAgentIcon fontSize="small" />, text: "Atención personalizada" }
+  ];
+
+  const testimonios = [
+    { 
+      nombre: "María González", 
+      empresa: "Pyme", 
+      texto: "Excelente servicio, resolvió mis dudas tributarias con rapidez y profesionalismo." 
+    },
+    { 
+      nombre: "Carlos Ramírez", 
+      empresa: "Emprendedor", 
+      texto: "Recomiendo totalmente sus servicios, me ayudó a organizar la contabilidad de mi negocio." 
+    }
+  ];
+
   // Este efecto garantiza que las animaciones solo se ejecuten en el cliente
   useEffect(() => {
     setIsClient(true);
@@ -31,7 +54,7 @@ export default function CallToAction() {
   return (
     <Paper 
       elevation={isDarkMode ? 3 : 2} 
-      className="p-6 sm:p-8 md:p-12 rounded-xl my-10 overflow-hidden relative"
+      className="p-6 sm:p-8 md:p-10 rounded-xl my-10 overflow-hidden relative"
       sx={{
         background: isDarkMode 
           ? `linear-gradient(135deg, ${theme.palette.secondary.dark} 0%, ${theme.palette.secondary.main} 100%)` 
@@ -83,20 +106,48 @@ export default function CallToAction() {
           <Typography 
             variant={isMobile ? "h5" : "h4"} 
             component="h2" 
-            className="font-bold mb-4 text-center sm:text-left"
+            className="font-bold mb-3 text-center sm:text-left"
             sx={{ color: isDarkMode ? '#f9f6f3' : '#3c3c3c', textShadow: '0 1px 2px rgba(0,0,0,0.1)' }}
           >
             ¿Necesitas asesoría contable o tributaria?
           </Typography>
           <Typography 
             variant="body1" 
-            className="mb-6 max-w-xl text-center sm:text-left text-sm md:text-base"
+            className="mb-4 max-w-xl text-center sm:text-left text-sm md:text-base"
             sx={{ color: isDarkMode ? 'rgba(249, 246, 243, 0.9)' : 'rgba(60, 60, 60, 0.95)' }}
           >
             Resuelve tus dudas y optimiza tus finanzas con un servicio personalizado. Contáctame hoy mismo para una consulta.
           </Typography>
           
-          <Box className="flex flex-col sm:flex-row gap-4 justify-center sm:justify-start">
+          {/* Elementos de confianza */}
+          <Box 
+            sx={{ 
+              display: 'flex', 
+              flexWrap: 'wrap',
+              gap: 2,
+              mb: 4,
+              justifyContent: { xs: 'center', sm: 'flex-start' }
+            }}
+          >
+            {beneficios.map((beneficio, index) => (
+              <Chip
+                key={index}
+                icon={beneficio.icon}
+                label={beneficio.text}
+                sx={{
+                  bgcolor: isDarkMode ? 'rgba(249, 246, 243, 0.1)' : 'rgba(249, 246, 243, 0.4)',
+                  color: isDarkMode ? '#f9f6f3' : '#3c3c3c',
+                  fontWeight: 500,
+                  borderRadius: '16px',
+                  '& .MuiChip-icon': {
+                    color: isDarkMode ? theme.palette.secondary.light : theme.palette.secondary.dark,
+                  }
+                }}
+              />
+            ))}
+          </Box>
+          
+          <Box className="flex flex-col sm:flex-row gap-3 justify-center sm:justify-start mb-6">
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -141,6 +192,119 @@ export default function CallToAction() {
                 Ver Servicios
               </Button>
             </motion.div>
+          </Box>
+          
+          {/* Testimonios */}
+          <Divider 
+            sx={{ 
+              my: 3, 
+              borderColor: isDarkMode ? 'rgba(249, 246, 243, 0.2)' : 'rgba(60, 60, 60, 0.1)',
+              width: '100%'
+            }} 
+          />
+          
+          <Box 
+            sx={{ 
+              display: 'flex', 
+              flexDirection: { xs: 'column', md: 'row' },
+              gap: 3,
+              alignItems: 'stretch',
+              justifyContent: 'space-between'
+            }}
+          >
+            <Typography 
+              variant="subtitle2" 
+              sx={{ 
+                display: 'flex',
+                alignItems: 'center',
+                color: isDarkMode ? 'rgba(249, 246, 243, 0.8)' : 'rgba(60, 60, 60, 0.8)',
+                fontStyle: 'italic',
+                mb: { xs: 0, md: 'auto' }
+              }}
+            >
+              <FormatQuoteIcon 
+                fontSize="small" 
+                sx={{ 
+                  mr: 1,
+                  transform: 'rotate(180deg)',
+                  color: isDarkMode ? theme.palette.secondary.light : theme.palette.secondary.dark
+                }} 
+              />
+              Lo que dicen mis clientes:
+            </Typography>
+            
+            <Box 
+              sx={{ 
+                display: 'flex', 
+                flexDirection: { xs: 'column', sm: 'row' },
+                gap: 2,
+                flex: 1
+              }}
+            >
+              {testimonios.map((testimonio, index) => (
+                <Box 
+                  key={index}
+                  sx={{
+                    flex: 1,
+                    backgroundColor: isDarkMode ? 'rgba(249, 246, 243, 0.05)' : 'rgba(249, 246, 243, 0.3)',
+                    borderRadius: 2,
+                    p: 2,
+                    position: 'relative',
+                    border: '1px solid',
+                    borderColor: isDarkMode ? 'rgba(249, 246, 243, 0.1)' : 'rgba(60, 60, 60, 0.05)'
+                  }}
+                >
+                  <Typography 
+                    variant="body2"
+                    sx={{ 
+                      color: isDarkMode ? 'rgba(249, 246, 243, 0.9)' : 'rgba(60, 60, 60, 0.9)',
+                      fontStyle: 'italic',
+                      fontSize: '0.85rem',
+                      mb: 1.5
+                    }}
+                  >
+                    &ldquo;{testimonio.texto}&rdquo;
+                  </Typography>
+                  
+                  <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                    <Avatar
+                      sx={{ 
+                        width: 24, 
+                        height: 24,
+                        bgcolor: isDarkMode ? theme.palette.secondary.dark : theme.palette.secondary.main,
+                        fontSize: '0.75rem',
+                        mr: 1
+                      }}
+                    >
+                      {testimonio.nombre.charAt(0)}
+                    </Avatar>
+                    <Box>
+                      <Typography 
+                        variant="caption" 
+                        sx={{ 
+                          fontWeight: 600,
+                          color: isDarkMode ? 'rgba(249, 246, 243, 0.9)' : 'rgba(60, 60, 60, 0.9)',
+                          display: 'block',
+                          lineHeight: 1.2
+                        }}
+                      >
+                        {testimonio.nombre}
+                      </Typography>
+                      <Typography 
+                        variant="caption" 
+                        sx={{ 
+                          color: isDarkMode ? 'rgba(249, 246, 243, 0.7)' : 'rgba(60, 60, 60, 0.7)',
+                          fontSize: '0.65rem',
+                          lineHeight: 1.2
+                        }}
+                      >
+                        {testimonio.empresa}
+                      </Typography>
+                    </Box>
+                  </Box>
+                </Box>
+              ))}
+            </Box>
           </Box>
         </motion.div>
       </Box>
