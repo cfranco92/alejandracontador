@@ -92,9 +92,10 @@ export default function CallToAction() {
             style={{
               top: particle.top,
               left: particle.left,
-              backgroundColor: isDarkMode ? 'rgba(249, 246, 243, 0.08)' : 'rgba(249, 246, 243, 0.15)',
+              backgroundColor: isDarkMode ? 'rgba(249, 246, 243, 0.08)' : 'rgba(255, 255, 255, 0.6)',
               backdropFilter: 'blur(4px)',
-              border: isDarkMode ? '1px solid rgba(249, 246, 243, 0.08)' : '1px solid rgba(249, 246, 243, 0.2)',
+              border: isDarkMode ? '1px solid rgba(249, 246, 243, 0.08)' : '1px solid rgba(255, 255, 255, 0.8)',
+              boxShadow: isDarkMode ? 'none' : '0 2px 8px rgba(0, 0, 0, 0.03)'
             }}
           />
         ))}
@@ -138,10 +139,12 @@ export default function CallToAction() {
                 icon={beneficio.icon}
                 label={beneficio.text}
                 sx={{
-                  bgcolor: isDarkMode ? 'rgba(249, 246, 243, 0.1)' : 'rgba(249, 246, 243, 0.4)',
+                  bgcolor: isDarkMode ? 'rgba(249, 246, 243, 0.1)' : 'rgba(255, 255, 255, 0.9)',
                   color: isDarkMode ? '#f9f6f3' : '#3c3c3c',
                   fontWeight: 500,
                   borderRadius: '16px',
+                  border: isDarkMode ? 'none' : '1px solid rgba(60, 60, 60, 0.1)',
+                  boxShadow: isDarkMode ? 'none' : '0 1px 3px rgba(0, 0, 0, 0.05)',
                   '& .MuiChip-icon': {
                     color: isDarkMode ? theme.palette.secondary.light : theme.palette.secondary.dark,
                   }
@@ -284,12 +287,13 @@ export default function CallToAction() {
                   key={index}
                   sx={{
                     flex: 1,
-                    backgroundColor: isDarkMode ? 'rgba(249, 246, 243, 0.05)' : 'rgba(249, 246, 243, 0.3)',
+                    backgroundColor: isDarkMode ? 'rgba(249, 246, 243, 0.05)' : 'rgba(255, 255, 255, 0.9)',
                     borderRadius: 2,
                     p: 1.5,
                     position: 'relative',
                     border: '1px solid',
-                    borderColor: isDarkMode ? 'rgba(249, 246, 243, 0.1)' : 'rgba(60, 60, 60, 0.05)'
+                    borderColor: isDarkMode ? 'rgba(249, 246, 243, 0.1)' : 'rgba(60, 60, 60, 0.05)',
+                    boxShadow: isDarkMode ? 'none' : '0 2px 8px rgba(0, 0, 0, 0.05)'
                   }}
                 >
                   <Typography 

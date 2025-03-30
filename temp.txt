@@ -1,0 +1,3 @@
+
+
+      {/* Hero Section con nueva organización para mobile */}

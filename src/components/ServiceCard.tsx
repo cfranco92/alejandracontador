@@ -40,7 +40,8 @@ export default function ServiceCard({ title, description, icon, delay = 0 }: Ser
   const iconVariants = {
     hover: { 
       scale: 1.1,
-      transition: { duration: 0.3 } 
+      rotate: [0, 5, 0],
+      transition: { duration: 0.4, times: [0, 0.5, 1] } 
     }
   };
 
@@ -48,9 +49,9 @@ export default function ServiceCard({ title, description, icon, delay = 0 }: Ser
   const glowVariants = {
     hover: {
       boxShadow: isDark 
-        ? '0 0 20px 5px rgba(233, 201, 187, 0.3)' 
-        : '0 0 20px 5px rgba(233, 201, 187, 0.2)',
-      transition: { duration: 0.3 }
+        ? '0 0 25px 8px rgba(233, 201, 187, 0.35)' 
+        : '0 0 25px 8px rgba(233, 201, 187, 0.25)',
+      transition: { duration: 0.4 }
     }
   };
 
@@ -88,13 +89,16 @@ export default function ServiceCard({ title, description, icon, delay = 0 }: Ser
       }}
     >
       <Paper 
-        elevation={isDark ? 2 : 1}
+        elevation={isDark ? 3 : 1}
         sx={{
           height: '100%',
           p: { xs: 2.5, md: 3 },
           transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
           backgroundImage: 'none',
-          backgroundColor: isDark ? theme.palette.background.paper : theme.palette.background.paper,
+          backgroundColor: isDark 
+            ? 'rgba(30, 30, 30, 0.85)' 
+            : 'rgba(255, 255, 255, 0.9)',
+          backdropFilter: 'blur(8px)',
           borderRadius: 3,
           border: '1px solid',
           borderColor: isDark ? 'rgba(255, 255, 255, 0.08)' : theme.palette.secondary.light,
@@ -109,7 +113,7 @@ export default function ServiceCard({ title, description, icon, delay = 0 }: Ser
             left: 0,
             width: '100%',
             height: '100%',
-            background: `linear-gradient(135deg, transparent 0%, ${isDark ? 'rgba(233, 201, 187, 0.03)' : 'rgba(233, 201, 187, 0.05)'} 100%)`,
+            background: `linear-gradient(135deg, transparent 0%, ${isDark ? 'rgba(233, 201, 187, 0.05)' : 'rgba(233, 201, 187, 0.08)'} 100%)`,
             zIndex: 0
           }
         }}
@@ -126,14 +130,16 @@ export default function ServiceCard({ title, description, icon, delay = 0 }: Ser
                   mr: 2,
                   borderRadius: '16px',
                   overflow: 'hidden',
-                  background: isDark ? 'rgba(233, 201, 187, 0.1)' : 'rgba(233, 201, 187, 0.2)',
+                  background: isDark ? 'rgba(233, 201, 187, 0.12)' : 'rgba(233, 201, 187, 0.25)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   p: 1.5,
                   border: '1px solid',
-                  borderColor: isDark ? 'rgba(233, 201, 187, 0.2)' : 'rgba(233, 201, 187, 0.3)',
-                  boxShadow: '0 4px 8px rgba(0, 0, 0, 0.08)'
+                  borderColor: isDark ? 'rgba(233, 201, 187, 0.25)' : 'rgba(233, 201, 187, 0.4)',
+                  boxShadow: isDark 
+                    ? '0 4px 10px rgba(0, 0, 0, 0.15)' 
+                    : '0 4px 10px rgba(0, 0, 0, 0.1)'
                 }}
               >
                 {renderIcon()}
@@ -147,7 +153,8 @@ export default function ServiceCard({ title, description, icon, delay = 0 }: Ser
                 fontSize: { xs: '1.05rem', md: '1.15rem' },
                 color: isDark ? theme.palette.primary.main : theme.palette.primary.main,
                 position: 'relative',
-                zIndex: 1
+                zIndex: 1,
+                textShadow: isDark ? '0px 1px 2px rgba(0, 0, 0, 0.3)' : 'none'
               }}
             >
               {title}
@@ -179,17 +186,17 @@ export default function ServiceCard({ title, description, icon, delay = 0 }: Ser
             variants={{
               initial: { width: 0, opacity: 0 },
               hover: { 
-                width: '30%', 
+                width: '40%', 
                 opacity: 1,
-                transition: { duration: 0.3 } 
+                transition: { duration: 0.4 } 
               }
             }}
             initial="initial"
             style={{
-              height: '2px',
+              height: '3px',
               background: isDark ? theme.palette.secondary.main : theme.palette.secondary.main,
               marginTop: '16px',
-              borderRadius: '2px'
+              borderRadius: '3px'
             }}
           />
         </motion.div>

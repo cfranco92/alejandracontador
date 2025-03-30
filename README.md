@@ -34,3 +34,14 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Recursos multimedia - Importante
+
+La página de inicio cuenta con un fondo animado interactivo que funciona automáticamente. Este fondo incluye:
+
+- Partículas animadas con efectos de movimiento fluido
+- Símbolos financieros ($, %, +, -) con animaciones suaves 
+- Líneas gráficas que simulan datos financieros
+- Gradientes sutiles que complementan el diseño
+
+Todas estas animaciones están implementadas directamente en el código y no requieren recursos externos adicionales.

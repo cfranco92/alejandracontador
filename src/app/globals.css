@@ -83,16 +83,177 @@ body {
   color: var(--muted-foreground);
 }
 
+/* Animaciones para los elementos flotantes */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes float-delayed {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes float-delayed-more {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(217, 176, 156, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 20px rgba(217, 176, 156, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(217, 176, 156, 0);
+  }
+}
+
+/* Nuevas animaciones para el fondo interactivo */
+@keyframes float-particle {
+  0% {
+    transform: scale(0) translate(0, 0);
+  }
+  10% {
+    transform: scale(1) translate(20px, 20px);
+  }
+  90% {
+    transform: scale(1) translate(100px, 100px);
+  }
+  100% {
+    transform: scale(0) translate(120px, 120px);
+  }
+}
+
+@keyframes float-line {
+  0% {
+    transform: scale(0) rotate(0deg);
+  }
+  10% {
+    transform: scale(1) rotate(45deg);
+  }
+  90% {
+    transform: scale(1) rotate(180deg);
+  }
+  100% {
+    transform: scale(0) rotate(225deg);
+  }
+}
+
+@keyframes float-symbol {
+  0% {
+    transform: translateY(0) scale(0.5) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    transform: translateY(-20px) scale(1) rotate(10deg);
+    opacity: 0.2;
+  }
+  90% {
+    transform: translateY(-100px) scale(1) rotate(-10deg);
+    opacity: 0.2;
+  }
+  100% {
+    transform: translateY(-120px) scale(0.5) rotate(0deg);
+    opacity: 0;
+  }
+}
+
+@keyframes pulse-slow {
+  0% {
+    opacity: 0.2;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 0.4;
+    transform: scale(1.2);
+  }
+}
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float-delayed 6s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+.animate-float-delayed-more {
+  animation: float-delayed-more 7s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+/* Clases de retraso para partículas y líneas */
+.particle-0 {
+  animation-delay: 0s;
+}
+
+.particle-1 {
+  animation-delay: 5s;
+}
+
+.particle-2 {
+  animation-delay: 10s;
+}
+
+.particle-3 {
+  animation-delay: 15s;
+}
+
+.line-0 {
+  animation-delay: 2s;
+}
+
+.line-1 {
+  animation-delay: 7s;
+}
+
+.line-2 {
+  animation-delay: 12s;
+}
+
+.symbol-0 {
+  animation-delay: 0s;
+}
+
+.symbol-1 {
+  animation-delay: 5s;
+}
+
+.symbol-2 {
+  animation-delay: 10s;
+}
+
+.symbol-3 {
+  animation-delay: 15s;
+}
+
+/* Animaciones antiguas que mantenemos por compatibilidad */
 @layer utilities {
-  .animate-float {
-    animation: float 5s infinite;
-  }
-  
-  .animate-float-delayed {
-    animation: float 5s infinite;
-    animation-delay: 1s;
-  }
-  
   .animate-float-slow {
     animation: float 7s infinite;
     animation-delay: 2s;
@@ -101,14 +262,5 @@ body {
   .animate-float-very-slow {
     animation: float 8s infinite;
     animation-delay: 0.5s;
-  }
-
-  @keyframes float {
-    0%, 100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
   }
 }
