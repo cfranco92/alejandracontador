@@ -414,8 +414,8 @@ export default function Home() {
                           lineHeight: 1.6,
                         }}
                       >
-                        Soluciones contables y tributarias personalizadas para empresas y personas naturales. 
-                        Optimiza tus finanzas y cumple con tus obligaciones fiscales de manera eficiente.
+                        Soluciones contables y tributarias personalizadas para empresas y personas naturales.
+                        Optimiza tus finanzas con asesoría profesional y nuestro asistente de IA disponible 24/7 para consultas inmediatas.
                       </Typography>
                     </Paper>
                   </motion.div>
@@ -553,7 +553,7 @@ export default function Home() {
                     sx={{ 
                       borderColor: theme.palette.secondary.main,
                       boxShadow: `0 0 30px 10px ${theme.palette.mode === 'dark' ? 'rgba(217, 176, 156, 0.4)' : 'rgba(217, 176, 156, 0.3)'}`,
-                      animation: 'pulse 4s infinite'
+                      animation: 'pulse 6s infinite ease-in-out'
                     }}
                   >
                     <Image
@@ -869,8 +869,8 @@ export default function Home() {
                       maxWidth: '90%'
                     }}
                   >
-                    Soluciones contables y tributarias personalizadas para empresas y personas naturales. 
-                    Optimiza tus finanzas y cumple con tus obligaciones fiscales.
+                    Soluciones contables y tributarias personalizadas con tecnología de IA. 
+                    Consulta con nuestro asistente virtual 24/7 o agenda una asesoría personalizada para optimizar tus finanzas.
                   </Typography>
 
                   <Box className="flex flex-wrap gap-2 justify-center mb-6">

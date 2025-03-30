@@ -58,12 +58,12 @@ export default function CallToAction() {
       className="p-6 sm:p-8 md:p-10 rounded-xl my-6 overflow-hidden relative"
       sx={{
         background: isDarkMode 
-          ? `linear-gradient(135deg, ${theme.palette.secondary.dark} 0%, ${theme.palette.secondary.main} 100%)` 
-          : `linear-gradient(135deg, ${theme.palette.secondary.main} 0%, ${theme.palette.secondary.light} 100%)`,
-        border: isDarkMode ? '1px solid rgba(217, 176, 156, 0.2)' : 'none',
+          ? `linear-gradient(135deg, rgba(40, 30, 50, 0.9) 0%, rgba(70, 40, 60, 0.85) 100%)` 
+          : `linear-gradient(135deg, rgba(253, 242, 238, 0.85) 0%, rgba(247, 232, 227, 0.9) 100%)`,
+        border: isDarkMode ? '1px solid rgba(100, 80, 100, 0.2)' : 'none',
         boxShadow: isDarkMode 
-          ? '0 10px 30px -15px rgba(0, 0, 0, 0.5)' 
-          : '0 10px 30px -15px rgba(217, 176, 156, 0.5)',
+          ? '0 10px 30px -15px rgba(0, 0, 0, 0.6)' 
+          : '0 10px 30px -15px rgba(217, 176, 156, 0.25)',
         mt: { xs: 6, md: 8 },
         mb: { xs: 1, md: 2 }
       }}
@@ -92,10 +92,10 @@ export default function CallToAction() {
             style={{
               top: particle.top,
               left: particle.left,
-              backgroundColor: isDarkMode ? 'rgba(249, 246, 243, 0.08)' : 'rgba(255, 255, 255, 0.6)',
+              backgroundColor: isDarkMode ? 'rgba(120, 100, 140, 0.15)' : 'rgba(255, 255, 255, 0.8)',
               backdropFilter: 'blur(4px)',
-              border: isDarkMode ? '1px solid rgba(249, 246, 243, 0.08)' : '1px solid rgba(255, 255, 255, 0.8)',
-              boxShadow: isDarkMode ? 'none' : '0 2px 8px rgba(0, 0, 0, 0.03)'
+              border: isDarkMode ? '1px solid rgba(140, 120, 160, 0.15)' : '1px solid rgba(255, 255, 255, 0.9)',
+              boxShadow: isDarkMode ? '0 2px 8px rgba(0, 0, 0, 0.1)' : '0 1px 4px rgba(0, 0, 0, 0.01)'
             }}
           />
         ))}
@@ -111,16 +111,16 @@ export default function CallToAction() {
             variant={isMobile ? "h5" : "h4"} 
             component="h2" 
             className="font-bold mb-3 text-center sm:text-left"
-            sx={{ color: isDarkMode ? '#f9f6f3' : '#3c3c3c', textShadow: '0 1px 2px rgba(0,0,0,0.1)' }}
+            sx={{ color: isDarkMode ? '#f0e6ff' : '#3c3c3c', textShadow: '0 1px 2px rgba(0,0,0,0.1)' }}
           >
             ¿Necesitas asesoría contable o tributaria?
           </Typography>
           <Typography 
             variant="body1" 
             className="mb-4 max-w-xl text-center sm:text-left text-sm md:text-base"
-            sx={{ color: isDarkMode ? 'rgba(249, 246, 243, 0.9)' : 'rgba(60, 60, 60, 0.95)' }}
+            sx={{ color: isDarkMode ? 'rgba(240, 230, 255, 0.9)' : 'rgba(60, 60, 60, 0.95)' }}
           >
-            Resuelve tus dudas y optimiza tus finanzas con un servicio personalizado. Contáctame hoy mismo para una consulta.
+            Resuelve tus dudas y optimiza tus finanzas con un servicio personalizado. Ahora puedes consultar con mi asistente de IA disponible 24/7 o contactarme directamente para una asesoría profesional.
           </Typography>
           
           {/* Elementos de confianza */}
@@ -139,14 +139,14 @@ export default function CallToAction() {
                 icon={beneficio.icon}
                 label={beneficio.text}
                 sx={{
-                  bgcolor: isDarkMode ? 'rgba(249, 246, 243, 0.1)' : 'rgba(255, 255, 255, 0.9)',
-                  color: isDarkMode ? '#f9f6f3' : '#3c3c3c',
+                  bgcolor: isDarkMode ? 'rgba(110, 90, 130, 0.2)' : 'rgba(255, 255, 255, 0.9)',
+                  color: isDarkMode ? '#f0e6ff' : '#3c3c3c',
                   fontWeight: 500,
                   borderRadius: '16px',
-                  border: isDarkMode ? 'none' : '1px solid rgba(60, 60, 60, 0.1)',
-                  boxShadow: isDarkMode ? 'none' : '0 1px 3px rgba(0, 0, 0, 0.05)',
+                  border: isDarkMode ? '1px solid rgba(140, 120, 160, 0.2)' : '1px solid rgba(60, 60, 60, 0.1)',
+                  boxShadow: isDarkMode ? '0 2px 5px rgba(0, 0, 0, 0.1)' : '0 1px 3px rgba(0, 0, 0, 0.05)',
                   '& .MuiChip-icon': {
-                    color: isDarkMode ? theme.palette.secondary.light : theme.palette.secondary.dark,
+                    color: isDarkMode ? 'rgba(200, 180, 240, 0.9)' : 'rgba(217, 164, 145, 0.7)',
                   }
                 }}
               />
@@ -165,10 +165,10 @@ export default function CallToAction() {
                 onClick={() => router.push('/contact')}
                 sx={{
                   fontWeight: 600,
-                  backgroundColor: isDarkMode ? '#f9f6f3' : '#3c3c3c',
-                  color: isDarkMode ? '#3c3c3c' : '#f9f6f3',
+                  backgroundColor: isDarkMode ? '#c8b4f0' : '#3c3c3c',
+                  color: isDarkMode ? '#2a2040' : '#f9f6f3',
                   '&:hover': {
-                    backgroundColor: isDarkMode ? '#ffffff' : '#2a2a2a'
+                    backgroundColor: isDarkMode ? '#d8c8ff' : '#2a2a2a'
                   },
                   boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
                 }}
@@ -187,11 +187,11 @@ export default function CallToAction() {
                 onClick={() => router.push('/portfolio')}
                 sx={{
                   fontWeight: 600,
-                  borderColor: isDarkMode ? 'rgba(249, 246, 243, 0.8)' : 'rgba(60, 60, 60, 0.8)',
-                  color: isDarkMode ? '#f9f6f3' : '#3c3c3c',
+                  borderColor: isDarkMode ? 'rgba(200, 180, 240, 0.8)' : 'rgba(60, 60, 60, 0.8)',
+                  color: isDarkMode ? '#f0e6ff' : '#3c3c3c',
                   '&:hover': {
-                    borderColor: isDarkMode ? '#f9f6f3' : '#3c3c3c',
-                    backgroundColor: isDarkMode ? 'rgba(249, 246, 243, 0.1)' : 'rgba(60, 60, 60, 0.1)'
+                    borderColor: isDarkMode ? '#c8b4f0' : '#3c3c3c',
+                    backgroundColor: isDarkMode ? 'rgba(110, 90, 130, 0.15)' : 'rgba(60, 60, 60, 0.1)'
                   }
                 }}
               >
@@ -229,7 +229,7 @@ export default function CallToAction() {
                   }
                 }}
               >
-                Chat IA
+                Chat IA 24/7
               </Button>
             </motion.div>
           </Box>
@@ -257,7 +257,7 @@ export default function CallToAction() {
               sx={{ 
                 display: 'flex',
                 alignItems: 'center',
-                color: isDarkMode ? 'rgba(249, 246, 243, 0.8)' : 'rgba(60, 60, 60, 0.8)',
+                color: isDarkMode ? 'rgba(240, 230, 255, 0.8)' : 'rgba(60, 60, 60, 0.8)',
                 fontStyle: 'italic',
                 mb: { xs: 0, md: 'auto' },
                 fontSize: '0.8rem'
@@ -268,10 +268,10 @@ export default function CallToAction() {
                 sx={{ 
                   mr: 0.5,
                   transform: 'rotate(180deg)',
-                  color: isDarkMode ? theme.palette.secondary.light : theme.palette.secondary.dark
+                  color: isDarkMode ? 'rgba(200, 180, 240, 0.9)' : 'rgba(217, 164, 145, 0.7)'
                 }} 
               />
-              Lo que dicen mis clientes:
+              Experiencias de clientes satisfechos:
             </Typography>
             
             <Box 
@@ -287,19 +287,19 @@ export default function CallToAction() {
                   key={index}
                   sx={{
                     flex: 1,
-                    backgroundColor: isDarkMode ? 'rgba(249, 246, 243, 0.05)' : 'rgba(255, 255, 255, 0.9)',
+                    backgroundColor: isDarkMode ? 'rgba(80, 60, 100, 0.3)' : 'rgba(255, 255, 255, 0.9)',
                     borderRadius: 2,
                     p: 1.5,
                     position: 'relative',
                     border: '1px solid',
-                    borderColor: isDarkMode ? 'rgba(249, 246, 243, 0.1)' : 'rgba(60, 60, 60, 0.05)',
-                    boxShadow: isDarkMode ? 'none' : '0 2px 8px rgba(0, 0, 0, 0.05)'
+                    borderColor: isDarkMode ? 'rgba(140, 120, 160, 0.2)' : 'rgba(60, 60, 60, 0.05)',
+                    boxShadow: isDarkMode ? '0 3px 10px rgba(0, 0, 0, 0.2)' : '0 2px 8px rgba(0, 0, 0, 0.05)'
                   }}
                 >
                   <Typography 
                     variant="body2"
                     sx={{ 
-                      color: isDarkMode ? 'rgba(249, 246, 243, 0.9)' : 'rgba(60, 60, 60, 0.9)',
+                      color: isDarkMode ? 'rgba(240, 230, 255, 0.9)' : 'rgba(60, 60, 60, 0.9)',
                       fontStyle: 'italic',
                       fontSize: '0.8rem',
                       mb: 1
@@ -313,7 +313,7 @@ export default function CallToAction() {
                       sx={{ 
                         width: 24, 
                         height: 24,
-                        bgcolor: isDarkMode ? theme.palette.secondary.dark : theme.palette.secondary.main,
+                        bgcolor: isDarkMode ? 'rgba(160, 130, 190, 0.8)' : 'rgba(217, 164, 145, 0.6)',
                         fontSize: '0.75rem',
                         mr: 1
                       }}
@@ -325,7 +325,7 @@ export default function CallToAction() {
                         variant="caption" 
                         sx={{ 
                           fontWeight: 600,
-                          color: isDarkMode ? 'rgba(249, 246, 243, 0.9)' : 'rgba(60, 60, 60, 0.9)',
+                          color: isDarkMode ? 'rgba(240, 230, 255, 0.9)' : 'rgba(60, 60, 60, 0.9)',
                           display: 'block',
                           lineHeight: 1.2
                         }}
@@ -335,7 +335,7 @@ export default function CallToAction() {
                       <Typography 
                         variant="caption" 
                         sx={{ 
-                          color: isDarkMode ? 'rgba(249, 246, 243, 0.7)' : 'rgba(60, 60, 60, 0.7)',
+                          color: isDarkMode ? 'rgba(200, 180, 240, 0.7)' : 'rgba(60, 60, 60, 0.7)',
                           fontSize: '0.65rem',
                           lineHeight: 1.2
                         }}
