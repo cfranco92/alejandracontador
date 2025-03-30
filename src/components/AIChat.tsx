@@ -92,7 +92,7 @@ export default function AIChat({ dialogMode = false }: AIChatProps) {
       });
       
       // Llamar a nuestra API
-      const response = await fetch('/api/chat', {
+      const response = await fetch('https://alejandracontador-production.up.railway.app/api/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -207,7 +207,7 @@ export default function AIChat({ dialogMode = false }: AIChatProps) {
     if (aiResponses.length > 0) {
       // Usar la API para generar un resumen conciso
       try {
-        const response = await fetch('/api/chat', {
+        const response = await fetch('https://alejandracontador-production.up.railway.app/api/chat', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
