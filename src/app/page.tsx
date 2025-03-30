@@ -12,7 +12,6 @@ import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import MonitorHeartIcon from '@mui/icons-material/MonitorHeart';
 
 import ServiceCard from "@/components/ServiceCard";
-import StatsCounter from "@/components/StatsCounter";
 import CallToAction from "@/components/CallToAction";
 
 export default function Home() {
@@ -654,7 +653,7 @@ export default function Home() {
       </Box>
 
       {/* Estadísticas animadas */}
-      <StatsCounter />
+      
 
       {/* Servicios Section */}
       <Box className="py-16">
