@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Typography, Container, Grid, Box, Button, Paper, Divider, useMediaQuery, useTheme } from "@mui/material";
+import { Typography, Container, Grid, Box, Button, Paper, useMediaQuery, useTheme } from "@mui/material";
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import EmailIcon from '@mui/icons-material/Email';
@@ -663,44 +663,167 @@ export default function Home() {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <Typography 
-            variant={isMobile ? "h4" : "h3"} 
-            component="h2" 
-            sx={{
-              fontWeight: 700,
-              color: theme.palette.primary.main,
-              mb: 3
-            }}
+          <motion.div
+            initial={{ scale: 0.9, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            transition={{ type: "spring", stiffness: 300, damping: 15 }}
           >
-            Mis Servicios
-          </Typography>
-          <Typography 
-            variant="body1" 
-            sx={{
-              color: theme.palette.text.secondary,
-              maxWidth: '2xl',
-              mx: 'auto'
-            }}
+            <Typography 
+              variant={isMobile ? "h4" : "h3"} 
+              component="h2" 
+              sx={{
+                fontWeight: 700,
+                color: theme.palette.primary.main,
+                mb: 3,
+                position: 'relative',
+                display: 'inline-block'
+              }}
+            >
+              Mis Servicios
+              <Box 
+                sx={{
+                  position: 'absolute',
+                  bottom: -8,
+                  left: '50%',
+                  transform: 'translateX(-50%)',
+                  width: '60px',
+                  height: '3px',
+                  backgroundColor: theme.palette.secondary.main,
+                  borderRadius: '3px'
+                }}
+              />
+            </Typography>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
           >
-            Ofrezco soluciones adaptadas a las necesidades de tu negocio o actividad personal.
-          </Typography>
-          <Divider sx={{
-            mt: 6,
-            maxWidth: '16rem',
-            mx: 'auto',
-            backgroundColor: theme.palette.mode === 'dark' 
-              ? 'rgba(233, 201, 187, 0.2)' 
-              : 'rgba(233, 201, 187, 0.5)'
-          }} />
+            <Typography 
+              variant="body1" 
+              sx={{
+                color: theme.palette.text.secondary,
+                maxWidth: '650px',
+                mx: 'auto',
+                mb: 3
+              }}
+            >
+              Ofrezco soluciones adaptadas a las necesidades de tu negocio o actividad personal.
+            </Typography>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
+            <Box 
+              sx={{ 
+                display: 'flex', 
+                justifyContent: 'center', 
+                gap: 1.5, 
+                mb: 4 
+              }}
+            >
+              {[0, 1, 2].map((i) => (
+                <motion.div
+                  key={i}
+                  animate={{ 
+                    scale: [1, 1.1, 1],
+                    opacity: [0.5, 1, 0.5]
+                  }}
+                  transition={{ 
+                    duration: 2, 
+                    repeat: Infinity, 
+                    repeatType: 'reverse',
+                    delay: i * 0.3
+                  }}
+                >
+                  <Box 
+                    sx={{
+                      width: i === 1 ? 40 : 25,
+                      height: 5,
+                      borderRadius: '10px',
+                      backgroundColor: theme.palette.secondary.main,
+                      opacity: i === 1 ? 1 : 0.6
+                    }}
+                  />
+                </motion.div>
+              ))}
+            </Box>
+          </motion.div>
         </motion.div>
 
-        <Grid container spacing={4}>
-          {services.map((service, index) => (
-            <Grid item xs={12} sm={6} md={3} key={index}>
-              <ServiceCard {...service} />
+        <Box sx={{ position: 'relative', overflow: 'hidden' }}>
+          {/* Elementos decorativos animados */}
+          <Box sx={{ position: 'absolute', top: -10, left: -100, zIndex: 0, opacity: 0.5, pointerEvents: 'none' }}>
+            <motion.div
+              animate={{ 
+                y: [0, 15, 0],
+                rotate: [0, 5, 0]
+              }}
+              transition={{ 
+                duration: 6, 
+                repeat: Infinity,
+                repeatType: 'reverse'
+              }}
+            >
+              <Box 
+                sx={{ 
+                  width: 150,
+                  height: 150,
+                  borderRadius: '50%',
+                  background: `radial-gradient(circle, ${theme.palette.secondary.light} 0%, transparent 70%)`,
+                  filter: 'blur(20px)'
+                }}
+              />
+            </motion.div>
+          </Box>
+          
+          <Box sx={{ position: 'absolute', bottom: -50, right: -80, zIndex: 0, opacity: 0.4, pointerEvents: 'none' }}>
+            <motion.div
+              animate={{ 
+                y: [0, -20, 0],
+                rotate: [0, -5, 0]
+              }}
+              transition={{ 
+                duration: 7, 
+                repeat: Infinity,
+                repeatType: 'reverse',
+                delay: 1
+              }}
+            >
+              <Box 
+                sx={{ 
+                  width: 180,
+                  height: 180,
+                  borderRadius: '50%',
+                  background: `radial-gradient(circle, ${theme.palette.secondary.light} 0%, transparent 70%)`,
+                  filter: 'blur(25px)'
+                }}
+              />
+            </motion.div>
+          </Box>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
+          >
+            <Grid 
+              container 
+              spacing={4}
+              sx={{ position: 'relative', zIndex: 1 }}
+            >
+              {services.map((service, index) => (
+                <Grid item xs={12} sm={6} md={3} key={index}>
+                  <ServiceCard {...service} />
+                </Grid>
+              ))}
             </Grid>
-          ))}
-        </Grid>
+          </motion.div>
+        </Box>
       </Box>
 
       {/* Llamada a la acción */}
