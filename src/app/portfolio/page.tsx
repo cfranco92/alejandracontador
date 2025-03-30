@@ -59,22 +59,36 @@ export default function Portfolio() {
   };
 
   const cardVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: (i: number) => ({
+    hidden: { 
+      opacity: 0, 
+      y: 20 
+    },
+    visible: (custom: number) => ({
       opacity: 1,
       y: 0,
       transition: {
-        delay: i * 0.1,
+        delay: custom * 0.1,
         duration: 0.4,
         ease: "easeOut"
       }
     }),
     hover: {
-      scale: 1.02,
-      boxShadow: isDarkMode 
-        ? '0 8px 25px rgba(0, 0, 0, 0.4)' 
-        : '0 8px 25px rgba(0, 0, 0, 0.12)',
-      borderColor: theme.palette.secondary.main
+      scale: 1.015,
+      y: -3,
+      transition: {
+        duration: 0.2
+      }
+    }
+  };
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.08,
+        delayChildren: 0.1
+      }
     }
   };
 
@@ -86,7 +100,7 @@ export default function Portfolio() {
       maxWidth="lg" 
       sx={{ 
         py: 6, 
-        px: { xs: 2, sm: 3, lg: 4 } 
+        px: { xs: 1, sm: 3, lg: 4 } 
       }}
     >
       <Paper
@@ -98,7 +112,7 @@ export default function Portfolio() {
           boxShadow: "none",
         }}
       >
-        <Box sx={{ p: { xs: 3, sm: 4, md: 5 } }}>
+        <Box sx={{ p: { xs: 2, sm: 4, md: 5 } }}>
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -168,32 +182,24 @@ export default function Portfolio() {
           <TabPanel value={tabValue} index={0}>
             <MotionGrid 
               container 
-              spacing={4}
-              variants={{
-                hidden: { opacity: 0 },
-                visible: { 
-                  opacity: 1,
-                  transition: {
-                    staggerChildren: 0.1
-                  }
-                }
-              }}
+              spacing={{ xs: 2, sm: 4 }}
+              variants={containerVariants}
               initial="hidden"
               animate="visible"
+              sx={{ mx: { xs: -1, sm: 0 } }}
             >
               <MotionGrid 
                 item 
-                xs={12} 
-                md={6} 
-                lg={4}
+                xs={12} sm={6} md={4}
                 variants={cardVariants}
                 custom={0}
                 whileHover="hover"
+                sx={{ px: { xs: 1, sm: 2 } }}
               >
                 <Card 
                   sx={{
                     height: '100%', 
-                    transition: 'all 0.3s ease',
+                    transition: 'all 0.25s ease-in-out',
                     border: '1px solid',
                     borderColor: theme.palette.secondary.light,
                     boxShadow: theme.palette.mode === 'dark' ? '0 4px 20px rgba(0, 0, 0, 0.2)' : '0 4px 20px rgba(0, 0, 0, 0.05)',
@@ -202,7 +208,9 @@ export default function Portfolio() {
                       borderColor: theme.palette.secondary.main
                     },
                     bgcolor: theme.palette.mode === 'dark' ? theme.palette.background.paper : '#ffffff',
-                    borderRadius: 2
+                    borderRadius: 2,
+                    width: '100%',
+                    overflow: 'hidden'
                   }}
                 >
                   <CardHeader 
@@ -259,17 +267,16 @@ export default function Portfolio() {
 
               <MotionGrid 
                 item 
-                xs={12} 
-                md={6} 
-                lg={4}
+                xs={12} sm={6} md={4}
                 variants={cardVariants}
                 custom={1}
                 whileHover="hover"
+                sx={{ px: { xs: 1, sm: 2 } }}
               >
                 <Card 
                   sx={{
                     height: '100%', 
-                    transition: 'all 0.3s ease',
+                    transition: 'all 0.25s ease-in-out',
                     border: '1px solid',
                     borderColor: theme.palette.secondary.light,
                     boxShadow: theme.palette.mode === 'dark' ? '0 4px 20px rgba(0, 0, 0, 0.2)' : '0 4px 20px rgba(0, 0, 0, 0.05)',
@@ -278,7 +285,9 @@ export default function Portfolio() {
                       borderColor: theme.palette.secondary.main
                     },
                     bgcolor: theme.palette.mode === 'dark' ? theme.palette.background.paper : '#ffffff',
-                    borderRadius: 2
+                    borderRadius: 2,
+                    width: '100%',
+                    overflow: 'hidden'
                   }}
                 >
                   <CardHeader 
@@ -335,17 +344,16 @@ export default function Portfolio() {
 
               <MotionGrid 
                 item 
-                xs={12} 
-                md={6} 
-                lg={4}
+                xs={12} sm={6} md={4}
                 variants={cardVariants}
                 custom={2}
                 whileHover="hover"
+                sx={{ px: { xs: 1, sm: 2 } }}
               >
                 <Card 
                   sx={{
                     height: '100%', 
-                    transition: 'all 0.3s ease',
+                    transition: 'all 0.25s ease-in-out',
                     border: '1px solid',
                     borderColor: theme.palette.secondary.light,
                     boxShadow: theme.palette.mode === 'dark' ? '0 4px 20px rgba(0, 0, 0, 0.2)' : '0 4px 20px rgba(0, 0, 0, 0.05)',
@@ -354,7 +362,9 @@ export default function Portfolio() {
                       borderColor: theme.palette.secondary.main
                     },
                     bgcolor: theme.palette.mode === 'dark' ? theme.palette.background.paper : '#ffffff',
-                    borderRadius: 2
+                    borderRadius: 2,
+                    width: '100%',
+                    overflow: 'hidden'
                   }}
                 >
                   <CardHeader 
@@ -411,17 +421,16 @@ export default function Portfolio() {
 
               <MotionGrid 
                 item 
-                xs={12} 
-                md={6} 
-                lg={6}
+                xs={12} sm={6} md={6}
                 variants={cardVariants}
                 custom={3}
                 whileHover="hover"
+                sx={{ px: { xs: 1, sm: 2 } }}
               >
                 <Card 
                   sx={{
                     height: '100%', 
-                    transition: 'all 0.3s ease',
+                    transition: 'all 0.25s ease-in-out',
                     border: '1px solid',
                     borderColor: theme.palette.secondary.light,
                     boxShadow: theme.palette.mode === 'dark' ? '0 4px 20px rgba(0, 0, 0, 0.2)' : '0 4px 20px rgba(0, 0, 0, 0.05)',
@@ -430,7 +439,9 @@ export default function Portfolio() {
                       borderColor: theme.palette.secondary.main
                     },
                     bgcolor: theme.palette.mode === 'dark' ? theme.palette.background.paper : '#ffffff',
-                    borderRadius: 2
+                    borderRadius: 2,
+                    width: '100%',
+                    overflow: 'hidden'
                   }}
                 >
                   <CardHeader 
@@ -487,17 +498,16 @@ export default function Portfolio() {
 
               <MotionGrid 
                 item 
-                xs={12} 
-                md={6} 
-                lg={6}
+                xs={12} sm={6} md={6}
                 variants={cardVariants}
                 custom={4}
                 whileHover="hover"
+                sx={{ px: { xs: 1, sm: 2 } }}
               >
                 <Card 
                   sx={{
                     height: '100%', 
-                    transition: 'all 0.3s ease',
+                    transition: 'all 0.25s ease-in-out',
                     border: '1px solid',
                     borderColor: theme.palette.secondary.light,
                     boxShadow: theme.palette.mode === 'dark' ? '0 4px 20px rgba(0, 0, 0, 0.2)' : '0 4px 20px rgba(0, 0, 0, 0.05)',
@@ -506,7 +516,9 @@ export default function Portfolio() {
                       borderColor: theme.palette.secondary.main
                     },
                     bgcolor: theme.palette.mode === 'dark' ? theme.palette.background.paper : '#ffffff',
-                    borderRadius: 2
+                    borderRadius: 2,
+                    width: '100%',
+                    overflow: 'hidden'
                   }}
                 >
                   <CardHeader 
@@ -566,31 +578,24 @@ export default function Portfolio() {
           <TabPanel value={tabValue} index={1}>
             <MotionGrid 
               container 
-              spacing={4}
-              variants={{
-                hidden: { opacity: 0 },
-                visible: { 
-                  opacity: 1,
-                  transition: {
-                    staggerChildren: 0.1
-                  }
-                }
-              }}
+              spacing={{ xs: 2, sm: 4 }}
+              variants={containerVariants}
               initial="hidden"
               animate="visible"
+              sx={{ mx: { xs: -1, sm: 0 } }}
             >
               <MotionGrid 
                 item 
-                xs={12} 
-                md={6}
+                xs={12} sm={6} md={4}
                 variants={cardVariants}
                 custom={0}
                 whileHover="hover"
+                sx={{ px: { xs: 1, sm: 2 } }}
               >
                 <Card 
                   sx={{
                     height: '100%', 
-                    transition: 'all 0.3s ease',
+                    transition: 'all 0.25s ease-in-out',
                     border: '1px solid',
                     borderColor: theme.palette.secondary.light,
                     boxShadow: theme.palette.mode === 'dark' ? '0 4px 20px rgba(0, 0, 0, 0.2)' : '0 4px 20px rgba(0, 0, 0, 0.05)',
@@ -600,6 +605,7 @@ export default function Portfolio() {
                     },
                     bgcolor: theme.palette.mode === 'dark' ? theme.palette.background.paper : '#ffffff',
                     borderRadius: 2,
+                    width: '100%',
                     overflow: 'hidden'
                   }}
                 >
@@ -697,16 +703,16 @@ export default function Portfolio() {
 
               <MotionGrid 
                 item 
-                xs={12} 
-                md={6}
+                xs={12} sm={6} md={4}
                 variants={cardVariants}
                 custom={1}
                 whileHover="hover"
+                sx={{ px: { xs: 1, sm: 2 } }}
               >
                 <Card 
                   sx={{
                     height: '100%', 
-                    transition: 'all 0.3s ease',
+                    transition: 'all 0.25s ease-in-out',
                     border: '1px solid',
                     borderColor: theme.palette.secondary.light,
                     boxShadow: theme.palette.mode === 'dark' ? '0 4px 20px rgba(0, 0, 0, 0.2)' : '0 4px 20px rgba(0, 0, 0, 0.05)',
@@ -716,6 +722,7 @@ export default function Portfolio() {
                     },
                     bgcolor: theme.palette.mode === 'dark' ? theme.palette.background.paper : '#ffffff',
                     borderRadius: 2,
+                    width: '100%',
                     overflow: 'hidden'
                   }}
                 >
@@ -813,16 +820,16 @@ export default function Portfolio() {
 
               <MotionGrid 
                 item 
-                xs={12} 
-                md={6}
+                xs={12} sm={6} md={4}
                 variants={cardVariants}
                 custom={2}
                 whileHover="hover"
+                sx={{ px: { xs: 1, sm: 2 } }}
               >
                 <Card 
                   sx={{
                     height: '100%', 
-                    transition: 'all 0.3s ease',
+                    transition: 'all 0.25s ease-in-out',
                     border: '1px solid',
                     borderColor: theme.palette.secondary.light,
                     boxShadow: theme.palette.mode === 'dark' ? '0 4px 20px rgba(0, 0, 0, 0.2)' : '0 4px 20px rgba(0, 0, 0, 0.05)',
@@ -832,6 +839,7 @@ export default function Portfolio() {
                     },
                     bgcolor: theme.palette.mode === 'dark' ? theme.palette.background.paper : '#ffffff',
                     borderRadius: 2,
+                    width: '100%',
                     overflow: 'hidden'
                   }}
                 >
@@ -929,16 +937,16 @@ export default function Portfolio() {
 
               <MotionGrid 
                 item 
-                xs={12} 
-                md={6}
+                xs={12} sm={6} md={4}
                 variants={cardVariants}
                 custom={3}
                 whileHover="hover"
+                sx={{ px: { xs: 1, sm: 2 } }}
               >
                 <Card 
                   sx={{
                     height: '100%', 
-                    transition: 'all 0.3s ease',
+                    transition: 'all 0.25s ease-in-out',
                     border: '1px solid',
                     borderColor: theme.palette.secondary.light,
                     boxShadow: theme.palette.mode === 'dark' ? '0 4px 20px rgba(0, 0, 0, 0.2)' : '0 4px 20px rgba(0, 0, 0, 0.05)',
@@ -948,6 +956,7 @@ export default function Portfolio() {
                     },
                     bgcolor: theme.palette.mode === 'dark' ? theme.palette.background.paper : '#ffffff',
                     borderRadius: 2,
+                    width: '100%',
                     overflow: 'hidden'
                   }}
                 >
@@ -1048,31 +1057,24 @@ export default function Portfolio() {
           <TabPanel value={tabValue} index={2}>
             <MotionGrid 
               container 
-              spacing={4}
-              variants={{
-                hidden: { opacity: 0 },
-                visible: { 
-                  opacity: 1,
-                  transition: {
-                    staggerChildren: 0.1
-                  }
-                }
-              }}
+              spacing={{ xs: 2, sm: 4 }}
+              variants={containerVariants}
               initial="hidden"
               animate="visible"
+              sx={{ mx: { xs: -1, sm: 0 } }}
             >
               <MotionGrid 
                 item 
-                xs={12} 
-                md={6}
+                xs={12} sm={6} md={4}
                 variants={cardVariants}
                 custom={0}
                 whileHover="hover"
+                sx={{ px: { xs: 1, sm: 2 } }}
               >
                 <Card 
                   sx={{
                     height: '100%', 
-                    transition: 'all 0.3s ease',
+                    transition: 'all 0.25s ease-in-out',
                     border: '1px solid',
                     borderColor: theme.palette.secondary.light,
                     boxShadow: theme.palette.mode === 'dark' ? '0 4px 20px rgba(0, 0, 0, 0.2)' : '0 4px 20px rgba(0, 0, 0, 0.05)',
@@ -1081,7 +1083,9 @@ export default function Portfolio() {
                       borderColor: theme.palette.secondary.main
                     },
                     bgcolor: theme.palette.mode === 'dark' ? theme.palette.background.paper : '#ffffff',
-                    borderRadius: 2
+                    borderRadius: 2,
+                    width: '100%',
+                    overflow: 'hidden'
                   }}
                 >
                   <CardContent>
@@ -1187,16 +1191,16 @@ export default function Portfolio() {
 
               <MotionGrid 
                 item 
-                xs={12} 
-                md={6}
+                xs={12} sm={6} md={4}
                 variants={cardVariants}
                 custom={1}
                 whileHover="hover"
+                sx={{ px: { xs: 1, sm: 2 } }}
               >
                 <Card 
                   sx={{
                     height: '100%', 
-                    transition: 'all 0.3s ease',
+                    transition: 'all 0.25s ease-in-out',
                     border: '1px solid',
                     borderColor: theme.palette.secondary.light,
                     boxShadow: theme.palette.mode === 'dark' ? '0 4px 20px rgba(0, 0, 0, 0.2)' : '0 4px 20px rgba(0, 0, 0, 0.05)',
@@ -1205,7 +1209,9 @@ export default function Portfolio() {
                       borderColor: theme.palette.secondary.main
                     },
                     bgcolor: theme.palette.mode === 'dark' ? theme.palette.background.paper : '#ffffff',
-                    borderRadius: 2
+                    borderRadius: 2,
+                    width: '100%',
+                    overflow: 'hidden'
                   }}
                 >
                   <CardContent>
@@ -1311,16 +1317,16 @@ export default function Portfolio() {
 
               <MotionGrid 
                 item 
-                xs={12} 
-                md={6}
+                xs={12} sm={6} md={4}
                 variants={cardVariants}
                 custom={2}
                 whileHover="hover"
+                sx={{ px: { xs: 1, sm: 2 } }}
               >
                 <Card 
                   sx={{
                     height: '100%', 
-                    transition: 'all 0.3s ease',
+                    transition: 'all 0.25s ease-in-out',
                     border: '1px solid',
                     borderColor: theme.palette.secondary.light,
                     boxShadow: theme.palette.mode === 'dark' ? '0 4px 20px rgba(0, 0, 0, 0.2)' : '0 4px 20px rgba(0, 0, 0, 0.05)',
@@ -1329,7 +1335,9 @@ export default function Portfolio() {
                       borderColor: theme.palette.secondary.main
                     },
                     bgcolor: theme.palette.mode === 'dark' ? theme.palette.background.paper : '#ffffff',
-                    borderRadius: 2
+                    borderRadius: 2,
+                    width: '100%',
+                    overflow: 'hidden'
                   }}
                 >
                   <CardContent>
@@ -1458,16 +1466,16 @@ export default function Portfolio() {
 
               <MotionGrid 
                 item 
-                xs={12} 
-                md={6}
+                xs={12} sm={6} md={4}
                 variants={cardVariants}
                 custom={3}
                 whileHover="hover"
+                sx={{ px: { xs: 1, sm: 2 } }}
               >
                 <Card 
                   sx={{
                     height: '100%', 
-                    transition: 'all 0.3s ease',
+                    transition: 'all 0.25s ease-in-out',
                     border: '1px solid',
                     borderColor: theme.palette.secondary.light,
                     boxShadow: theme.palette.mode === 'dark' ? '0 4px 20px rgba(0, 0, 0, 0.2)' : '0 4px 20px rgba(0, 0, 0, 0.05)',
@@ -1476,7 +1484,9 @@ export default function Portfolio() {
                       borderColor: theme.palette.secondary.main
                     },
                     bgcolor: theme.palette.mode === 'dark' ? theme.palette.background.paper : '#ffffff',
-                    borderRadius: 2
+                    borderRadius: 2,
+                    width: '100%',
+                    overflow: 'hidden'
                   }}
                 >
                   <CardContent>
@@ -1586,23 +1596,13 @@ export default function Portfolio() {
             <MotionGrid 
               container 
               spacing={4}
-              variants={{
-                hidden: { opacity: 0 },
-                visible: { 
-                  opacity: 1,
-                  transition: {
-                    staggerChildren: 0.1
-                  }
-                }
-              }}
+              variants={containerVariants}
               initial="hidden"
               animate="visible"
             >
               <MotionGrid 
                 item 
-                xs={12} 
-                md={6} 
-                lg={4}
+                xs={12} sm={6} md={4}
                 variants={cardVariants}
                 custom={0}
                 whileHover="hover"
@@ -1610,7 +1610,7 @@ export default function Portfolio() {
                 <Card 
                   sx={{
                     height: '100%', 
-                    transition: 'all 0.3s ease',
+                    transition: 'all 0.25s ease-in-out',
                     border: '1px solid',
                     borderColor: theme.palette.secondary.light,
                     boxShadow: theme.palette.mode === 'dark' ? '0 4px 20px rgba(0, 0, 0, 0.2)' : '0 4px 20px rgba(0, 0, 0, 0.05)',
@@ -1620,6 +1620,7 @@ export default function Portfolio() {
                     },
                     bgcolor: theme.palette.mode === 'dark' ? theme.palette.background.paper : '#ffffff',
                     borderRadius: 2,
+                    width: '100%',
                     overflow: 'hidden'
                   }}
                 >
@@ -1724,9 +1725,7 @@ export default function Portfolio() {
               
               <MotionGrid 
                 item 
-                xs={12} 
-                md={6} 
-                lg={4}
+                xs={12} sm={6} md={4}
                 variants={cardVariants}
                 custom={1}
                 whileHover="hover"
@@ -1734,7 +1733,7 @@ export default function Portfolio() {
                 <Card 
                   sx={{
                     height: '100%', 
-                    transition: 'all 0.3s ease',
+                    transition: 'all 0.25s ease-in-out',
                     border: '1px solid',
                     borderColor: theme.palette.secondary.light,
                     boxShadow: theme.palette.mode === 'dark' ? '0 4px 20px rgba(0, 0, 0, 0.2)' : '0 4px 20px rgba(0, 0, 0, 0.05)',
@@ -1744,6 +1743,7 @@ export default function Portfolio() {
                     },
                     bgcolor: theme.palette.mode === 'dark' ? theme.palette.background.paper : '#ffffff',
                     borderRadius: 2,
+                    width: '100%',
                     overflow: 'hidden'
                   }}
                 >
@@ -1848,9 +1848,7 @@ export default function Portfolio() {
               
               <MotionGrid 
                 item 
-                xs={12} 
-                md={6} 
-                lg={4}
+                xs={12} sm={6} md={4}
                 variants={cardVariants}
                 custom={2}
                 whileHover="hover"
@@ -1858,7 +1856,7 @@ export default function Portfolio() {
                 <Card 
                   sx={{
                     height: '100%', 
-                    transition: 'all 0.3s ease',
+                    transition: 'all 0.25s ease-in-out',
                     border: '1px solid',
                     borderColor: theme.palette.secondary.light,
                     boxShadow: theme.palette.mode === 'dark' ? '0 4px 20px rgba(0, 0, 0, 0.2)' : '0 4px 20px rgba(0, 0, 0, 0.05)',
@@ -1868,6 +1866,7 @@ export default function Portfolio() {
                     },
                     bgcolor: theme.palette.mode === 'dark' ? theme.palette.background.paper : '#ffffff',
                     borderRadius: 2,
+                    width: '100%',
                     overflow: 'hidden'
                   }}
                 >
@@ -1972,9 +1971,7 @@ export default function Portfolio() {
               
               <MotionGrid 
                 item 
-                xs={12} 
-                md={6} 
-                lg={6}
+                xs={12} sm={6} md={6}
                 variants={cardVariants}
                 custom={3}
                 whileHover="hover"
@@ -1982,7 +1979,7 @@ export default function Portfolio() {
                 <Card 
                   sx={{
                     height: '100%', 
-                    transition: 'all 0.3s ease',
+                    transition: 'all 0.25s ease-in-out',
                     border: '1px solid',
                     borderColor: theme.palette.secondary.light,
                     boxShadow: theme.palette.mode === 'dark' ? '0 4px 20px rgba(0, 0, 0, 0.2)' : '0 4px 20px rgba(0, 0, 0, 0.05)',
@@ -1992,6 +1989,7 @@ export default function Portfolio() {
                     },
                     bgcolor: theme.palette.mode === 'dark' ? theme.palette.background.paper : '#ffffff',
                     borderRadius: 2,
+                    width: '100%',
                     overflow: 'hidden'
                   }}
                 >
@@ -2096,17 +2094,16 @@ export default function Portfolio() {
               
               <MotionGrid 
                 item 
-                xs={12} 
-                md={6} 
-                lg={6}
+                xs={12} sm={6} md={6}
                 variants={cardVariants}
                 custom={4}
                 whileHover="hover"
+                sx={{ px: { xs: 1, sm: 2 } }}
               >
                 <Card 
                   sx={{
                     height: '100%', 
-                    transition: 'all 0.3s ease',
+                    transition: 'all 0.25s ease-in-out',
                     border: '1px solid',
                     borderColor: theme.palette.secondary.light,
                     boxShadow: theme.palette.mode === 'dark' ? '0 4px 20px rgba(0, 0, 0, 0.2)' : '0 4px 20px rgba(0, 0, 0, 0.05)',
@@ -2116,6 +2113,7 @@ export default function Portfolio() {
                     },
                     bgcolor: theme.palette.mode === 'dark' ? theme.palette.background.paper : '#ffffff',
                     borderRadius: 2,
+                    width: '100%',
                     overflow: 'hidden'
                   }}
                 >
