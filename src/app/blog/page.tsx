@@ -18,6 +18,7 @@ import { useSearchParams, useRouter } from "next/navigation";
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import PersonIcon from '@mui/icons-material/Person';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 // Datos de ejemplo para los artículos del blog
 const blogPosts = [
@@ -103,8 +104,8 @@ function FeaturedPostCard({ post }: { post: BlogPost }) {
       whileHover={{ 
         y: -5,
         boxShadow: theme.palette.mode === 'dark' 
-          ? '0 10px 30px -10px rgba(0, 0, 0, 0.5)' 
-          : '0 10px 30px -12px rgba(0, 0, 0, 0.3)' 
+          ? '0 12px 30px -10px rgba(0, 0, 0, 0.6)' 
+          : '0 12px 30px -12px rgba(0, 0, 0, 0.35)' 
       }}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
@@ -114,127 +115,156 @@ function FeaturedPostCard({ post }: { post: BlogPost }) {
         display: 'flex',
         flexDirection: 'column',
         overflow: 'hidden',
-        borderRadius: '12px',
+        borderRadius: '16px',
+        border: '1px solid',
+        borderColor: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.06)'
       }}
     >
-      <Box sx={{ position: 'relative', paddingTop: '56.25%', width: '100%' }}>
-        <Box
-          component="div"
-          sx={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            backgroundImage: `url(${post.imageUrl})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            '&::after': {
-              content: '""',
+      <Box sx={{ position: 'relative', paddingTop: '62%', width: '100%' }}>
+        <Link
+          href={`/blog/${post.id}`}
+          style={{ textDecoration: 'none' }}
+        >
+          <Box
+            sx={{
               position: 'absolute',
               top: 0,
               left: 0,
               width: '100%',
               height: '100%',
-              backgroundColor: 'rgba(0, 0, 0, 0.4)',
+              backgroundImage: `url(${post.imageUrl})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              transition: 'transform 0.5s ease',
+              '&:hover': {
+                transform: 'scale(1.05)'
+              },
+              '&::after': {
+                content: '""',
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.7) 100%)',
+                zIndex: 1
+              }
+            }}
+          />
+        </Link>
+        
+        <Typography 
+          variant="h5" 
+          color="white" 
+          align="left"
+          component={Link}
+          href={`/blog/${post.id}`}
+          sx={{
+            position: 'absolute',
+            bottom: 0,
+            left: 0,
+            width: '100%',
+            p: 3,
+            zIndex: 2,
+            textShadow: '1px 1px 3px rgba(0,0,0,0.7)',
+            fontWeight: 700,
+            textDecoration: 'none',
+            '&:hover': {
+              textDecoration: 'underline'
             }
           }}
         >
-          <Typography 
-            variant="h6" 
-            color="white" 
-            align="center"
-            sx={{
-              position: 'absolute',
-              bottom: 0,
-              left: 0,
-              width: '100%',
-              p: 2,
-              zIndex: 1,
-              textShadow: '1px 1px 3px rgba(0,0,0,0.7)'
-            }}
-          >
-            {post.title}
-          </Typography>
-        </Box>
-      </Box>
-      
-      <Box sx={{ p: 3, flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
-        <Box sx={{ mb: 1 }}>
+          {post.title}
+        </Typography>
+        
+        <Box sx={{ 
+          position: 'absolute', 
+          top: 16, 
+          right: 16, 
+          zIndex: 2,
+          display: 'flex',
+          gap: 1,
+          flexWrap: 'wrap',
+          justifyContent: 'flex-end'
+        }}>
           {post.categories.map((category: string) => (
             <Chip 
               key={category} 
               label={category} 
               size="small" 
               color="secondary" 
-              sx={{ mr: 1, mb: 1 }} 
+              sx={{ 
+                fontWeight: 500,
+                backdropFilter: 'blur(4px)',
+                backgroundColor: 'rgba(255,255,255,0.15)',
+                mb: 1
+              }} 
               component={Link}
               href={`/blog?category=${encodeURIComponent(category)}`}
               clickable
             />
           ))}
         </Box>
-        
-        <Typography 
-          variant="h5" 
-          component="h2" 
-          sx={{ 
-            mb: 2, 
-            fontWeight: 600,
-            fontSize: { xs: '1.2rem', md: '1.4rem' }
-          }}
-        >
-          {post.title}
-        </Typography>
-        
+      </Box>
+      
+      <Box sx={{ p: 3, flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
         <Typography 
           variant="body1" 
           color="text.secondary" 
           sx={{ 
-            mb: 2,
-            flexGrow: 1 
+            mb: 3,
+            flexGrow: 1,
+            fontSize: '0.95rem',
+            lineHeight: 1.6
           }}
         >
           {post.excerpt}
         </Typography>
         
-        <Divider sx={{ mb: 2 }} />
-        
-        <Box sx={{ 
-          display: 'flex', 
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          flexWrap: 'wrap'
-        }}>
+        <Box sx={{ pt: 2, borderTop: '1px solid', borderColor: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.06)' }}>
           <Box sx={{ 
             display: 'flex', 
-            alignItems: 'center', 
-            mb: { xs: 1, sm: 0 } 
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            flexWrap: 'wrap',
+            mb: 2
           }}>
-            <PersonIcon fontSize="small" sx={{ mr: 0.5, color: 'text.secondary' }} />
-            <Typography variant="body2" color="text.secondary">
-              {post.author}
-            </Typography>
+            <Box sx={{ 
+              display: 'flex', 
+              alignItems: 'center'
+            }}>
+              <PersonIcon fontSize="small" sx={{ mr: 0.5, color: 'text.secondary' }} />
+              <Typography variant="body2" color="text.secondary" fontWeight={500}>
+                {post.author}
+              </Typography>
+            </Box>
+            
+            <Box sx={{ display: 'flex', alignItems: 'center' }}>
+              <CalendarTodayIcon fontSize="small" sx={{ mr: 1, color: 'text.secondary' }} />
+              <Typography variant="body2" color="text.secondary">
+                {post.date}
+              </Typography>
+            </Box>
           </Box>
           
-          <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            <CalendarTodayIcon fontSize="small" sx={{ mr: 1, color: 'text.secondary' }} />
-            <Typography variant="body2" color="text.secondary">
-              {post.date}
-            </Typography>
-          </Box>
+          <Button 
+            component={Link}
+            href={`/blog/${post.id}`}
+            variant="contained" 
+            color="primary"
+            fullWidth
+            endIcon={<ArrowForwardIcon />}
+            sx={{ 
+              fontWeight: 500,
+              borderRadius: '6px',
+              textTransform: 'none',
+              py: 1,
+              boxShadow: theme.palette.mode === 'dark' ? '0px 3px 8px rgba(0, 0, 0, 0.3)' : '0px 3px 8px rgba(0, 0, 0, 0.1)'
+            }}
+          >
+            Leer más
+          </Button>
         </Box>
-        
-        <Button 
-          component={Link}
-          href={`/blog/${post.id}`}
-          variant="contained" 
-          color="primary"
-          fullWidth
-          sx={{ mt: 2 }}
-        >
-          Leer más
-        </Button>
       </Box>
     </Paper>
   );
@@ -246,13 +276,13 @@ function PostCard({ post }: { post: BlogPost }) {
   
   return (
     <Paper 
-      elevation={0} 
+      elevation={2} 
       component={motion.div}
       whileHover={{ 
         y: -5,
         boxShadow: theme.palette.mode === 'dark' 
-          ? '0 8px 20px -8px rgba(0, 0, 0, 0.4)' 
-          : '0 8px 20px -10px rgba(0, 0, 0, 0.25)' 
+          ? '0 10px 25px -8px rgba(0, 0, 0, 0.5)' 
+          : '0 10px 25px -10px rgba(0, 0, 0, 0.3)' 
       }}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
@@ -261,126 +291,180 @@ function PostCard({ post }: { post: BlogPost }) {
         display: 'flex',
         flexDirection: { xs: 'column', sm: 'row' },
         overflow: 'hidden',
-        borderRadius: '8px',
-        mb: 3,
-        height: { xs: 'auto', sm: '200px' },
+        borderRadius: '12px',
+        mb: 4,
+        height: { xs: 'auto', sm: '220px' },
         border: '1px solid',
-        borderColor: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.08)'
+        borderColor: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.06)'
       }}
     >
-      <Box 
-        component={Link}
+      {/* Imagen del artículo */}
+      <Link 
         href={`/blog/${post.id}`}
-        sx={{ 
-          position: 'relative',
-          width: { xs: '100%', sm: '230px' }, 
-          height: { xs: '200px', sm: '100%' },
-          backgroundImage: `url(${post.imageUrl})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          textDecoration: 'none',
-          transition: 'all 0.3s ease',
-          '&:hover': {
-            opacity: 0.9
-          }
-        }}
-      />
+        style={{ textDecoration: 'none', display: 'block', position: 'relative' }}
+      >
+        <Box 
+          sx={{ 
+            position: 'relative',
+            width: { xs: '100%', sm: '280px' }, 
+            height: { xs: '200px', sm: '100%' },
+            overflow: 'hidden'
+          }}
+        >
+          <Box
+            sx={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100%',
+              backgroundImage: `url(${post.imageUrl})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              transition: 'all 0.5s ease',
+              '&:hover': {
+                transform: 'scale(1.05)'
+              }
+            }}
+          />
+          <Box 
+            sx={{
+              position: 'absolute',
+              bottom: 0,
+              left: 0,
+              width: '100%',
+              background: 'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%)',
+              height: '50%',
+              pointerEvents: 'none'
+            }}
+          />
+        </Box>
+      </Link>
       
+      {/* Contenido del artículo */}
       <Box sx={{ 
         p: 3, 
         flexGrow: 1, 
         display: 'flex', 
         flexDirection: 'column',
-        justifyContent: 'space-between',
-        position: 'relative'
+        justifyContent: 'space-between'
       }}>
-        <Box>
-          <Box sx={{ mb: 1, display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
-            {post.categories.map((category: string) => (
-              <Chip 
-                key={category} 
-                label={category} 
-                size="small" 
-                variant="outlined"
-                color="primary" 
-                sx={{ mr: 1, mb: 1, borderRadius: '4px' }} 
-                component={Link}
-                href={`/blog?category=${encodeURIComponent(category)}`}
-                clickable
-              />
-            ))}
-          </Box>
-          
+        {/* Categorías */}
+        <Box sx={{ mb: 2, display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+          {post.categories.map((category: string) => (
+            <Chip 
+              key={category} 
+              label={category} 
+              size="small" 
+              variant="outlined"
+              color="primary" 
+              sx={{ 
+                mr: 1, 
+                mb: 1, 
+                borderRadius: '4px',
+                fontWeight: 500,
+                border: '1px solid',
+                borderColor: theme.palette.primary.main
+              }} 
+              component={Link}
+              href={`/blog?category=${encodeURIComponent(category)}`}
+              clickable
+            />
+          ))}
+        </Box>
+        
+        {/* Título */}
+        <Link 
+          href={`/blog/${post.id}`}
+          style={{ 
+            textDecoration: 'none', 
+            color: 'inherit',
+            display: 'block'
+          }}
+        >
           <Typography 
-            variant="h6" 
-            component={Link}
-            href={`/blog/${post.id}`}
+            variant="h5" 
+            component="h3"
             sx={{ 
-              mb: 1, 
-              fontWeight: 600,
-              color: 'text.primary',
-              textDecoration: 'none',
+              mb: 2, 
+              fontWeight: 700,
+              fontSize: { xs: '1.25rem', md: '1.35rem' },
+              lineHeight: 1.3,
+              color: theme.palette.text.primary,
+              transition: 'color 0.2s ease',
               '&:hover': {
-                color: 'primary.main',
-                textDecoration: 'none'
+                color: theme.palette.primary.main
               }
             }}
           >
             {post.title}
           </Typography>
-          
-          <Typography 
-            variant="body2" 
-            color="text.secondary" 
-            sx={{ mb: 2 }}
-          >
-            {post.excerpt}
-          </Typography>
-        </Box>
+        </Link>
         
-        <Box sx={{ 
-          display: 'flex', 
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          flexWrap: 'wrap',
-          mt: 'auto'
-        }}>
-          <Box sx={{ 
-            display: 'flex', 
-            alignItems: 'center', 
-            mb: { xs: 1, sm: 0 } 
-          }}>
-            <PersonIcon fontSize="small" sx={{ mr: 0.5, color: 'text.secondary' }} />
-            <Typography variant="body2" color="text.secondary">
-              {post.author}
-            </Typography>
-          </Box>
-          
-          <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            <CalendarTodayIcon fontSize="small" sx={{ mr: 1, color: 'text.secondary' }} />
-            <Typography variant="body2" color="text.secondary">
-              {post.date}
-            </Typography>
-          </Box>
-        </Box>
-        
-        <Button 
-          component={Link}
-          href={`/blog/${post.id}`}
-          variant="outlined" 
-          color="primary"
-          size="small"
+        {/* Extracto */}
+        <Typography 
+          variant="body1" 
+          color="text.secondary" 
           sx={{ 
-            mt: 2, 
-            alignSelf: { xs: 'stretch', sm: 'flex-start' }, 
-            textTransform: 'none',
-            fontWeight: 'normal',
-            borderRadius: '4px',
-            px: 2
+            mb: 2,
+            fontSize: '0.95rem',
+            lineHeight: 1.6,
+            overflow: 'hidden',
+            display: '-webkit-box',
+            WebkitLineClamp: 2,
+            WebkitBoxOrient: 'vertical'
           }}
         >
-          Leer más
-        </Button>
+          {post.excerpt}
+        </Typography>
+        
+        <Box sx={{ mt: 'auto', pt: 2, borderTop: '1px solid', borderColor: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.06)' }}>
+          {/* Metadatos: autor y fecha */}
+          <Box sx={{ 
+            display: 'flex', 
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            flexWrap: 'wrap',
+            mb: 2
+          }}>
+            <Box sx={{ 
+              display: 'flex', 
+              alignItems: 'center'
+            }}>
+              <PersonIcon fontSize="small" sx={{ mr: 0.5, color: 'text.secondary' }} />
+              <Typography variant="body2" color="text.secondary" fontWeight={500}>
+                {post.author}
+              </Typography>
+            </Box>
+            
+            <Box sx={{ display: 'flex', alignItems: 'center' }}>
+              <CalendarTodayIcon fontSize="small" sx={{ mr: 1, color: 'text.secondary' }} />
+              <Typography variant="body2" color="text.secondary">
+                {post.date}
+              </Typography>
+            </Box>
+          </Box>
+          
+          {/* Botón Leer más */}
+          <Button 
+            component={Link}
+            href={`/blog/${post.id}`}
+            variant="contained" 
+            color="primary"
+            endIcon={<ArrowForwardIcon />}
+            sx={{ 
+              fontWeight: 500,
+              borderRadius: '6px',
+              textTransform: 'none',
+              py: 1,
+              px: 3,
+              width: { xs: '100%', sm: 'auto' },
+              boxShadow: theme.palette.mode === 'dark' ? '0px 3px 8px rgba(0, 0, 0, 0.3)' : '0px 3px 8px rgba(0, 0, 0, 0.1)'
+            }}
+          >
+            Leer más
+          </Button>
+        </Box>
       </Box>
     </Paper>
   );
