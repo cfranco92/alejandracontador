@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import { 
   Container, 
   Typography, 
@@ -8,16 +8,15 @@ import {
   Grid, 
   Paper, 
   Chip,
-  Button, 
-  Divider,
-  useTheme
+  Button,
+  useTheme,
+  CircularProgress
 } from "@mui/material";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useSearchParams, useRouter } from "next/navigation";
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import PersonIcon from '@mui/icons-material/Person';
-import BookmarkIcon from '@mui/icons-material/Bookmark';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 // Datos de ejemplo para los artículos del blog
@@ -470,216 +469,194 @@ function PostCard({ post }: { post: BlogPost }) {
   );
 }
 
+// Componente principal con Suspense para useSearchParams
 export default function Blog() {
+  return (
+    <Suspense fallback={
+      <Container sx={{ py: 8, textAlign: 'center' }}>
+        <CircularProgress />
+        <Typography sx={{ mt: 2 }}>Cargando artículos...</Typography>
+      </Container>
+    }>
+      <BlogContent />
+    </Suspense>
+  );
+}
+
+// Componente con el contenido real del blog que usa useSearchParams
+function BlogContent() {
   const theme = useTheme();
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const categoryParam = searchParams.get('category');
   
-  // Obtener la categoría de los parámetros de URL al cargar la página
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(categoryParam);
+  const [filteredPosts, setFilteredPosts] = useState(blogPosts);
+  
   useEffect(() => {
-    const category = searchParams.get('category');
-    setSelectedCategory(category);
-  }, [searchParams]);
+    // Filtrar posts según la categoría seleccionada
+    if (selectedCategory) {
+      setFilteredPosts(blogPosts.filter(post => 
+        post.categories.includes(selectedCategory)
+      ));
+    } else {
+      setFilteredPosts(blogPosts);
+    }
+  }, [selectedCategory]);
   
-  // Función para manejar el cambio de categoría
+  // Extraer todas las categorías únicas
+  const allCategories = Array.from(
+    new Set(blogPosts.flatMap(post => post.categories))
+  );
+  
+  // Manejar el cambio de categoría
   const handleCategoryChange = (category: string | null) => {
+    setSelectedCategory(category);
+    
+    // Actualizar la URL con el parámetro de categoría
     if (category) {
       router.push(`/blog?category=${encodeURIComponent(category)}`);
     } else {
       router.push('/blog');
     }
-    setSelectedCategory(category);
   };
-  
-  // Categorías únicas para el filtro
-  const allCategories = Array.from(
-    new Set(blogPosts.flatMap(post => post.categories))
-  );
-  
-  // Filtrar posts según la categoría seleccionada
-  const filteredPosts = selectedCategory 
-    ? blogPosts.filter(post => post.categories.includes(selectedCategory))
-    : blogPosts;
-    
-  // Filtrar artículos destacados y regulares
+
+  // Obtener posts destacados
   const featuredPosts = filteredPosts.filter(post => post.featured);
-  const regularPosts = filteredPosts.filter(post => !post.featured);
   
   return (
-    <Container maxWidth="lg" sx={{ 
-      mt: { xs: 4, sm: 8 }, 
-      mb: { xs: 8, sm: 12 },
-      color: theme.palette.text.primary
-    }}>
-      {/* Encabezado del Blog */}
-      <Box 
-        component={motion.div}
+    <Container maxWidth="lg" sx={{ py: 8 }}>
+      <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        sx={{ 
-          mb: { xs: 4, md: 8 }, 
-          textAlign: 'center',
-          position: 'relative',
-        }}
       >
         <Typography 
           variant="h2" 
           component="h1" 
+          align="center" 
+          gutterBottom
           sx={{ 
-            mb: 2,
-            fontWeight: 700,
-            fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem' }
+            fontWeight: 800,
+            color: theme.palette.primary.main,
+            mb: 1
           }}
         >
-          Blog de Contaduría
+          Blog
         </Typography>
         
         <Typography 
           variant="h5" 
-          component="p" 
-          color="text.secondary"
+          align="center" 
+          color="textSecondary" 
+          paragraph
           sx={{ 
-            mb: 4,
-            maxWidth: '800px',
-            mx: 'auto',
-            fontSize: { xs: '1rem', sm: '1.1rem', md: '1.2rem' }
+            mb: 5,
+            maxWidth: 800,
+            mx: 'auto'
           }}
         >
-          Artículos especializados en contabilidad, impuestos y finanzas para profesionales y empresas colombianas.
+          Artículos, noticias y actualizaciones sobre contabilidad, impuestos y finanzas para mantenerte informado.
         </Typography>
-        
-        <Divider sx={{ mb: 4 }} />
-        
-        {/* Filtro de categorías */}
-        <Box sx={{ 
-          display: 'flex',
-          flexWrap: 'wrap',
-          justifyContent: 'center',
+      </motion.div>
+      
+      {/* Filtro de categorías */}
+      <Box 
+        sx={{ 
+          mb: 5, 
+          display: 'flex', 
+          flexWrap: 'wrap', 
           gap: 1,
-          mb: 4
-        }}>
+          justifyContent: 'center'
+        }}
+        component={motion.div}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+      >
+        <Chip 
+          label="Todos" 
+          color={selectedCategory === null ? "primary" : "default"}
+          onClick={() => handleCategoryChange(null)}
+          sx={{ fontWeight: 500 }}
+        />
+        {allCategories.map(category => (
           <Chip 
-            label="Todos" 
-            color="primary" 
-            variant={selectedCategory === null ? "filled" : "outlined"}
-            sx={{ mr: 1, mb: 1 }} 
-            onClick={() => handleCategoryChange(null)}
-            clickable
+            key={category} 
+            label={category} 
+            color={selectedCategory === category ? "primary" : "default"}
+            onClick={() => handleCategoryChange(category)}
+            sx={{ fontWeight: 500 }}
           />
-          {allCategories.map(category => (
-            <Chip 
-              key={category} 
-              label={category} 
-              variant={selectedCategory === category ? "filled" : "outlined"}
-              color="primary" 
-              sx={{ mr: 1, mb: 1 }} 
-              onClick={() => handleCategoryChange(category)}
-              clickable
-            />
-          ))}
-        </Box>
+        ))}
       </Box>
       
-      {filteredPosts.length === 0 ? (
-        <Box sx={{ 
-          textAlign: 'center', 
-          py: 8,
-          backgroundColor: 'rgba(0,0,0,0.02)',
-          borderRadius: 2
-        }}>
-          <Typography variant="h5" sx={{ mb: 2 }}>
-            No se encontraron artículos para esta categoría
+      {/* Artículos destacados */}
+      {featuredPosts.length > 0 && (
+        <>
+          <Box
+            component={motion.h2}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <Typography 
+              variant="h4" 
+              component="h2" 
+              sx={{ mb: 3, mt: 6, fontWeight: 700 }}
+            >
+              Artículos Destacados
+            </Typography>
+          </Box>
+          
+          <Grid container spacing={4}>
+            {featuredPosts.map((post) => (
+              <Grid item key={post.id} xs={12} md={6}>
+                <FeaturedPostCard post={post} />
+              </Grid>
+            ))}
+          </Grid>
+        </>
+      )}
+      
+      {/* Lista de todos los artículos */}
+      <Box
+        component={motion.h2}
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5, delay: 0.3 }}
+      >
+        <Typography 
+          variant="h4" 
+          component="h2" 
+          sx={{ mb: 3, mt: 6, fontWeight: 700 }}
+        >
+          Todos los Artículos
+        </Typography>
+      </Box>
+      
+      <Grid container spacing={3}>
+        {filteredPosts.map((post) => (
+          <Grid item key={post.id} xs={12} sm={6} md={4}>
+            <PostCard post={post} />
+          </Grid>
+        ))}
+      </Grid>
+      
+      {/* Mensaje cuando no hay resultados */}
+      {filteredPosts.length === 0 && (
+        <Box sx={{ textAlign: 'center', py: 8 }}>
+          <Typography variant="h6" color="textSecondary" gutterBottom>
+            No se encontraron artículos para la categoría seleccionada.
           </Typography>
           <Button 
             variant="contained" 
-            color="primary"
             onClick={() => handleCategoryChange(null)}
+            sx={{ mt: 2 }}
           >
             Ver todos los artículos
           </Button>
         </Box>
-      ) : (
-        <>
-          {/* Sección de artículos destacados */}
-          {featuredPosts.length > 0 && (
-            <Box sx={{ mb: 8 }}>
-              <Box sx={{ 
-                display: 'flex',
-                alignItems: 'center',
-                mb: 3
-              }}>
-                <BookmarkIcon color="primary" sx={{ mr: 1 }} />
-                <Typography 
-                  variant="h4" 
-                  component="h2" 
-                  sx={{ fontWeight: 600 }}
-                >
-                  Destacados
-                </Typography>
-              </Box>
-              
-              <Grid container spacing={3}>
-                {featuredPosts.map((post, index) => (
-                  <Grid 
-                    item 
-                    xs={12} 
-                    md={6} 
-                    key={post.id}
-                    component={motion.div}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1, duration: 0.5 }}
-                  >
-                    <FeaturedPostCard post={post} />
-                  </Grid>
-                ))}
-              </Grid>
-            </Box>
-          )}
-          
-          {/* Sección de artículos recientes */}
-          <Box>
-            <Typography 
-              variant="h4" 
-              component="h2" 
-              sx={{ mb: 3, fontWeight: 600 }}
-            >
-              {selectedCategory ? `Artículos sobre ${selectedCategory}` : 'Artículos Recientes'}
-            </Typography>
-            
-            <Box>
-              {regularPosts.map((post, index) => (
-                <Box 
-                  key={post.id}
-                  component={motion.div}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1, duration: 0.5 }}
-                >
-                  <PostCard post={post} />
-                </Box>
-              ))}
-            </Box>
-            
-            {/* Paginación */}
-            {regularPosts.length > 3 && (
-              <Box sx={{ 
-                display: 'flex', 
-                justifyContent: 'center', 
-                mt: 4
-              }}>
-                <Button 
-                  variant="contained" 
-                  color="primary"
-                >
-                  Cargar más artículos
-                </Button>
-              </Box>
-            )}
-          </Box>
-        </>
       )}
     </Container>
   );
