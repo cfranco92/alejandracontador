@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { 
   Container, 
   Typography, 
@@ -14,6 +14,7 @@ import {
 } from "@mui/material";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useSearchParams, useRouter } from "next/navigation";
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import PersonIcon from '@mui/icons-material/Person';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
@@ -167,6 +168,9 @@ function FeaturedPostCard({ post }: { post: BlogPost }) {
               size="small" 
               color="secondary" 
               sx={{ mr: 1, mb: 1 }} 
+              component={Link}
+              href={`/blog?category=${encodeURIComponent(category)}`}
+              clickable
             />
           ))}
         </Box>
@@ -259,13 +263,14 @@ function PostCard({ post }: { post: BlogPost }) {
         overflow: 'hidden',
         borderRadius: '8px',
         mb: 3,
-        height: { sm: '180px' },
+        height: { xs: 'auto', sm: '200px' },
         border: '1px solid',
         borderColor: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.08)'
       }}
     >
       <Box 
-        component="div"
+        component={Link}
+        href={`/blog/${post.id}`}
         sx={{ 
           position: 'relative',
           width: { xs: '100%', sm: '230px' }, 
@@ -273,6 +278,11 @@ function PostCard({ post }: { post: BlogPost }) {
           backgroundImage: `url(${post.imageUrl})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
+          textDecoration: 'none',
+          transition: 'all 0.3s ease',
+          '&:hover': {
+            opacity: 0.9
+          }
         }}
       />
       
@@ -280,8 +290,9 @@ function PostCard({ post }: { post: BlogPost }) {
         p: 3, 
         flexGrow: 1, 
         display: 'flex', 
-        flexDirection: 'column', 
-        justifyContent: 'space-between'
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        position: 'relative'
       }}>
         <Box>
           <Box sx={{ mb: 1, display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
@@ -293,14 +304,27 @@ function PostCard({ post }: { post: BlogPost }) {
                 variant="outlined"
                 color="primary" 
                 sx={{ mr: 1, mb: 1, borderRadius: '4px' }} 
+                component={Link}
+                href={`/blog?category=${encodeURIComponent(category)}`}
+                clickable
               />
             ))}
           </Box>
           
           <Typography 
             variant="h6" 
-            component="h2" 
-            sx={{ mb: 1, fontWeight: 600 }}
+            component={Link}
+            href={`/blog/${post.id}`}
+            sx={{ 
+              mb: 1, 
+              fontWeight: 600,
+              color: 'text.primary',
+              textDecoration: 'none',
+              '&:hover': {
+                color: 'primary.main',
+                textDecoration: 'none'
+              }
+            }}
           >
             {post.title}
           </Typography>
@@ -343,9 +367,17 @@ function PostCard({ post }: { post: BlogPost }) {
         <Button 
           component={Link}
           href={`/blog/${post.id}`}
-          variant="text" 
+          variant="outlined" 
           color="primary"
-          sx={{ mt: 2, alignSelf: 'flex-start', textTransform: 'none' }}
+          size="small"
+          sx={{ 
+            mt: 2, 
+            alignSelf: { xs: 'stretch', sm: 'flex-start' }, 
+            textTransform: 'none',
+            fontWeight: 'normal',
+            borderRadius: '4px',
+            px: 2
+          }}
         >
           Leer más
         </Button>
@@ -356,15 +388,39 @@ function PostCard({ post }: { post: BlogPost }) {
 
 export default function Blog() {
   const theme = useTheme();
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   
-  // Filtrar artículos destacados y regulares
-  const featuredPosts = blogPosts.filter(post => post.featured);
-  const regularPosts = blogPosts.filter(post => !post.featured);
+  // Obtener la categoría de los parámetros de URL al cargar la página
+  useEffect(() => {
+    const category = searchParams.get('category');
+    setSelectedCategory(category);
+  }, [searchParams]);
+  
+  // Función para manejar el cambio de categoría
+  const handleCategoryChange = (category: string | null) => {
+    if (category) {
+      router.push(`/blog?category=${encodeURIComponent(category)}`);
+    } else {
+      router.push('/blog');
+    }
+    setSelectedCategory(category);
+  };
   
   // Categorías únicas para el filtro
   const allCategories = Array.from(
     new Set(blogPosts.flatMap(post => post.categories))
   );
+  
+  // Filtrar posts según la categoría seleccionada
+  const filteredPosts = selectedCategory 
+    ? blogPosts.filter(post => post.categories.includes(selectedCategory))
+    : blogPosts;
+    
+  // Filtrar artículos destacados y regulares
+  const featuredPosts = filteredPosts.filter(post => post.featured);
+  const regularPosts = filteredPosts.filter(post => !post.featured);
   
   return (
     <Container maxWidth="lg" sx={{ 
@@ -423,96 +479,124 @@ export default function Blog() {
           <Chip 
             label="Todos" 
             color="primary" 
-            variant="filled" 
+            variant={selectedCategory === null ? "filled" : "outlined"}
             sx={{ mr: 1, mb: 1 }} 
+            onClick={() => handleCategoryChange(null)}
+            clickable
           />
           {allCategories.map(category => (
             <Chip 
               key={category} 
               label={category} 
-              variant="outlined" 
+              variant={selectedCategory === category ? "filled" : "outlined"}
               color="primary" 
               sx={{ mr: 1, mb: 1 }} 
+              onClick={() => handleCategoryChange(category)}
+              clickable
             />
           ))}
         </Box>
       </Box>
       
-      {/* Sección de artículos destacados */}
-      {featuredPosts.length > 0 && (
-        <Box sx={{ mb: 8 }}>
-          <Box sx={{ 
-            display: 'flex',
-            alignItems: 'center',
-            mb: 3
-          }}>
-            <BookmarkIcon color="primary" sx={{ mr: 1 }} />
-            <Typography 
-              variant="h4" 
-              component="h2" 
-              sx={{ fontWeight: 600 }}
-            >
-              Destacados
-            </Typography>
-          </Box>
-          
-          <Grid container spacing={3}>
-            {featuredPosts.map((post, index) => (
-              <Grid 
-                item 
-                xs={12} 
-                md={6} 
-                key={post.id}
-                component={motion.div}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1, duration: 0.5 }}
-              >
-                <FeaturedPostCard post={post} />
-              </Grid>
-            ))}
-          </Grid>
-        </Box>
-      )}
-      
-      {/* Sección de artículos recientes */}
-      <Box>
-        <Typography 
-          variant="h4" 
-          component="h2" 
-          sx={{ mb: 3, fontWeight: 600 }}
-        >
-          Artículos Recientes
-        </Typography>
-        
-        <Box>
-          {regularPosts.map((post, index) => (
-            <Box 
-              key={post.id}
-              component={motion.div}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-            >
-              <PostCard post={post} />
-            </Box>
-          ))}
-        </Box>
-        
-        {/* Paginación */}
+      {filteredPosts.length === 0 ? (
         <Box sx={{ 
-          display: 'flex', 
-          justifyContent: 'center', 
-          mt: 4
+          textAlign: 'center', 
+          py: 8,
+          backgroundColor: 'rgba(0,0,0,0.02)',
+          borderRadius: 2
         }}>
+          <Typography variant="h5" sx={{ mb: 2 }}>
+            No se encontraron artículos para esta categoría
+          </Typography>
           <Button 
             variant="contained" 
             color="primary"
+            onClick={() => handleCategoryChange(null)}
           >
-            Cargar más artículos
+            Ver todos los artículos
           </Button>
         </Box>
-      </Box>
+      ) : (
+        <>
+          {/* Sección de artículos destacados */}
+          {featuredPosts.length > 0 && (
+            <Box sx={{ mb: 8 }}>
+              <Box sx={{ 
+                display: 'flex',
+                alignItems: 'center',
+                mb: 3
+              }}>
+                <BookmarkIcon color="primary" sx={{ mr: 1 }} />
+                <Typography 
+                  variant="h4" 
+                  component="h2" 
+                  sx={{ fontWeight: 600 }}
+                >
+                  Destacados
+                </Typography>
+              </Box>
+              
+              <Grid container spacing={3}>
+                {featuredPosts.map((post, index) => (
+                  <Grid 
+                    item 
+                    xs={12} 
+                    md={6} 
+                    key={post.id}
+                    component={motion.div}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1, duration: 0.5 }}
+                  >
+                    <FeaturedPostCard post={post} />
+                  </Grid>
+                ))}
+              </Grid>
+            </Box>
+          )}
+          
+          {/* Sección de artículos recientes */}
+          <Box>
+            <Typography 
+              variant="h4" 
+              component="h2" 
+              sx={{ mb: 3, fontWeight: 600 }}
+            >
+              {selectedCategory ? `Artículos sobre ${selectedCategory}` : 'Artículos Recientes'}
+            </Typography>
+            
+            <Box>
+              {regularPosts.map((post, index) => (
+                <Box 
+                  key={post.id}
+                  component={motion.div}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1, duration: 0.5 }}
+                >
+                  <PostCard post={post} />
+                </Box>
+              ))}
+            </Box>
+            
+            {/* Paginación */}
+            {regularPosts.length > 3 && (
+              <Box sx={{ 
+                display: 'flex', 
+                justifyContent: 'center', 
+                mt: 4
+              }}>
+                <Button 
+                  variant="contained" 
+                  color="primary"
+                >
+                  Cargar más artículos
+                </Button>
+              </Box>
+            )}
+          </Box>
+        </>
+      )}
     </Container>
   );
 } 

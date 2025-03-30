@@ -459,6 +459,8 @@ function RelatedPostCard({ post }: { post: typeof blogPosts[0] }) {
         <Typography 
           variant="subtitle1" 
           color="white" 
+          component={Link}
+          href={`/blog?category=${encodeURIComponent(post.categories[0])}`}
           sx={{ 
             position: 'absolute', 
             bottom: 0, 
@@ -466,7 +468,11 @@ function RelatedPostCard({ post }: { post: typeof blogPosts[0] }) {
             p: 1.5,
             textShadow: '1px 1px 2px rgba(0,0,0,0.7)',
             fontWeight: 'medium',
-            zIndex: 1
+            zIndex: 1,
+            textDecoration: 'none',
+            '&:hover': {
+              textDecoration: 'underline'
+            }
           }}
         >
           {post.categories[0]}
@@ -608,6 +614,9 @@ export default function BlogPost() {
                     size="small" 
                     color="secondary" 
                     sx={{ mr: 1, mb: 1 }} 
+                    component={Link}
+                    href={`/blog?category=${encodeURIComponent(category)}`}
+                    clickable
                   />
                 ))}
               </Box>
@@ -804,12 +813,24 @@ export default function BlogPost() {
               flexDirection: 'column',
               gap: 1
             }}>
+              <Button 
+                variant="text" 
+                component={Link}
+                href="/blog"
+                sx={{ 
+                  justifyContent: 'flex-start',
+                  textTransform: 'none',
+                  fontWeight: 'normal'
+                }}
+              >
+                Todas las categorías
+              </Button>
               {Array.from(new Set(blogPosts.flatMap(p => p.categories))).map(category => (
                 <Button 
                   key={category} 
                   variant="text" 
                   component={Link}
-                  href={`/blog?category=${category}`}
+                  href={`/blog?category=${encodeURIComponent(category)}`}
                   sx={{ 
                     justifyContent: 'flex-start',
                     textTransform: 'none',

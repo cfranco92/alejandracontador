@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Typography, Container, Grid, Box, Button, Paper, useMediaQuery, useTheme } from "@mui/material";
+import { Typography, Container, Grid, Box, Button, Paper, useMediaQuery, useTheme, Chip } from "@mui/material";
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import EmailIcon from '@mui/icons-material/Email';
@@ -10,7 +10,11 @@ import CalculateIcon from '@mui/icons-material/Calculate';
 import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import MonitorHeartIcon from '@mui/icons-material/MonitorHeart';
+import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
+import PersonIcon from '@mui/icons-material/Person';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 import ServiceCard from "@/components/ServiceCard";
 import CallToAction from "@/components/CallToAction";
@@ -190,6 +194,46 @@ export default function Home() {
       icon: <MonitorHeartIcon style={{ fontSize: 40, color: theme.palette.secondary.main }} />,
       delay: 4,
     },
+  ];
+
+  // Datos de ejemplo para artículos recientes del blog
+  const recentPosts = [
+    {
+      id: 2,
+      title: "Consejos para la declaración de renta de personas naturales",
+      excerpt: "Guía práctica con los mejores consejos para preparar correctamente tu declaración de renta y evitar sanciones.",
+      author: "Alejandra Bertón",
+      date: "10 de abril de 2024",
+      imageUrl: "/images/blog/declaracion-renta.jpg",
+      categories: ["Impuestos", "Personas Naturales"]
+    },
+    {
+      id: 3,
+      title: "Novedades en las NIIF para pequeñas y medianas empresas",
+      excerpt: "Descubre las últimas actualizaciones en las Normas Internacionales de Información Financiera y cómo implementarlas en tu PYME.",
+      author: "Carlos Gómez",
+      date: "5 de marzo de 2024",
+      imageUrl: "/images/blog/niif-pymes.jpg",
+      categories: ["NIIF", "PYMES"]
+    },
+    {
+      id: 5,
+      title: "Guía completa sobre el régimen simple de tributación",
+      excerpt: "Todo lo que necesitas saber sobre el Régimen Simple: quiénes pueden acogerse, beneficios y obligaciones.",
+      author: "María Rodríguez",
+      date: "15 de enero de 2024",
+      imageUrl: "/images/blog/regimen-simple.jpg",
+      categories: ["Impuestos", "Régimen Simple"]
+    },
+    {
+      id: 6,
+      title: "Calendario tributario 2024: Fechas clave para tu empresa",
+      excerpt: "Mantente al día con todas las fechas importantes del calendario tributario colombiano para evitar multas y sanciones.",
+      author: "Alejandra Bertón",
+      date: "5 de enero de 2024",
+      imageUrl: "/images/blog/calendario-tributario.jpg",
+      categories: ["Impuestos", "Calendario Tributario"]
+    }
   ];
 
   return (
@@ -1185,9 +1229,6 @@ export default function Home() {
         {/* Llamada a la acción */}
         <CallToAction />
         
-        {/* Espacio para el footer */}
-        <Box className="h-16"></Box>
-
         {/* Sección de FAQ */}
         <Box 
           className="py-12"
@@ -1200,7 +1241,8 @@ export default function Home() {
             marginLeft: '-50vw',
             marginRight: '-50vw',
             py: 10,
-            mt: 4
+            mt: 4,
+            mb: 4
           }}
         >
           <Container maxWidth="lg">
@@ -1360,6 +1402,274 @@ export default function Home() {
             </Box>
           </Container>
         </Box>
+        
+        {/* Sección de artículos recientes del blog */}
+        <Box 
+          sx={{
+            backgroundColor: theme.palette.mode === 'dark' ? theme.palette.background.default : '#f8f9fa',
+            width: '100vw',
+            position: 'relative',
+            left: '50%',
+            right: '50%',
+            marginLeft: '-50vw',
+            marginRight: '-50vw',
+            mt: 0,
+            mb: 4,
+            pt: 8,
+            pb: 10
+          }}
+        >
+          <Container maxWidth="lg">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="text-center mb-10"
+            >
+              <motion.div
+                initial={{ scale: 0.9, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                transition={{ type: "spring", stiffness: 300, damping: 15 }}
+              >
+                <Typography 
+                  variant={isMobile ? "h4" : "h3"} 
+                  component="h2" 
+                  sx={{
+                    fontWeight: 700,
+                    color: theme.palette.primary.main,
+                    mb: 3,
+                    position: 'relative',
+                    display: 'inline-block'
+                  }}
+                >
+                  Artículos Recientes
+                  <Box 
+                    sx={{
+                      position: 'absolute',
+                      bottom: -8,
+                      left: '50%',
+                      transform: 'translateX(-50%)',
+                      width: '60px',
+                      height: '3px',
+                      backgroundColor: theme.palette.secondary.main,
+                      borderRadius: '3px'
+                    }}
+                  />
+                </Typography>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+              >
+                <Typography 
+                  variant="body1" 
+                  sx={{
+                    color: theme.palette.text.secondary,
+                    maxWidth: '650px',
+                    mx: 'auto',
+                    mb: 5
+                  }}
+                >
+                  Conoce los temas más actuales en contabilidad, impuestos y finanzas relevantes para tu negocio o actividad.
+                </Typography>
+              </motion.div>
+            </motion.div>
+
+            <Grid container spacing={3}>
+              {recentPosts.map((post, index) => (
+                <Grid 
+                  item 
+                  xs={12} 
+                  md={6} 
+                  key={post.id}
+                  component={motion.div}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1, duration: 0.5 }}
+                >
+                  <Paper 
+                    elevation={1} 
+                    component={motion.div}
+                    whileHover={{ 
+                      y: -5,
+                      boxShadow: theme.palette.mode === 'dark' 
+                        ? '0 8px 20px -8px rgba(0, 0, 0, 0.4)' 
+                        : '0 8px 20px -10px rgba(0, 0, 0, 0.25)' 
+                    }}
+                    sx={{ 
+                      display: 'flex',
+                      flexDirection: { xs: 'column', sm: 'row' },
+                      height: { xs: 'auto', sm: '200px' },
+                      borderRadius: '10px',
+                      overflow: 'hidden',
+                      border: '1px solid',
+                      borderColor: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.08)'
+                    }}
+                  >
+                    <Box 
+                      component={Link}
+                      href={`/blog/${post.id}`}
+                      sx={{ 
+                        position: 'relative',
+                        width: { xs: '100%', sm: '35%' }, 
+                        height: { xs: '200px', sm: '100%' },
+                        backgroundImage: `url(${post.imageUrl})`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        textDecoration: 'none',
+                        transition: 'all 0.3s ease',
+                        '&:hover': {
+                          opacity: 0.9
+                        }
+                      }}
+                    />
+                    
+                    <Box sx={{ 
+                      p: 3, 
+                      flexGrow: 1, 
+                      display: 'flex', 
+                      flexDirection: 'column',
+                      justifyContent: 'space-between',
+                    }}>
+                      <Box>
+                        <Box sx={{ mb: 1, display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+                          {post.categories.map((category: string) => (
+                            <Chip 
+                              key={category} 
+                              label={category} 
+                              size="small" 
+                              variant="outlined"
+                              color="primary" 
+                              sx={{ mr: 1, mb: 1, borderRadius: '4px' }} 
+                              component={Link}
+                              href={`/blog?category=${encodeURIComponent(category)}`}
+                              clickable
+                            />
+                          ))}
+                        </Box>
+                        
+                        <Typography 
+                          variant="h6" 
+                          component={Link}
+                          href={`/blog/${post.id}`}
+                          sx={{ 
+                            mb: 1, 
+                            fontWeight: 600,
+                            display: '-webkit-box',
+                            WebkitLineClamp: 2,
+                            WebkitBoxOrient: 'vertical',
+                            overflow: 'hidden',
+                            color: 'text.primary',
+                            textDecoration: 'none',
+                            '&:hover': {
+                              color: 'primary.main',
+                              textDecoration: 'none'
+                            }
+                          }}
+                        >
+                          {post.title}
+                        </Typography>
+                        
+                        <Typography 
+                          variant="body2" 
+                          color="text.secondary" 
+                          sx={{ 
+                            mb: 2,
+                            display: '-webkit-box',
+                            WebkitLineClamp: 2,
+                            WebkitBoxOrient: 'vertical',
+                            overflow: 'hidden'
+                          }}
+                        >
+                          {post.excerpt}
+                        </Typography>
+                      </Box>
+                      
+                      <Box>
+                        <Box sx={{ 
+                          display: 'flex', 
+                          justifyContent: 'space-between',
+                          alignItems: 'center',
+                          flexWrap: 'wrap',
+                          mb: 2
+                        }}>
+                          <Box sx={{ 
+                            display: 'flex', 
+                            alignItems: 'center', 
+                            mb: { xs: 1, sm: 0 } 
+                          }}>
+                            <PersonIcon fontSize="small" sx={{ mr: 0.5, color: 'text.secondary' }} />
+                            <Typography variant="body2" color="text.secondary">
+                              {post.author}
+                            </Typography>
+                          </Box>
+                          
+                          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                            <CalendarTodayIcon fontSize="small" sx={{ mr: 1, color: 'text.secondary' }} />
+                            <Typography variant="body2" color="text.secondary">
+                              {post.date}
+                            </Typography>
+                          </Box>
+                        </Box>
+                        
+                        <Button 
+                          component={Link}
+                          href={`/blog/${post.id}`}
+                          variant="contained" 
+                          color="primary"
+                          size="small"
+                          endIcon={<ArrowForwardIcon />}
+                          sx={{ 
+                            fontWeight: 'normal',
+                            borderRadius: '4px',
+                            textTransform: 'none',
+                            px: 2,
+                            mt: 2,
+                            mb: 1,
+                            width: { xs: '100%', sm: 'auto' }
+                          }}
+                        >
+                          Leer más
+                        </Button>
+                      </Box>
+                    </Box>
+                  </Paper>
+                </Grid>
+              ))}
+            </Grid>
+            
+            <Box sx={{ textAlign: 'center', mt: 5 }}>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+              >
+                <Button 
+                  component={Link}
+                  href="/blog"
+                  variant="outlined" 
+                  color="primary"
+                  size="large"
+                  endIcon={<ArrowForwardIcon />}
+                  sx={{ 
+                    px: 4,
+                    py: 1,
+                    borderRadius: '8px',
+                    textTransform: 'none',
+                    fontWeight: 'normal'
+                  }}
+                >
+                  Ver todos los artículos
+                </Button>
+              </motion.div>
+            </Box>
+          </Container>
+        </Box>
+        
+        {/* Espacio para el footer */}
+        <Box className="h-16"></Box>
       </Container>
     </>
   );

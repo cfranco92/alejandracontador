@@ -44,9 +44,9 @@ const inter = Inter({ subsets: ['latin'] });
 const drawerWidth = 240;
 const navItems: { name: string; path: string }[] = [
   { name: "Inicio", path: "/" },
-  { name: "Blog", path: "/blog" },
   { name: "Acerca de", path: "/about" },
   { name: "Portafolio", path: "/portfolio" },
+  { name: "Blog", path: "/blog" },
   { name: "Contacto", path: "/contact" },
 ];
 
