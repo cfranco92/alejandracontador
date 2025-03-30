@@ -136,7 +136,8 @@ export default function Home() {
                         textTransform: 'none',
                         boxShadow: theme.palette.mode === 'dark' 
                           ? '0 4px 12px rgba(0, 0, 0, 0.3)' 
-                          : '0 4px 12px rgba(34, 197, 94, 0.25)'
+                          : '0 4px 12px rgba(34, 197, 94, 0.25)',
+                        height: '48px'
                       }}
                       onClick={() =>
                         window.open(
@@ -169,7 +170,8 @@ export default function Home() {
                         textTransform: 'none',
                         boxShadow: theme.palette.mode === 'dark' 
                           ? '0 4px 12px rgba(0, 0, 0, 0.3)' 
-                          : '0 4px 12px rgba(10, 102, 194, 0.25)'
+                          : '0 4px 12px rgba(10, 102, 194, 0.25)',
+                        height: '48px'
                       }}
                       onClick={() =>
                         window.open(
@@ -188,13 +190,13 @@ export default function Home() {
                   >
                     <Button
                       variant="contained"
-                      size="medium"
+                      size="large"
                       startIcon={<EmailIcon />}
                       sx={{
                         backgroundColor: theme.palette.mode === 'dark' ? theme.palette.background.paper : theme.palette.primary.main,
                         color: theme.palette.mode === 'dark' ? theme.palette.primary.main : theme.palette.background.default,
-                        px: 2.5,
-                        py: 1,
+                        px: 3,
+                        py: 1.25,
                         '&:hover': {
                           backgroundColor: theme.palette.mode === 'dark' ? '#f9f6f3' : '#2a2a2a',
                         },
@@ -203,7 +205,8 @@ export default function Home() {
                         boxShadow: theme.palette.mode === 'dark' 
                           ? '0 4px 12px rgba(0, 0, 0, 0.3)' 
                           : '0 4px 12px rgba(15, 23, 42, 0.25)',
-                        mb: { xs: 3, sm: 0 }
+                        mb: { xs: 3, sm: 0 },
+                        height: '48px'
                       }}
                       onClick={() =>
                         (window.location.href =
