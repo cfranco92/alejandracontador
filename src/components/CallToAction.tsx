@@ -64,8 +64,8 @@ export default function CallToAction() {
         boxShadow: isDarkMode 
           ? '0 10px 30px -15px rgba(0, 0, 0, 0.5)' 
           : '0 10px 30px -15px rgba(217, 176, 156, 0.5)',
-        mt: { xs: 2, md: 4 },
-        mb: { xs: 3, md: 4 }
+        mt: { xs: 6, md: 8 },
+        mb: { xs: 1, md: 2 }
       }}
     >
       {/* Animación de elementos flotantes */}
