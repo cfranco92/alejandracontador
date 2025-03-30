@@ -77,7 +77,7 @@ export default function About() {
         }}
       >
         <Box
-          sx={{ position: "relative", height: { xs: 240, sm: 280, md: 320 } }}
+          sx={{ position: "relative", height: { xs: 140, sm: 160, md: 180 } }}
         >
           <Image
             src="/images/contador-header.jpg"
@@ -85,7 +85,7 @@ export default function About() {
             fill
             style={{
               objectFit: "cover",
-              filter: "brightness(0.6)",
+              filter: "brightness(0.7)",
             }}
             priority
             quality={90}
@@ -94,34 +94,36 @@ export default function About() {
             sx={{
               position: "absolute",
               inset: 0,
-              backgroundColor: "rgba(0,0,0,0.6)",
+              backgroundColor: "rgba(0,0,0,0.4)",
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
               alignItems: "center",
               textAlign: "center",
-              padding: { xs: 3, sm: 4 },
+              padding: { xs: 2, sm: 3 },
             }}
           >
             <MotionBox
               variants={slideUp}
               sx={{
-                backgroundColor: "rgba(0,0,0,0.75)",
-                padding: { xs: 3, sm: 4 },
+                backgroundColor: "rgba(0,0,0,0.3)",
+                backdropFilter: "blur(3px)",
+                padding: { xs: 1.5, sm: 2 },
                 borderRadius: 2,
                 width: { xs: "90%", sm: "80%", md: "70%" },
                 maxWidth: 800,
+                border: "1px solid rgba(255,255,255,0.1)",
               }}
             >
               <MotionTypography
                 variant="h3"
                 variants={slideUp}
                 sx={{
-                  fontWeight: 800,
+                  fontWeight: 700,
                   color: "white",
-                  mb: 2,
-                  textShadow: "2px 2px 4px rgba(0,0,0,0.5)",
-                  fontSize: { xs: "1.75rem", sm: "2.25rem", md: "2.75rem" },
+                  mb: 0.5,
+                  textShadow: "1px 1px 3px rgba(0,0,0,0.5)",
+                  fontSize: { xs: "1.5rem", sm: "2rem", md: "2.5rem" },
                 }}
               >
                 Acerca de Mí
@@ -130,10 +132,10 @@ export default function About() {
                 variant="h6"
                 variants={slideUp}
                 sx={{
-                  color: "rgba(255, 255, 255, 1)",
+                  color: "rgba(255, 255, 255, 0.9)",
                   fontWeight: 500,
                   textShadow: "1px 1px 2px rgba(0,0,0,0.5)",
-                  fontSize: { xs: "0.9rem", sm: "1.1rem", md: "1.2rem" },
+                  fontSize: { xs: "0.85rem", sm: "1rem", md: "1.1rem" },
                 }}
               >
                 Servicios profesionales de contaduría pública
