@@ -7,6 +7,7 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import SupportAgentIcon from '@mui/icons-material/SupportAgent';
 import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
+import SmartToyIcon from '@mui/icons-material/SmartToy';
 import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
 
@@ -54,7 +55,7 @@ export default function CallToAction() {
   return (
     <Paper 
       elevation={isDarkMode ? 3 : 2} 
-      className="p-6 sm:p-8 md:p-10 rounded-xl my-10 overflow-hidden relative"
+      className="p-6 sm:p-8 md:p-10 rounded-xl my-6 overflow-hidden relative"
       sx={{
         background: isDarkMode 
           ? `linear-gradient(135deg, ${theme.palette.secondary.dark} 0%, ${theme.palette.secondary.main} 100%)` 
@@ -62,7 +63,9 @@ export default function CallToAction() {
         border: isDarkMode ? '1px solid rgba(217, 176, 156, 0.2)' : 'none',
         boxShadow: isDarkMode 
           ? '0 10px 30px -15px rgba(0, 0, 0, 0.5)' 
-          : '0 10px 30px -15px rgba(217, 176, 156, 0.5)'
+          : '0 10px 30px -15px rgba(217, 176, 156, 0.5)',
+        mt: { xs: 2, md: 4 },
+        mb: { xs: 3, md: 4 }
       }}
     >
       {/* Animación de elementos flotantes */}
@@ -192,12 +195,46 @@ export default function CallToAction() {
                 Ver Servicios
               </Button>
             </motion.div>
+
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Button 
+                variant="outlined" 
+                size={isMobile ? "medium" : "large"}
+                startIcon={<SmartToyIcon />}
+                onClick={() => {
+                  const chatButton = document.querySelector('[aria-label="Abrir Chat"]');
+                  if (chatButton) {
+                    (chatButton as HTMLElement).click();
+                  }
+                }}
+                sx={{
+                  fontWeight: 600,
+                  borderColor: isDarkMode ? 'rgba(68, 100, 173, 0.6)' : 'rgba(68, 100, 173, 0.8)',
+                  backgroundColor: isDarkMode ? 'rgba(68, 100, 173, 0.1)' : 'rgba(68, 100, 173, 0.08)',
+                  color: isDarkMode ? '#a3c9ff' : 'rgba(68, 100, 173, 0.9)',
+                  '&:hover': {
+                    borderColor: isDarkMode ? '#a3c9ff' : 'rgba(68, 100, 173, 1)',
+                    backgroundColor: isDarkMode ? 'rgba(68, 100, 173, 0.15)' : 'rgba(68, 100, 173, 0.12)'
+                  },
+                  position: 'relative',
+                  overflow: 'hidden',
+                  '& .MuiSvgIcon-root': {
+                    color: isDarkMode ? '#a3c9ff' : 'rgba(68, 100, 173, 0.9)',
+                  }
+                }}
+              >
+                Chat IA
+              </Button>
+            </motion.div>
           </Box>
           
           {/* Testimonios */}
           <Divider 
             sx={{ 
-              my: 3, 
+              my: 2, 
               borderColor: isDarkMode ? 'rgba(249, 246, 243, 0.2)' : 'rgba(60, 60, 60, 0.1)',
               width: '100%'
             }} 
@@ -207,7 +244,7 @@ export default function CallToAction() {
             sx={{ 
               display: 'flex', 
               flexDirection: { xs: 'column', md: 'row' },
-              gap: 3,
+              gap: 2,
               alignItems: 'stretch',
               justifyContent: 'space-between'
             }}
@@ -219,13 +256,14 @@ export default function CallToAction() {
                 alignItems: 'center',
                 color: isDarkMode ? 'rgba(249, 246, 243, 0.8)' : 'rgba(60, 60, 60, 0.8)',
                 fontStyle: 'italic',
-                mb: { xs: 0, md: 'auto' }
+                mb: { xs: 0, md: 'auto' },
+                fontSize: '0.8rem'
               }}
             >
               <FormatQuoteIcon 
                 fontSize="small" 
                 sx={{ 
-                  mr: 1,
+                  mr: 0.5,
                   transform: 'rotate(180deg)',
                   color: isDarkMode ? theme.palette.secondary.light : theme.palette.secondary.dark
                 }} 
@@ -237,7 +275,7 @@ export default function CallToAction() {
               sx={{ 
                 display: 'flex', 
                 flexDirection: { xs: 'column', sm: 'row' },
-                gap: 2,
+                gap: 1.5,
                 flex: 1
               }}
             >
@@ -248,7 +286,7 @@ export default function CallToAction() {
                     flex: 1,
                     backgroundColor: isDarkMode ? 'rgba(249, 246, 243, 0.05)' : 'rgba(249, 246, 243, 0.3)',
                     borderRadius: 2,
-                    p: 2,
+                    p: 1.5,
                     position: 'relative',
                     border: '1px solid',
                     borderColor: isDarkMode ? 'rgba(249, 246, 243, 0.1)' : 'rgba(60, 60, 60, 0.05)'
@@ -259,8 +297,8 @@ export default function CallToAction() {
                     sx={{ 
                       color: isDarkMode ? 'rgba(249, 246, 243, 0.9)' : 'rgba(60, 60, 60, 0.9)',
                       fontStyle: 'italic',
-                      fontSize: '0.85rem',
-                      mb: 1.5
+                      fontSize: '0.8rem',
+                      mb: 1
                     }}
                   >
                     &ldquo;{testimonio.texto}&rdquo;
