@@ -3,26 +3,26 @@ import ClientLayout from './ClientLayout';
 
 export const metadata: Metadata = {
   title: 'Alejandra Bertón - Contadora Pública',
-  description: 'Servicios profesionales de contabilidad, asesoría tributaria y consultorías financieras en Colombia.',
+  description: 'Servicios profesionales de contabilidad y consulta virtual. Resuelve dudas contables y tributarias al instante con nuestro asistente de IA.',
   openGraph: {
     title: 'Alejandra Bertón | Contadora Pública',
-    description: 'Servicios contables y tributarios',
+    description: 'Servicios contables y tributarios con asistente virtual. Consulta instantánea sobre impuestos, contabilidad y finanzas.',
     images: [
       {
-        url: '/alejandrafoto.jpeg', // URL relativa a tu dominio
-        width: 800,
-        height: 800,
-        alt: 'Alejandra Bertón',
+        url: '/alejandra-thumbnail.jpg', // Imagen más pequeña optimizada para compartir
+        width: 600,
+        height: 600,
+        alt: 'Alejandra Bertón - Asesora Contable',
       },
     ],
     locale: 'es_ES',
     type: 'website',
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'Alejandra Bertón | Contadora Pública',
-    description: 'Servicios contables y tributarios',
-    images: ['/alejandrafoto.jpeg'], // URL relativa a tu dominio
+    card: 'summary', // Cambiado a 'summary' para una vista más compacta
+    title: 'Alejandra Bertón | Asistente Contable Virtual',
+    description: 'Servicios contables y tributarios con consulta virtual. Respuestas inmediatas a tus dudas.',
+    images: ['/alejandra-thumbnail.jpg'], // Imagen más pequeña
   },
 }
 
