@@ -325,7 +325,7 @@ export default function ServiceDetail() {
               variant="outlined"
               color="primary"
               size="large"
-              href="/contacto"
+              href="/contact"
               sx={{ 
                 borderRadius: 8,
                 px: 3,
@@ -530,7 +530,7 @@ export default function ServiceDetail() {
         <Button
           variant="contained"
           color="primary"
-          href="/contacto"
+          href="/contact"
           sx={{ 
             borderRadius: 2,
             fontWeight: 600,

@@ -173,7 +173,8 @@ export default function ServiceCard({ title, description, icon, delay = 0 }: Ser
                   color: isDark ? theme.palette.text.secondary : theme.palette.text.secondary,
                   lineHeight: 1.7,
                   position: 'relative',
-                  zIndex: 1
+                  zIndex: 1,
+                  mb: 2
                 }}
               >
                 {description}
@@ -181,24 +182,25 @@ export default function ServiceCard({ title, description, icon, delay = 0 }: Ser
             </motion.div>
           </Box>
           
-          {/* Indicador de hover */}
-          <motion.div
-            variants={{
-              initial: { width: 0, opacity: 0 },
-              hover: { 
-                width: '40%', 
-                opacity: 1,
-                transition: { duration: 0.4 } 
-              }
-            }}
-            initial="initial"
-            style={{
-              height: '3px',
-              background: isDark ? theme.palette.secondary.main : theme.palette.secondary.main,
-              marginTop: '16px',
-              borderRadius: '3px'
-            }}
-          />
+          {/* Indicador de hover - siempre al final de la tarjeta */}
+          <Box sx={{ mt: 'auto' }}>
+            <motion.div
+              variants={{
+                initial: { width: 0, opacity: 0 },
+                hover: { 
+                  width: '40%', 
+                  opacity: 1,
+                  transition: { duration: 0.4 } 
+                }
+              }}
+              initial="initial"
+              style={{
+                height: '3px',
+                background: isDark ? theme.palette.secondary.main : theme.palette.secondary.main,
+                borderRadius: '3px'
+              }}
+            />
+          </Box>
         </motion.div>
       </Paper>
     </motion.div>

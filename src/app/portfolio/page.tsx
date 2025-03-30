@@ -135,8 +135,7 @@ export default function Portfolio() {
       }
     }),
     hover: {
-      y: -8,
-      boxShadow: "0px 10px 25px rgba(0, 0, 0, 0.15)",
+      scale: 1.03,
       transition: {
         duration: 0.3,
         ease: "easeOut"
@@ -306,7 +305,7 @@ export default function Portfolio() {
               borderColor: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.06)'
             }} />
             
-            <Box>
+            <Box sx={{ mb: 2 }}>
               {listItems.map((item: string, index: number) => (
                 <Box 
                   key={index}
@@ -340,24 +339,25 @@ export default function Portfolio() {
               ))}
             </Box>
             
-            <MotionButton
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.98 }}
-              variant="text"
-              color="primary"
-              endIcon={<ArrowForwardIcon />}
-              onClick={handleMoreInfoClick}
-              sx={{
-                mt: 3,
-                fontWeight: 500,
-                color: color,
-                textTransform: 'none',
-                p: 0,
-                cursor: 'pointer'
-              }}
-            >
-              Más información
-            </MotionButton>
+            <Box sx={{ mt: 'auto', pt: 1 }}>
+              <MotionButton
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.98 }}
+                variant="text"
+                color="primary"
+                endIcon={<ArrowForwardIcon />}
+                onClick={handleMoreInfoClick}
+                sx={{
+                  fontWeight: 500,
+                  color: color,
+                  textTransform: 'none',
+                  p: 0,
+                  cursor: 'pointer'
+                }}
+              >
+                Más información
+              </MotionButton>
+            </Box>
           </CardContent>
         </Card>
       </MotionGrid>
