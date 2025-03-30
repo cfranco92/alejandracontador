@@ -22,6 +22,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import { CHAT_API_URL } from '@/lib/config';
 
 // Interfaces para los mensajes y props
 interface Message {
@@ -92,7 +93,7 @@ export default function AIChat({ dialogMode = false }: AIChatProps) {
       });
       
       // Llamar a nuestra API
-      const response = await fetch('https://alejandracontador-production.up.railway.app/api/chat', {
+      const response = await fetch(CHAT_API_URL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -207,7 +208,7 @@ export default function AIChat({ dialogMode = false }: AIChatProps) {
     if (aiResponses.length > 0) {
       // Usar la API para generar un resumen conciso
       try {
-        const response = await fetch('https://alejandracontador-production.up.railway.app/api/chat', {
+        const response = await fetch(CHAT_API_URL, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
