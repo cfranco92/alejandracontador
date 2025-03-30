@@ -24,7 +24,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 const blogPosts = [
   {
     id: 1,
-    title: "Reforma Tributaria en Colombia 2023: Lo que debes saber",
+    title: "Reforma Tributaria en Colombia 2024: Lo que debes saber",
     excerpt: "Analizamos los puntos clave de la última reforma tributaria en Colombia y cómo afecta a empresas y personas naturales.",
     content: `
       <p>La última reforma tributaria en Colombia introduce cambios significativos que afectan tanto a empresas como a personas naturales. Esta reforma busca aumentar la recaudación fiscal para financiar programas sociales y reducir el déficit fiscal.</p>
@@ -59,7 +59,7 @@ const blogPosts = [
     author: "Alejandra Bertón",
     authorRole: "Contadora Pública",
     authorBio: "Especialista en derecho tributario con más de 10 años de experiencia asesorando empresas en Colombia.",
-    date: "15 de mayo de 2023",
+    date: "15 de mayo de 2024",
     imageUrl: "/images/blog/reforma-tributaria.jpg",
     categories: ["Impuestos", "Legislación"],
     featured: true,
@@ -117,7 +117,7 @@ const blogPosts = [
     author: "Alejandra Bertón",
     authorRole: "Contadora Pública",
     authorBio: "Especialista en tributación personal y empresarial con enfoque en optimización fiscal legal.",
-    date: "10 de abril de 2023",
+    date: "10 de abril de 2024",
     imageUrl: "/images/blog/declaracion-renta.jpg",
     categories: ["Impuestos", "Personas Naturales"],
     featured: false,
@@ -127,11 +127,54 @@ const blogPosts = [
     id: 3,
     title: "Novedades en las NIIF para pequeñas y medianas empresas",
     excerpt: "Descubre las últimas actualizaciones en las Normas Internacionales de Información Financiera y cómo implementarlas en tu PYME.",
-    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.",
+    content: `
+      <p>Las Normas Internacionales de Información Financiera (NIIF) para pequeñas y medianas empresas han experimentado importantes actualizaciones para el año 2024. Estas modificaciones buscan simplificar la aplicación de estándares contables internacionales en negocios de menor tamaño.</p>
+      
+      <h2>Principales actualizaciones en las NIIF para PYMES</h2>
+      <p>El Consejo de Normas Internacionales de Contabilidad (IASB) ha emitido varias enmiendas a las NIIF para PYMES que entran en vigor este año. Entre los cambios más destacados encontramos:</p>
+      
+      <ul>
+        <li>Simplificación en el reconocimiento y medición de instrumentos financieros</li>
+        <li>Clarificación de los requisitos para el reconocimiento de ingresos</li>
+        <li>Actualización de las guías sobre arrendamientos</li>
+        <li>Mejoras en la presentación de estados financieros</li>
+      </ul>
+      
+      <p>Estos cambios están diseñados para reducir la carga administrativa y facilitar el cumplimiento normativo para las pequeñas y medianas empresas.</p>
+      
+      <h2>Beneficios de la implementación adecuada</h2>
+      <p>La correcta aplicación de las NIIF para PYMES puede traer numerosos beneficios para tu empresa, incluyendo:</p>
+      
+      <ul>
+        <li>Mayor transparencia y comparabilidad en la información financiera</li>
+        <li>Mejor acceso a financiamiento nacional e internacional</li>
+        <li>Incremento en la confianza de inversionistas y socios comerciales</li>
+        <li>Toma de decisiones basada en información financiera de calidad</li>
+      </ul>
+      
+      <p>Las empresas que adoptan adecuadamente estos estándares suelen experimentar mejoras significativas en su gestión financiera y capacidad de crecimiento.</p>
+      
+      <h2>Recomendaciones para la implementación</h2>
+      <p>Para implementar correctamente las actualizaciones de las NIIF para PYMES, recomendamos:</p>
+      
+      <ol>
+        <li>Capacitar al personal contable y financiero</li>
+        <li>Revisar y actualizar las políticas contables de la empresa</li>
+        <li>Evaluar el impacto de los cambios en los sistemas de información</li>
+        <li>Considerar la contratación de asesoría especializada si es necesario</li>
+      </ol>
+      
+      <p>Una implementación planificada y bien ejecutada facilitará la transición y minimizará posibles inconvenientes.</p>
+      
+      <h2>Conclusión</h2>
+      <p>Las actualizaciones de las NIIF para PYMES representan una oportunidad para mejorar la calidad de la información financiera de tu empresa. Aunque el proceso de adaptación puede parecer complejo, los beneficios a largo plazo justifican ampliamente el esfuerzo invertido.</p>
+      
+      <p>Recuerda que contar con asesoría profesional especializada puede hacer que este proceso sea mucho más fluido y efectivo.</p>
+    `,
     author: "Carlos Gómez",
     authorRole: "Consultor Financiero",
     authorBio: "Experto en implementación de NIIF en pequeñas y medianas empresas del sector manufacturero y de servicios.",
-    date: "5 de marzo de 2023",
+    date: "5 de marzo de 2024",
     imageUrl: "/images/blog/niif-pymes.jpg",
     categories: ["NIIF", "PYMES"],
     featured: false,
@@ -139,13 +182,65 @@ const blogPosts = [
   },
   {
     id: 4,
-    title: "Beneficios tributarios para emprendedores en 2023",
+    title: "Beneficios tributarios para emprendedores en 2024",
     excerpt: "Conoce todos los beneficios fiscales disponibles para nuevos emprendimientos y cómo puedes aprovecharlos.",
-    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.",
+    content: `
+      <p>El ecosistema emprendedor en Colombia recibe un impulso importante en 2024 gracias a diversos beneficios tributarios diseñados específicamente para nuevas empresas. Estos incentivos buscan fomentar la creación y consolidación de emprendimientos en el país.</p>
+      
+      <h2>Beneficios para empresas de economía naranja</h2>
+      <p>Las empresas de economía naranja (industrias creativas y culturales) continúan gozando de importantes ventajas fiscales. Entre ellas destacan:</p>
+      
+      <ul>
+        <li>Exención del impuesto de renta por 7 años</li>
+        <li>Tarifas reducidas en la retención en la fuente</li>
+        <li>Descuentos en aportes a SENA, ICBF y cajas de compensación</li>
+      </ul>
+      
+      <p>Para acceder a estos beneficios, es necesario cumplir requisitos específicos de inversión y generación de empleo.</p>
+      
+      <h2>Incentivos para startups tecnológicas</h2>
+      <p>Las startups de base tecnológica cuentan con incentivos adicionales este año:</p>
+      
+      <ul>
+        <li>Deducciones especiales por inversión en investigación y desarrollo</li>
+        <li>Reducción en la tarifa de impuesto de renta</li>
+        <li>Beneficios en la importación de equipos tecnológicos</li>
+        <li>Acceso a créditos con tasas preferenciales</li>
+      </ul>
+      
+      <p>Estos beneficios buscan potenciar la innovación y el desarrollo tecnológico en el país.</p>
+      
+      <h2>Ventajas del régimen simple de tributación</h2>
+      <p>El Régimen Simple de Tributación sigue siendo una excelente opción para emprendedores, ofreciendo:</p>
+      
+      <ul>
+        <li>Unificación de varios impuestos en un solo pago</li>
+        <li>Reducción de cargas administrativas</li>
+        <li>Tarifas progresivas según el nivel de ingresos</li>
+        <li>Simplificación en el cumplimiento de obligaciones fiscales</li>
+      </ul>
+      
+      <p>Este régimen resulta particularmente beneficioso para pequeños emprendimientos con facturación anual inferior a 80.000 UVT.</p>
+      
+      <h2>Cómo acceder a estos beneficios</h2>
+      <p>Para aprovechar estos incentivos, los emprendedores deben:</p>
+      
+      <ol>
+        <li>Formalizar adecuadamente su empresa</li>
+        <li>Clasificar correctamente su actividad económica</li>
+        <li>Mantener al día sus obligaciones contables y tributarias</li>
+        <li>Presentar oportunamente las solicitudes correspondientes</li>
+      </ol>
+      
+      <p>Una correcta planeación tributaria desde el inicio del emprendimiento maximizará el aprovechamiento de estos beneficios.</p>
+      
+      <h2>Conclusión</h2>
+      <p>Los beneficios tributarios disponibles en 2024 representan una valiosa oportunidad para emprendedores que buscan consolidar sus negocios. Aprovecharlos adecuadamente puede significar un ahorro sustancial y contribuir significativamente al crecimiento de tu empresa.</p>
+    `,
     author: "Alejandra Bertón",
     authorRole: "Contadora Pública",
     authorBio: "Especialista en estructuración tributaria para startups y emprendimientos de base tecnológica.",
-    date: "20 de febrero de 2023",
+    date: "20 de febrero de 2024",
     imageUrl: "/images/blog/beneficios-tributarios.jpg",
     categories: ["Impuestos", "Emprendimiento"],
     featured: true,
@@ -155,11 +250,73 @@ const blogPosts = [
     id: 5,
     title: "Guía completa sobre el régimen simple de tributación",
     excerpt: "Todo lo que necesitas saber sobre el Régimen Simple: quiénes pueden acogerse, beneficios y obligaciones.",
-    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.",
+    content: `
+      <p>El Régimen Simple de Tributación (RST) continúa siendo una alternativa atractiva para pequeños y medianos contribuyentes en Colombia durante 2024. Esta guía te ofrece toda la información necesaria para determinar si este régimen es adecuado para tu negocio.</p>
+      
+      <h2>¿Qué es el Régimen Simple de Tributación?</h2>
+      <p>El RST es un modelo tributario opcional y simplificado que integra el impuesto de renta, el impuesto al consumo, el IVA (para algunos contribuyentes) y el impuesto de industria y comercio en una sola declaración y pago.</p>
+      
+      <p>Este régimen busca reducir las cargas formales y sustanciales para pequeños contribuyentes, simplificando el cumplimiento de sus obligaciones tributarias.</p>
+      
+      <h2>¿Quiénes pueden acogerse?</h2>
+      <p>Pueden optar por el RST las personas naturales y jurídicas que cumplan con las siguientes condiciones:</p>
+      
+      <ul>
+        <li>Ingresos brutos anuales inferiores a 80.000 UVT (aproximadamente $3.040 millones para 2024)</li>
+        <li>Personas naturales que desarrollen empresas o personas jurídicas cuyos socios sean personas naturales residentes en Colombia</li>
+        <li>No estar expresamente excluidos del régimen por su actividad económica</li>
+      </ul>
+      
+      <p>Es importante verificar las exclusiones específicas antes de optar por este régimen.</p>
+      
+      <h2>Beneficios principales</h2>
+      <p>Entre las ventajas más destacadas del RST encontramos:</p>
+      
+      <ul>
+        <li>Simplificación en el cumplimiento de obligaciones tributarias</li>
+        <li>Reducción de la carga administrativa</li>
+        <li>Anticipos bimestrales que facilitan el flujo de caja</li>
+        <li>Tarifas consolidadas y progresivas según el nivel de ingresos</li>
+        <li>No están sujetos a retención en la fuente ni a autorretención</li>
+        <li>Reducción en aportes al sistema de seguridad social para algunos contribuyentes</li>
+      </ul>
+      
+      <h2>Tarifas aplicables</h2>
+      <p>Las tarifas del impuesto unificado bajo el RST dependen del grupo de actividad económica y del nivel de ingresos brutos anuales:</p>
+      
+      <ul>
+        <li>Actividades comerciales: entre 1.8% y 3.8%</li>
+        <li>Servicios profesionales: entre 5.9% y 7.3%</li>
+        <li>Actividades industriales: entre 1.6% y 3.8%</li>
+        <li>Sector de restaurantes y hoteles: entre 3.4% y 5.4%</li>
+      </ul>
+      
+      <p>Estas tarifas incluyen el componente de ICA, que se distribuye entre los municipios donde se desarrollen las actividades.</p>
+      
+      <h2>Obligaciones bajo el régimen</h2>
+      <p>Los contribuyentes acogidos al RST deben:</p>
+      
+      <ul>
+        <li>Presentar anticipos bimestrales a través del formulario electrónico establecido por la DIAN</li>
+        <li>Presentar declaración anual consolidada</li>
+        <li>Mantener un sistema de facturación electrónica</li>
+        <li>Llevar contabilidad según las normas vigentes</li>
+      </ul>
+      
+      <h2>¿Cómo inscribirse?</h2>
+      <p>Para 2024, la inscripción al RST debe realizarse a más tardar el último día hábil del mes de enero. Los nuevos contribuyentes pueden hacerlo al momento de su registro en el RUT.</p>
+      
+      <p>El proceso se realiza a través de la página web de la DIAN, actualizando el RUT para incluir la responsabilidad correspondiente al Régimen Simple.</p>
+      
+      <h2>Consideraciones finales</h2>
+      <p>Antes de optar por el RST, es recomendable realizar un análisis comparativo con el régimen ordinario para determinar cuál ofrece mayores beneficios según las características específicas de tu negocio.</p>
+      
+      <p>Contar con asesoría contable y tributaria profesional te ayudará a tomar la mejor decisión y aprovechar al máximo los beneficios disponibles.</p>
+    `,
     author: "María Rodríguez",
     authorRole: "Asesora Tributaria",
     authorBio: "Consultora especializada en regímenes tributarios especiales y planeación fiscal para pequeñas empresas.",
-    date: "15 de enero de 2023",
+    date: "15 de enero de 2024",
     imageUrl: "/images/blog/regimen-simple.jpg",
     categories: ["Impuestos", "Régimen Simple"],
     featured: false,
@@ -167,13 +324,89 @@ const blogPosts = [
   },
   {
     id: 6,
-    title: "Calendario tributario 2023: Fechas clave para tu empresa",
+    title: "Calendario tributario 2024: Fechas clave para tu empresa",
     excerpt: "Mantente al día con todas las fechas importantes del calendario tributario colombiano para evitar multas y sanciones.",
-    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.",
+    content: `
+      <p>El cumplimiento oportuno de las obligaciones tributarias es fundamental para evitar sanciones y recargos. El calendario tributario 2024 trae algunas modificaciones importantes que todo empresario y contador debe conocer.</p>
+      
+      <h2>Declaración de renta personas naturales</h2>
+      <p>Para la declaración de renta del año gravable 2023, las fechas de vencimiento están programadas entre agosto y octubre de 2024, según el último dígito del NIT:</p>
+      
+      <ul>
+        <li>Últimos dígitos 00 a 05: Entre el 6 y el 13 de agosto de 2024</li>
+        <li>Últimos dígitos 06 a 15: Entre el 14 y el 27 de agosto de 2024</li>
+        <li>Últimos dígitos 16 a 25: Entre el 28 de agosto y el 10 de septiembre de 2024</li>
+        <li>Últimos dígitos 26 a 35: Entre el 11 y el 24 de septiembre de 2024</li>
+        <li>Últimos dígitos 36 a 45: Entre el 25 de septiembre y el 8 de octubre de 2024</li>
+        <li>Últimos dígitos 46 a 55: Entre el 9 y el 22 de octubre de 2024</li>
+        <li>Últimos dígitos 56 a 99: Entre el 23 de octubre y el 5 de noviembre de 2024</li>
+      </ul>
+      
+      <h2>Declaración de renta personas jurídicas</h2>
+      <p>Las empresas deben presentar su declaración de renta según el último dígito del NIT, con vencimientos entre abril y mayo de 2024:</p>
+      
+      <ul>
+        <li>Últimos dígitos 00 a 09: Entre el 9 y el 22 de abril de 2024</li>
+        <li>Últimos dígitos 10 a 19: Entre el 23 de abril y el 6 de mayo de 2024</li>
+        <li>Últimos dígitos 20 a 29: Entre el 7 y el 20 de mayo de 2024</li>
+        <li>Últimos dígitos 30 a 39: Entre el 21 de mayo y el 3 de junio de 2024</li>
+        <li>Últimos dígitos 40 a 49: Entre el 4 y el 17 de junio de 2024</li>
+        <li>Últimos dígitos 50 a 59: Entre el 18 de junio y el 1 de julio de 2024</li>
+        <li>Últimos dígitos 60 a 99: Entre el 2 y el 15 de julio de 2024</li>
+      </ul>
+      
+      <h2>Declaración de IVA</h2>
+      <p>Para los responsables bimestrales, las fechas de vencimiento para 2024 son:</p>
+      
+      <ul>
+        <li>Bimestre enero-febrero: Entre el 9 y el 22 de marzo de 2024</li>
+        <li>Bimestre marzo-abril: Entre el 7 y el 20 de mayo de 2024</li>
+        <li>Bimestre mayo-junio: Entre el 9 y el 22 de julio de 2024</li>
+        <li>Bimestre julio-agosto: Entre el 10 y el 23 de septiembre de 2024</li>
+        <li>Bimestre septiembre-octubre: Entre el 12 y el 25 de noviembre de 2024</li>
+        <li>Bimestre noviembre-diciembre: Entre el 14 y el 27 de enero de 2025</li>
+      </ul>
+      
+      <p>Los responsables cuatrimestrales deben presentar sus declaraciones en mayo, septiembre y enero, según el último dígito del NIT.</p>
+      
+      <h2>Régimen Simple de Tributación</h2>
+      <p>Los contribuyentes del Régimen Simple deben cumplir con:</p>
+      
+      <ul>
+        <li>Anticipo bimestral: Según fechas establecidas para cada bimestre</li>
+        <li>Declaración anual: Entre febrero y abril de 2025 para el año gravable 2024</li>
+        <li>Plazo para optar por el régimen: Hasta el 31 de enero de 2024</li>
+      </ul>
+      
+      <h2>Información exógena</h2>
+      <p>La presentación de información exógena (medios magnéticos) para el año gravable 2023 tiene los siguientes vencimientos:</p>
+      
+      <ul>
+        <li>Grandes contribuyentes: Entre el 23 de abril y el 6 de mayo de 2024</li>
+        <li>Personas jurídicas: Entre el 7 de mayo y el 10 de junio de 2024</li>
+        <li>Personas naturales: Entre el 11 de junio y el 15 de julio de 2024</li>
+      </ul>
+      
+      <h2>Recomendaciones para cumplir a tiempo</h2>
+      <p>Para evitar sanciones y recargos, te sugerimos:</p>
+      
+      <ol>
+        <li>Programar con anticipación las fechas límite en un calendario</li>
+        <li>Preparar la documentación necesaria con tiempo</li>
+        <li>Verificar saldos a favor y compensaciones disponibles</li>
+        <li>Actualizar el RUT si es necesario</li>
+        <li>Consultar periódicamente la página de la DIAN para posibles modificaciones</li>
+      </ol>
+      
+      <p>Recuerda que las sanciones por extemporaneidad pueden ser significativas y afectar seriamente las finanzas de tu empresa.</p>
+      
+      <h2>Conclusión</h2>
+      <p>El cumplimiento oportuno de las obligaciones tributarias no solo te evitará sanciones, sino que también contribuirá a una mejor planeación financiera de tu empresa. Mantén este calendario a mano y prepárate con tiempo para cada obligación.</p>
+    `,
     author: "Alejandra Bertón",
     authorRole: "Contadora Pública",
     authorBio: "Experta en cumplimiento tributario y prevención de sanciones por extemporaneidad o inexactitud.",
-    date: "5 de enero de 2023",
+    date: "5 de enero de 2024",
     imageUrl: "/images/blog/calendario-tributario.jpg",
     categories: ["Impuestos", "Calendario Tributario"],
     featured: false,
@@ -203,37 +436,41 @@ function RelatedPostCard({ post }: { post: typeof blogPosts[0] }) {
         borderRadius: '8px',
       }}
     >
-      <Box sx={{ position: 'relative', paddingTop: '56.25%', width: '100%' }}>
-        <Box
-          sx={{
+      <Box 
+        component="div"
+        sx={{ 
+          position: 'relative', 
+          paddingTop: '56.25%', 
+          width: '100%',
+          backgroundImage: `url(${post.imageUrl})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          '&::after': {
+            content: '""',
             position: 'absolute',
             top: 0,
             left: 0,
             width: '100%',
             height: '100%',
-            bgcolor: 'grey.300',
+            background: 'linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.4) 100%)',
+          }
+        }}
+      >
+        <Typography 
+          variant="subtitle1" 
+          color="white" 
+          sx={{ 
+            position: 'absolute', 
+            bottom: 0, 
+            left: 0, 
+            p: 1.5,
+            textShadow: '1px 1px 2px rgba(0,0,0,0.7)',
+            fontWeight: 'medium',
+            zIndex: 1
           }}
         >
-          {/* Futura integración con Image de Next.js - por ahora placeholder */}
-          <Box 
-            sx={{ 
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              width: '100%',
-              height: '100%',
-              bgcolor: theme.palette.primary.main,
-              opacity: 0.7,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          >
-            <Typography variant="subtitle1" color="white" align="center" sx={{ p: 2 }}>
-              {post.title.split(' ').slice(0, 2).join(' ')}
-            </Typography>
-          </Box>
-        </Box>
+          {post.categories[0]}
+        </Typography>
       </Box>
       
       <Box sx={{ p: 2, flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
@@ -427,33 +664,42 @@ export default function BlogPost() {
               
               {/* Imagen destacada */}
               <Box 
+                component="div"
                 sx={{ 
                   position: 'relative',
                   width: '100%',
-                  height: '300px',
+                  height: '350px',
                   borderRadius: '8px',
                   overflow: 'hidden',
-                  bgcolor: 'grey.300',
+                  backgroundImage: `url(${post.imageUrl})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
                   mb: 4
                 }}
               >
-                {/* Futura integración con Image de Next.js - por ahora placeholder */}
-                <Box 
-                  sx={{ 
+                <Box
+                  sx={{
                     position: 'absolute',
                     top: 0,
                     left: 0,
                     width: '100%',
                     height: '100%',
-                    bgcolor: theme.palette.primary.main,
-                    opacity: 0.7,
+                    background: 'linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.6) 100%)',
                     display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
+                    alignItems: 'flex-end',
+                    padding: 3
                   }}
                 >
-                  <Typography variant="h4" color="white" align="center" sx={{ p: 2 }}>
-                    Imagen: {post.title.split(' ').slice(0, 3).join(' ')}
+                  <Typography 
+                    variant="h4" 
+                    color="white" 
+                    align="left" 
+                    sx={{ 
+                      textShadow: '1px 1px 3px rgba(0,0,0,0.7)',
+                      fontWeight: 'bold' 
+                    }}
+                  >
+                    {post.title}
                   </Typography>
                 </Box>
               </Box>
