@@ -4,15 +4,6 @@ import { Container, Typography, Paper, Box, useTheme } from '@mui/material';
 import AIChat from '@/components/AIChat';
 import { motion } from 'framer-motion';
 
-// Metadatos estáticos para la página de chat
-export const metadata = {
-  title: 'Asistente Contable Virtual | Alejandra Bertón',
-  description: 'Resuelve tus dudas contables y fiscales al instante con nuestro chatbot de IA. Consulta sobre impuestos, facturación y más.',
-  alternates: {
-    canonical: '/chat',
-  },
-};
-
 const MotionPaper = motion(Paper);
 const MotionBox = motion(Box);
 

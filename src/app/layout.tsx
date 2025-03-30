@@ -2,6 +2,7 @@ import { Metadata, Viewport } from 'next';
 import ClientLayout from './ClientLayout';
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://alejandracontador.vercel.app'),
   title: 'Alejandra Bertón - Contadora Pública',
   description: 'Servicios profesionales de contabilidad y consulta virtual. Resuelve dudas contables y tributarias al instante con nuestro asistente de IA.',
   openGraph: {
