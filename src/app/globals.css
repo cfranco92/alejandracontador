@@ -2,7 +2,7 @@
 @import "../mui-tailwind-compat.css";
 
 :root {
-  --background: #f9f6f3;
+  --background: #fef3f5;
   --foreground: #3c3c3c;
   --card-background: #ffffff;
   --border-color: #e2d4c9;
@@ -10,6 +10,9 @@
   --primary-color: #3c3c3c;
   --secondary-color: #e8c9bb;
   --accent-color: #d9b09c;
+  --pink-light: #ffccd5;
+  --pink-medium: #ffb6c1;
+  --pink-dark: #f5a9bc;
 }
 
 @theme inline {
@@ -188,8 +191,21 @@ body {
     transform: scale(0.8);
   }
   100% {
-    opacity: 0.4;
+    opacity: 0.5;
     transform: scale(1.2);
+  }
+}
+
+/* Nuevas animaciones con tonos rosados */
+@keyframes pink-pulse {
+  0% {
+    box-shadow: 0 0 15px 0 rgba(255, 182, 193, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 30px 5px rgba(255, 182, 193, 0.7);
+  }
+  100% {
+    box-shadow: 0 0 15px 0 rgba(255, 182, 193, 0.5);
   }
 }
 
@@ -205,6 +221,10 @@ body {
 .animate-float-delayed-more {
   animation: float-delayed-more 7s ease-in-out infinite;
   animation-delay: 2s;
+}
+
+.animate-pink-pulse {
+  animation: pink-pulse 4s infinite;
 }
 
 /* Clases de retraso para partículas y líneas */

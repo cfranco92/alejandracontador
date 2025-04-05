@@ -69,11 +69,11 @@ function BackgroundAnimations() {
   // Colores ajustados según el tema para mejor visibilidad
   const particleColor = theme.palette.mode === 'dark' 
     ? theme.palette.secondary.main 
-    : theme.palette.secondary.dark;
+    : '#ffb6c1'; // Color rosa para las partículas en modo claro
   
   const lineColor = theme.palette.mode === 'dark'
     ? theme.palette.secondary.main
-    : theme.palette.secondary.dark;
+    : '#f5a9bc'; // Color rosa más intenso para las líneas en modo claro
   
   return (
     <>
@@ -146,7 +146,7 @@ function BackgroundAnimations() {
               fontSize: '30px',
               color: theme.palette.mode === 'dark' 
                 ? theme.palette.secondary.main 
-                : theme.palette.primary.main,
+                : '#ff8fab', // Color rosa más intenso para los símbolos
               animation: `float-symbol ${item.duration}s linear infinite`,
               animationDelay: `${item.delay}s`,
               top: item.top,
@@ -259,7 +259,7 @@ export default function Home() {
             height: '100%',
             backgroundColor: theme.palette.mode === 'dark' 
               ? 'rgba(0, 0, 0, 0.85)' 
-              : 'rgba(255, 255, 255, 0.8)',
+              : 'rgba(254, 243, 245, 0.85)', // Color rosado muy suave como fondo base
             zIndex: 1,
           }}
         />
@@ -273,8 +273,8 @@ export default function Home() {
             width: '100%',
             height: '100%',
             background: theme.palette.mode === 'dark'
-              ? 'linear-gradient(to bottom, rgba(10, 10, 20, 0.6) 0%, rgba(20, 20, 30, 0.4) 100%)'
-              : 'linear-gradient(to bottom, rgba(250, 250, 253, 0.6) 0%, rgba(245, 245, 248, 0.4) 100%)',
+              ? 'linear-gradient(to bottom, rgba(43, 20, 30, 0.6) 0%, rgba(30, 20, 40, 0.4) 100%)'
+              : 'linear-gradient(to bottom, rgba(255, 230, 240, 0.8) 0%, rgba(252, 235, 245, 0.6) 100%)',
             zIndex: 0.5,
             backdropFilter: 'blur(2px)',
           }}
@@ -289,10 +289,10 @@ export default function Home() {
             width: '100%',
             height: '100%',
             background: theme.palette.mode === 'dark'
-              ? 'radial-gradient(circle at 30% 40%, rgba(31, 58, 147, 0.3), transparent 50%)'
-              : 'radial-gradient(circle at 30% 40%, rgba(236, 190, 165, 0.6), transparent 50%)',
+              ? 'radial-gradient(circle at 30% 40%, rgba(147, 31, 98, 0.3), transparent 50%)'
+              : 'radial-gradient(circle at 30% 40%, rgba(236, 165, 190, 0.7), transparent 50%)',
             zIndex: -1,
-            opacity: theme.palette.mode === 'dark' ? 0.7 : 0.6,
+            opacity: theme.palette.mode === 'dark' ? 0.7 : 0.8,
           }}
         />
         
@@ -308,11 +308,28 @@ export default function Home() {
             width: '400px',
             height: '400px',
             borderRadius: '50%',
-            background: `radial-gradient(circle, ${theme.palette.secondary.light} 0%, transparent 70%)`,
+            background: `radial-gradient(circle, ${theme.palette.mode === 'dark' ? theme.palette.secondary.light : '#f8c1d3'} 0%, transparent 70%)`,
             filter: 'blur(70px)',
-            opacity: theme.palette.mode === 'dark' ? 0.25 : 0.15,
+            opacity: theme.palette.mode === 'dark' ? 0.25 : 0.35,
             zIndex: 0,
             animation: 'pulse-slow 8s infinite alternate',
+          }}
+        />
+        
+        {/* Nuevo elemento decorativo con animación de pulso rosado */}
+        <Box
+          className="animate-pink-pulse"
+          sx={{
+            position: 'absolute',
+            top: '30%',
+            left: '35%',
+            width: '250px',
+            height: '250px',
+            borderRadius: '50%',
+            background: `radial-gradient(circle, ${theme.palette.mode === 'dark' ? 'rgba(236, 165, 190, 0.3)' : 'rgba(255, 182, 193, 0.4)'} 0%, transparent 70%)`,
+            filter: 'blur(50px)',
+            opacity: theme.palette.mode === 'dark' ? 0.25 : 0.4,
+            zIndex: 0,
           }}
         />
         
@@ -324,9 +341,9 @@ export default function Home() {
             width: '450px',
             height: '450px',
             borderRadius: '50%',
-            background: `radial-gradient(circle, ${theme.palette.secondary.main} 0%, transparent 70%)`,
+            background: `radial-gradient(circle, ${theme.palette.mode === 'dark' ? theme.palette.secondary.main : '#ffb6c1'} 0%, transparent 70%)`,
             filter: 'blur(80px)',
-            opacity: theme.palette.mode === 'dark' ? 0.3 : 0.2,
+            opacity: theme.palette.mode === 'dark' ? 0.3 : 0.4,
             zIndex: 0,
             animation: 'pulse-slow 12s infinite alternate-reverse',
           }}
@@ -340,9 +357,9 @@ export default function Home() {
             width: '300px',
             height: '300px',
             borderRadius: '50%',
-            background: `radial-gradient(circle, ${theme.palette.secondary.light} 0%, transparent 70%)`,
+            background: `radial-gradient(circle, ${theme.palette.mode === 'dark' ? theme.palette.secondary.light : '#f5a9bc'} 0%, transparent 70%)`,
             filter: 'blur(60px)',
-            opacity: theme.palette.mode === 'dark' ? 0.15 : 0.1,
+            opacity: theme.palette.mode === 'dark' ? 0.15 : 0.3,
             zIndex: 0,
             animation: 'pulse-slow 15s infinite alternate',
           }}
@@ -357,9 +374,9 @@ export default function Home() {
             width: '350px',
             height: '350px',
             borderRadius: '50%',
-            background: `radial-gradient(circle, ${theme.palette.secondary.light} 0%, transparent 70%)`,
+            background: `radial-gradient(circle, ${theme.palette.mode === 'dark' ? theme.palette.secondary.light : '#ffc0cb'} 0%, transparent 70%)`,
             filter: 'blur(60px)',
-            opacity: theme.palette.mode === 'dark' ? 0.2 : 0.15,
+            opacity: theme.palette.mode === 'dark' ? 0.2 : 0.35,
             zIndex: 0,
             animation: 'pulse-slow 10s infinite alternate',
           }}
