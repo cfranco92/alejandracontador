@@ -128,8 +128,42 @@ function AppContent({ children }: { children: React.ReactNode }) {
         muiOptions={muiOptions}
         isDarkMode={false}
       >
-        <AppBar component="nav">
-          <Toolbar>
+        <AppBar 
+          component="nav" 
+          elevation={0} 
+          square={true}
+          sx={{
+            borderRadius: 0,
+            width: '100vw',
+            left: 0,
+            right: 0,
+            position: 'fixed',
+            top: 0,
+            margin: 0,
+            padding: 0,
+            border: 'none',
+            outline: 'none',
+            boxShadow: 'none',
+            maxWidth: '100%',
+            overflowX: 'hidden',
+            borderTop: 0,
+            borderLeft: 0,
+            borderRight: 0,
+            borderBottom: 0,
+            borderTopLeftRadius: 0,
+            borderTopRightRadius: 0,
+            borderBottomLeftRadius: 0,
+            borderBottomRightRadius: 0
+          }}
+        >
+          <Toolbar sx={{ 
+            padding: '0 16px', 
+            width: '100%', 
+            margin: 0, 
+            border: 'none', 
+            boxShadow: 'none',
+            boxSizing: 'border-box'
+          }}>
             <Typography
               variant="h6"
               component="div"
@@ -168,11 +202,15 @@ function AppContent({ children }: { children: React.ReactNode }) {
         <Box
           component="main"
           sx={{
-            p: 3,
+            p: { xs: 2, sm: 3 },
             minHeight: "100vh",
             pt: { xs: 8, sm: 9 },
             display: "flex",
-            flexDirection: "column"
+            flexDirection: "column",
+            marginTop: 0,
+            paddingTop: '64px', // Altura del AppBar
+            boxSizing: 'border-box',
+            overflowY: 'auto' // Permitir scroll vertical
           }}
         >
           {children}
@@ -187,8 +225,42 @@ function AppContent({ children }: { children: React.ReactNode }) {
       muiOptions={muiOptions}
       isDarkMode={darkMode}
     >
-      <AppBar component="nav">
-        <Toolbar>
+      <AppBar 
+        component="nav" 
+        elevation={0} 
+        square={true}
+        sx={{
+          borderRadius: 0,
+          width: '100vw',
+          left: 0,
+          right: 0,
+          position: 'fixed',
+          top: 0,
+          margin: 0,
+          padding: 0,
+          border: 'none',
+          outline: 'none',
+          boxShadow: 'none',
+          maxWidth: '100%',
+          overflowX: 'hidden',
+          borderTop: 0,
+          borderLeft: 0,
+          borderRight: 0,
+          borderBottom: 0,
+          borderTopLeftRadius: 0,
+          borderTopRightRadius: 0,
+          borderBottomLeftRadius: 0,
+          borderBottomRightRadius: 0
+        }}
+      >
+        <Toolbar sx={{ 
+          padding: '0 16px', 
+          width: '100%', 
+          margin: 0, 
+          border: 'none', 
+          boxShadow: 'none',
+          boxSizing: 'border-box'
+        }}>
           <Typography
             variant="h6"
             component="div"
@@ -250,12 +322,15 @@ function AppContent({ children }: { children: React.ReactNode }) {
       <Box
         component="main"
         sx={{
-          p: 3,
+          p: { xs: 2, sm: 3 },
           minHeight: "100vh",
           pt: { xs: 8, sm: 9 },
           display: "flex",
           flexDirection: "column",
-          overflow: "hidden"
+          marginTop: 0,
+          paddingTop: '64px', // Altura del AppBar
+          boxSizing: 'border-box',
+          overflowY: 'auto' // Permitir scroll vertical
         }}
       >
         {children}
@@ -274,8 +349,11 @@ export default function ClientLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es">
-      <body className={`${geistSans.variable} ${geistMono.variable} ${inter.className} antialiased`}>
+    <html lang="es" style={{ margin: 0, padding: 0, overflow: 'visible', width: '100%', maxWidth: '100%' }}>
+      <body 
+        className={`${geistSans.variable} ${geistMono.variable} ${inter.className} antialiased`}
+        style={{ margin: 0, padding: 0, overflow: 'visible', width: '100%', maxWidth: '100%' }}
+      >
         <ThemeProvider>
           <AppContent>
             {children}

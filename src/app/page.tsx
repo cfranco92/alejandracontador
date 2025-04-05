@@ -273,8 +273,8 @@ export default function Home() {
             width: '100%',
             height: '100%',
             background: theme.palette.mode === 'dark'
-              ? 'linear-gradient(to bottom, rgba(43, 20, 30, 0.6) 0%, rgba(30, 20, 40, 0.4) 100%)'
-              : 'linear-gradient(to bottom, rgba(255, 230, 240, 0.8) 0%, rgba(252, 235, 245, 0.6) 100%)',
+              ? 'linear-gradient(to bottom, rgba(60, 60, 70, 0.3) 0%, rgba(30, 30, 35, 0.6) 100%)'
+              : 'linear-gradient(to bottom, rgba(255, 141, 169, 0.8) 0%, rgba(255, 73, 128, 0.6) 100%)',
             zIndex: 0.5,
             backdropFilter: 'blur(2px)',
           }}
@@ -326,9 +326,9 @@ export default function Home() {
             width: '250px',
             height: '250px',
             borderRadius: '50%',
-            background: `radial-gradient(circle, ${theme.palette.mode === 'dark' ? 'rgba(236, 165, 190, 0.3)' : 'rgba(255, 182, 193, 0.4)'} 0%, transparent 70%)`,
+            background: `radial-gradient(circle, ${theme.palette.mode === 'dark' ? 'rgba(240, 107, 149, 0.4)' : 'rgba(255, 73, 128, 0.5)'} 0%, transparent 70%)`,
             filter: 'blur(50px)',
-            opacity: theme.palette.mode === 'dark' ? 0.25 : 0.4,
+            opacity: theme.palette.mode === 'dark' ? 0.3 : 0.5,
             zIndex: 0,
           }}
         />
@@ -341,9 +341,9 @@ export default function Home() {
             width: '450px',
             height: '450px',
             borderRadius: '50%',
-            background: `radial-gradient(circle, ${theme.palette.mode === 'dark' ? theme.palette.secondary.main : '#ffb6c1'} 0%, transparent 70%)`,
+            background: `radial-gradient(circle, ${theme.palette.mode === 'dark' ? theme.palette.secondary.main : '#ff8da9'} 0%, transparent 70%)`,
             filter: 'blur(80px)',
-            opacity: theme.palette.mode === 'dark' ? 0.3 : 0.4,
+            opacity: theme.palette.mode === 'dark' ? 0.3 : 0.5,
             zIndex: 0,
             animation: 'pulse-slow 12s infinite alternate-reverse',
           }}
@@ -357,9 +357,9 @@ export default function Home() {
             width: '300px',
             height: '300px',
             borderRadius: '50%',
-            background: `radial-gradient(circle, ${theme.palette.mode === 'dark' ? theme.palette.secondary.light : '#f5a9bc'} 0%, transparent 70%)`,
+            background: `radial-gradient(circle, ${theme.palette.mode === 'dark' ? theme.palette.secondary.light : '#f06b95'} 0%, transparent 70%)`,
             filter: 'blur(60px)',
-            opacity: theme.palette.mode === 'dark' ? 0.15 : 0.3,
+            opacity: theme.palette.mode === 'dark' ? 0.2 : 0.4,
             zIndex: 0,
             animation: 'pulse-slow 15s infinite alternate',
           }}
@@ -374,9 +374,9 @@ export default function Home() {
             width: '350px',
             height: '350px',
             borderRadius: '50%',
-            background: `radial-gradient(circle, ${theme.palette.mode === 'dark' ? theme.palette.secondary.light : '#ffc0cb'} 0%, transparent 70%)`,
+            background: `radial-gradient(circle, ${theme.palette.mode === 'dark' ? theme.palette.secondary.light : '#ff4980'} 0%, transparent 70%)`,
             filter: 'blur(60px)',
-            opacity: theme.palette.mode === 'dark' ? 0.2 : 0.35,
+            opacity: theme.palette.mode === 'dark' ? 0.2 : 0.45,
             zIndex: 0,
             animation: 'pulse-slow 10s infinite alternate',
           }}

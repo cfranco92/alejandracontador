@@ -43,7 +43,7 @@ export default function StatsCounter() {
       icon: <EqualizerIcon 
         sx={{ 
           fontSize: isMobile ? 'medium' : 'large',
-          color: theme.palette.primary.main
+          color: isDarkMode ? theme.palette.secondary.main : theme.palette.secondary.dark
         }} 
       />
     },
@@ -54,7 +54,7 @@ export default function StatsCounter() {
       icon: <GroupsIcon 
         sx={{ 
           fontSize: isMobile ? 'medium' : 'large',
-          color: theme.palette.primary.main
+          color: isDarkMode ? theme.palette.secondary.main : theme.palette.secondary.dark
         }} 
       /> 
     },
@@ -65,7 +65,7 @@ export default function StatsCounter() {
       icon: <AccessTimeIcon 
         sx={{ 
           fontSize: isMobile ? 'medium' : 'large',
-          color: theme.palette.primary.main
+          color: isDarkMode ? theme.palette.secondary.main : theme.palette.secondary.dark
         }} 
       /> 
     },
@@ -76,7 +76,7 @@ export default function StatsCounter() {
       icon: <WorkIcon 
         sx={{ 
           fontSize: isMobile ? 'medium' : 'large',
-          color: theme.palette.primary.main
+          color: isDarkMode ? theme.palette.secondary.main : theme.palette.secondary.dark
         }} 
       /> 
     }
@@ -88,7 +88,7 @@ export default function StatsCounter() {
       sx={{
         py: { xs: 4, md: 5 },
         px: 2,
-        bgcolor: isDarkMode ? "rgba(15, 23, 42, 0.95)" : "#ffffff",
+        bgcolor: isDarkMode ? "rgba(60, 60, 60, 0.95)" : "#f9f6f3",
         borderRadius: 3,
         my: { xs: 3, md: 4 },
         boxShadow: isDarkMode 
@@ -96,8 +96,8 @@ export default function StatsCounter() {
           : '0 4px 20px rgba(0, 0, 0, 0.08)',
         border: '1px solid',
         borderColor: isDarkMode 
-          ? 'rgba(59, 130, 246, 0.1)' 
-          : 'rgba(226, 232, 240, 0.8)'
+          ? 'rgba(217, 176, 156, 0.1)' 
+          : 'rgba(232, 201, 187, 0.3)'
       }}
     >
       <Grid container spacing={3} justifyContent="center">
@@ -113,7 +113,21 @@ export default function StatsCounter() {
                 alignItems: 'center'
               }}
             >
-              <Box sx={{ mb: { xs: 0.5, md: 1 } }}>{stat.icon}</Box>
+              <Box 
+                sx={{ 
+                  mb: { xs: 0.5, md: 1 },
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  width: { xs: 40, md: 50 },
+                  height: { xs: 40, md: 50 },
+                  borderRadius: '50%',
+                  backgroundColor: isDarkMode ? 'rgba(217, 176, 156, 0.15)' : 'rgba(217, 176, 156, 0.2)',
+                  p: 1
+                }}
+              >
+                {stat.icon}
+              </Box>
               <Typography 
                 variant={isMobile ? "h5" : "h4"} 
                 component="div" 

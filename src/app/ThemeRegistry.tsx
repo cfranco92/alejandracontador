@@ -23,29 +23,41 @@ export default function ThemeRegistry({ children }: { children: ReactNode }) {
           mode,
           ...(mode === 'light'
             ? {
-                // Paleta para modo claro
+                // Paleta para modo claro usando colores Vandiere
                 primary: {
-                  main: '#171717',
+                  main: '#3c3c3c', // Gris oscuro
                 },
                 secondary: {
-                  main: '#6366f1',
+                  main: '#e8c9bb', // Rosa pálido
+                  light: '#f0d7cb',
+                  dark: '#d9b09c', // Marrón/dorado
                 },
                 background: {
-                  default: '#ffffff',
-                  paper: '#f7f7f7',
+                  default: '#f9f6f3', // Crema/beige claro
+                  paper: '#ffffff',
+                },
+                text: {
+                  primary: '#3c3c3c', // Gris oscuro
+                  secondary: '#8e7c6d',
                 },
               }
             : {
-                // Paleta para modo oscuro
+                // Paleta para modo oscuro que complementa colores Vandiere
                 primary: {
-                  main: '#ededed',
+                  main: '#f9f6f3', // Crema/beige claro
                 },
                 secondary: {
-                  main: '#818cf8',
+                  main: '#e8c9bb', // Rosa pálido
+                  dark: '#d9b09c', // Marrón/dorado
+                  light: '#f0d8ce',
                 },
                 background: {
-                  default: '#0a0a0a',
-                  paper: '#171717',
+                  default: '#2a2a2a',
+                  paper: '#3c3c3c', // Gris oscuro
+                },
+                text: {
+                  primary: '#f9f6f3', // Crema/beige claro
+                  secondary: '#d9b09c', // Marrón/dorado
                 },
               }),
         },
